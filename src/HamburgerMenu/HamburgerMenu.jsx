@@ -16,7 +16,7 @@ export default function HamburgerMenu({ isOpen, toggle }) {
           </div>
           <svg
             onClick={toggle}
-            className="w-8 h-8 hover:text-green-600 "
+            className="w-8 h-8 hover:text-[#0C1821]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ export default function HamburgerMenu({ isOpen, toggle }) {
           <Link to="/">
             <li
               onClick={toggle}
-              className="text-lg text-gray-600 hover:text-green-600 transition-colors"
+              className="text-lg text-gray-600 hover:text-[#0C1821] transition-colors"
             >
               Home
             </li>
@@ -42,7 +42,7 @@ export default function HamburgerMenu({ isOpen, toggle }) {
           <Link to="/about">
             <li
               onClick={toggle}
-              className="text-lg text-gray-600 hover:text-green-600 transition-colors"
+              className="text-lg text-gray-600 hover:text-[#0C1821] transition-colors"
             >
               About
             </li>
@@ -50,7 +50,7 @@ export default function HamburgerMenu({ isOpen, toggle }) {
           <Link to="/products">
             <li
               onClick={toggle}
-              className="text-lg text-gray-600 hover:text-green-600 transition-colors"
+              className="text-lg text-gray-600 hover:text-[#0C1821] transition-colors"
             >
               Products
             </li>
@@ -58,7 +58,7 @@ export default function HamburgerMenu({ isOpen, toggle }) {
           <Link to="/contact">
             <li
               onClick={toggle}
-              className="text-lg text-gray-600 hover:text-green-600 transition-colors"
+              className="text-lg text-gray-600 hover:text-[#0C1821] transition-colors"
             >
               Contact
             </li>
