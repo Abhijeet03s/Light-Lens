@@ -6,7 +6,7 @@ export default function HamburgerMenu({ isOpen, toggle }) {
       <nav
         className={
           isOpen
-            ? "bg-white w-full fixed inset-0 flex flex-col items-start justify-start gap-5 px-6"
+            ? "bg-white w-full fixed inset-0 flex flex-col items-start justify-start gap-5 px-6 font-Inter"
             : "hidden"
         }
       >
