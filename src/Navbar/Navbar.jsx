@@ -6,7 +6,7 @@ export default function Navbar({ toggle }) {
       <nav className="container mx-auto max-w-full h-[80px] flex justify-between items-center px-6 lg:px-14 font-Inter font-semibold bg-white">
         <div>
           <Link to="/">
-            <img src="/assets/LIGHTLENS.svg" alt="brand-logo" />
+            <img className="object-cover" src="/assets/LIGHTLENS.svg" alt="brand-logo" />
           </Link>
         </div>
         <div className="hidden lg:flex justify-between items-center gap-x-10">
