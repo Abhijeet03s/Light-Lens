@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Navbar({ toggle }) {
   return (
     <>
-      <nav className="container mx-auto max-w-full h-[80px] flex justify-between items-center px-6 lg:px-14 font-Inter font-semibold bg-white">
+      <nav className="container mx-auto max-w-full h-[80px] flex justify-between items-center px-6 lg:px-14 font-Inter font-semibold bg-[#FCFCFC]">
         <div>
           <Link to="/">
             <img className="object-cover" src="/assets/LIGHTLENS.svg" alt="brand-logo" />

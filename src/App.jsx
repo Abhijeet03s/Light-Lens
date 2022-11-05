@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
 import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
-import Header from "./Header/Header";
 import Hero from "./Hero/Hero";
-import About from "./About/About"
-import Contact from "./Contact/Contact"
+import Store from "./Store/Store";
+import About from "./About/About";
+import Contact from "./Contact/Contact";
+import Socials from "./Socials/Socials";
 import Footer from "./Footer/Footer";
-
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,11 +34,12 @@ export default function App() {
       <Navbar toggle={toggle} />
       <HamburgerMenu isOpen={isOpen} toggle={toggle} />
       <Routes>
-        <Route path="/" element={<Header />}></Route>
-        <Route path="/hero" element={<Hero />}></Route>
+        <Route path="/" element={<Hero />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
       </Routes>
+      <Store />
+      <Socials />
       <Footer />
     </>
   );
