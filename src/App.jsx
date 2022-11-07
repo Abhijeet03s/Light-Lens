@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./Navbar/Navbar";
-import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
-import Hero from "./Hero/Hero";
-import Store from "./Store/Store";
-import About from "./About/About";
-import Contact from "./Contact/Contact";
-import Socials from "./Socials/Socials";
-import Footer from "./Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
+import Hero from "./components/Hero/Hero";
+import Store from "./components/Store/Store";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
+import Socials from "./components/Socials/Socials";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
