@@ -6,6 +6,7 @@ import Hero from "./components/Hero/Hero";
 import Store from "./components/Store/Store";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
+import Download from "./components/Download/Download";
 import Socials from "./components/Socials/Socials";
 import Footer from "./components/Footer/Footer";
 
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />}></Route>
       </Routes>
       <Store />
+      <Download />
       <Socials />
       <Footer />
     </>

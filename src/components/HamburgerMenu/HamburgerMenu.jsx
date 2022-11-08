@@ -14,6 +14,7 @@ export default function HamburgerMenu({ isOpen, toggle }) {
           <div>
             <img src="/assets/LIGHTLENS.svg" alt="brand-logo" />
           </div>
+
           <svg
             onClick={toggle}
             className="w-8 h-8 hover:text-[#0C1821]"

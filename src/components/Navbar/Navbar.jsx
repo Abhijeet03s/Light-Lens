@@ -6,22 +6,26 @@ export default function Navbar({ toggle }) {
       <nav className="container mx-auto max-w-full h-[80px] flex justify-between items-center px-6 lg:px-14 font-Inter font-semibold bg-[#FCFCFC]">
         <div>
           <Link to="/">
-            <img className="object-cover" src="/assets/LIGHTLENS.svg" alt="brand-logo" />
+            <img
+              className="object-cover"
+              src="/assets/LIGHTLENS.svg"
+              alt="brand-logo"
+            />
           </Link>
         </div>
         <div className="hidden lg:flex justify-between items-center gap-x-10">
           <ul className="lg:flex lg:items-center lg:gap-x-10">
             <Link to="/">
-              <li>Home</li>
+              <li className="hover:text-[#4A99D3]">Home</li>
             </Link>
             <Link to="/about">
-              <li>About</li>
+              <li className="hover:text-[#4A99D3]">About</li>
             </Link>
             <Link to="/products">
-              <li>Products</li>
+              <li className="hover:text-[#4A99D3]">Products</li>
             </Link>
             <Link to="/contact">
-              <li>Contact</li>
+              <li className="hover:text-[#4A99D3]">Contact</li>
             </Link>
           </ul>
           <div className="lg:flex gap-x-10">
@@ -33,9 +37,12 @@ export default function Navbar({ toggle }) {
             </button>
           </div>
         </div>
+        {/* <button className="lg:hidden ml-20">
+          <img className="w-7" src="/assets/cart.svg" alt="" />
+        </button> */}
         <svg
           onClick={toggle}
-          className="w-8 h-8 hover:text-[#0C1821] transition-colors md:hidden cursor-pointer"
+          className="w-8 h-8 hover:text-[#0C1821] transition-colors lg:hidden cursor-pointer"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

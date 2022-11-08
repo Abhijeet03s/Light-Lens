@@ -25,7 +25,20 @@ body {
     background-color: #f0f0f042;
   }
 
-  body::-webkit-scrollbar-thumb {   
+  body::-webkit-scrollbar-thumb {
     background: #0c1821;
   }
 }
+
+.bg-color {
+  background: linear-gradient(
+    180deg,
+    #4a99d3 -13.94%,
+    rgba(74, 153, 211, 0.2) 97.39%
+  );
+}
+
+/* .bg-download-color {
+  background: #4a99d3;
+  opacity: 100%; 
+} */
