@@ -81,41 +81,41 @@
     },
     {
         "id": 11,
-        "title": "Black Full Rim Round Sunglasses",
+        "title": "Black Full Rim Round",
         "type": "SunGlasses",
-        "image": "../public/images/eyeglasses/eyeglasses (5).png",
+        "image": "../public/images/sunglasses/sunglasses (1).png",
         "price": 2099,
         "rating": 4.3
     },
     {
         "id": 12,
-        "title": "Gold Full Rim Round Sunglasses",
+        "title": "Gold Full Rim Round",
         "type": "SunGlasses",
-        "image": "../public/images/eyeglasses/eyeglasses (5).png",
+        "image": "../public/images/sunglasses/sunglasses (2).png",
         "price": 2399,
         "rating": 4.7
     },
     {
         "id": 13,
-        "title": "Blue Full Rim Wayfarer Sunglasses",
+        "title": "Blue Full Rim Wayfarer",
         "type": "SunGlasses",
-        "image": "../public/images/eyeglasses/eyeglasses (5).png",
+        "image": "../public/images/sunglasses/sunglasses (3).png",
         "price": 2199,
         "rating": 4.5
     },
     {
         "id": 14,
-        "title": "Matte Gold Full Rim Aviator Sunglasses",
+        "title": "Matte Gold Full Rim Aviator",
         "type": "SunGlasses",
-        "image": "../public/images/eyeglasses/eyeglasses (5).png",
+        "image": "../public/images/sunglasses/sunglasses (4).png",
         "price": 2499,
         "rating": 4.9
     },
     {
         "id": 15,
-        "title": "Golden Full Rim Cat Eye Sunglasses",
+        "title": "Golden Full Rim Cat",
         "type": "SunGlasses",
-        "image": "../public/images/eyeglasses/eyeglasses (5).png",
+        "image": "../public/images/sunglasses/sunglasses (5).png",
         "price": 2299,
         "rating": 4.7
     }

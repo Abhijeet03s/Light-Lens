@@ -26,7 +26,7 @@ export default function Hero() {
               Buy Now
             </button>
             <button className="w-[160px] py-3 bg-[#4A99D3] shadow-lg hover:text-[#4A99D3] hover:bg-white transition duration-500 text-white lg:rounded-[50px]">
-              Shop Collections
+              Explore Shop
             </button>
           </div>
         </div>

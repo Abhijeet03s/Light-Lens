@@ -9,9 +9,11 @@ import Contact from "./components/Contact/Contact";
 import Download from "./components/Download/Download";
 import Socials from "./components/Socials/Socials";
 import Footer from "./components/Footer/Footer";
+import data from "./data.json"
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [products, setProducts] = useState(data)
 
   useEffect(() => {
     const hamburgerMenu = () => {
@@ -39,7 +41,7 @@ export default function App() {
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
       </Routes>
-      <Store />
+      <Store products={products} setProducts={setProducts} />
       <Download />
       <Socials />
       <Footer />
