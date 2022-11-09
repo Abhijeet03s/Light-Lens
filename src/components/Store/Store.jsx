@@ -21,7 +21,10 @@ export default function Hero({ products, setProducts }) {
         <div className="flex flex-wrap justify-evenly items-center gap-y-16">
           {products.map((product) => {
             return (
-              <div className="flex flex-col justify-between w-96 overflow-hidden rounded-lg shadow-lg p-5 space-y-5">
+              <div
+                key={product.id}
+                className="flex flex-col justify-between w-96 overflow-hidden rounded-lg shadow-lg p-5 space-y-5"
+              >
                 <div>
                   <img src={product.image} alt="specs-image" />
                 </div>
