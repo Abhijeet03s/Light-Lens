@@ -3,7 +3,8 @@ import React from "react";
 export default function Socials() {
   return (
     <>
-      <div className="max-w-full h-[300px] lg:h-[400px] text-black font-Inter flex flex-col justify-center items-center gap-5">
+      <div className="max-w-full h-[300px] lg:h-[400px] text-black font-Inter flex flex-col justify-center items-center gap-5 relative">
+        <img className="absolute -right-10 -bottom-14 lg:-bottom-16 w-[35%] md:w-[20%] lg:w-[15%] " src="/assets/square-design.svg" alt="" />
         <div className="flex flex-col justify-center items-center gap-y-10">
           <h1 className="text-5xl lg:text-6xl font-Mukta">Our Instagram</h1>
           <p className="text-md lg:text-xl">Follow our store on Instagram</p>
@@ -15,3 +16,4 @@ export default function Socials() {
     </>
   );
 }
+// bg-[#002C5B]

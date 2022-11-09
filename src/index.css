@@ -38,7 +38,26 @@ body {
   );
 }
 
-/* .bg-download-color {
-  background: #4a99d3;
-  opacity: 100%; 
-} */
+.underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #fff;
+}
+
+.underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background-color: #f4f4f4;
+  transform-origin: bottom right;
+  transition: transform 0.35s ease-in-out;
+}
+
+.underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

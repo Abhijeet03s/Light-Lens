@@ -1,42 +1,122 @@
 [
     {
         "id": 1,
-        "title": "",
-        "type": "Blue-Glasses",
-        "image": "../public/images/blueglasses/1_09a7a281-26a1-4a52-8b60-432a63f78536_360x.jpg",
-        "price": 313,
+        "title": "Blue and Red Full Rim Square",
+        "type": "BlueGlasses",
+        "image": "../public/images/blueglasses/blueGlasses (1).png",
+        "price": 1499,
         "rating": 4.5
     },
     {
         "id": 2,
-        "title": "",
-        "type": "Blue-Glasses",
-        "image": "../public/images/blueglasses/1_9bf0beae-9337-46c1-9189-4b9d9ff57610_360x.jpg",
-        "price": 313,
+        "title": "Gold Full Rim Round",
+        "type": "BlueGlasses",
+        "image": "../public/images/blueglasses/blueGlasses (2).png",
+        "price": 1399,
         "rating": 4.2
     },
     {
         "id": 3,
-        "title": "",
-        "type": "Blue-Glasses",
-        "image": "../public/images/blueglasses/1_9f26acf3-b8b1-4dc7-8245-f83edc770410_360x.jpg",
-        "price": 313,
+        "title": "Blue Full Rim Round",
+        "type": "BlueGlasses",
+        "image": "../public/images/blueglasses/blueGlasses (3).png",
+        "price": 1599,
         "rating": 4.3
     },
     {
         "id": 4,
-        "title": "",
-        "type": "Blue-Glasses",
-        "image": "../public/images/blueglasses/1_f1be43aa-6511-467f-8eb0-4bf972265c55_360x.jpg",
-        "price": 313,
+        "title": "Matte Black Full Rim Rectangle",
+        "type": "BlueGlasses",
+        "image": "../public/images/blueglasses/blueGlasses (4).png",
+        "price": 1699,
         "rating": 4.7
     },
     {
         "id": 5,
-        "title": "",
-        "type": "Blue-Glasses",
-        "image": "../public/images/blueglasses/3_8b55b96a-1a38-498f-b6ee-d946ccaf2db7_480x.jpg",
-        "price": 313,
-        "rating": 4.0
+        "title": "Black Full Rim Round",
+        "type": "BlueGlasses",
+        "image": "../public/images/blueglasses/blueGlasses (5).png",
+        "price": 1999,
+        "rating": 4.9
+    },
+    {
+        "id": 6,
+        "title": "Silver Sky Blue Full Rim",
+        "type": "EyeGlasses",
+        "image": "../public/images/eyeglasses/eyeglasses (1).png",
+        "price": 1899,
+        "rating": 4.8
+    },
+    {
+        "id": 7,
+        "title": "Silver Blue Full Rim",
+        "type": "EyeGlasses",
+        "image": "../public/images/eyeglasses/eyeglasses (2).png",
+        "price": 1299,
+        "rating": 4.1
+    },
+    {
+        "id": 8,
+        "title": "Red Full Rim Cat",
+        "type": "EyeGlasses",
+        "image": "../public/images/eyeglasses/eyeglasses (3).png",
+        "price": 1799,
+        "rating": 4.6
+    },
+    {
+        "id": 9,
+        "title": "Silver Full Rim Round",
+        "type": "EyeGlasses",
+        "image": "../public/images/eyeglasses/eyeglasses (4).png",
+        "price": 1599,
+        "rating": 4.5
+    },
+    {
+        "id": 10,
+        "title": "Pink Transparent Full Rim Round",
+        "type": "EyeGlasses",
+        "image": "../public/images/eyeglasses/eyeglasses (5).png",
+        "price": 1999,
+        "rating": 4.9
+    },
+    {
+        "id": 11,
+        "title": "Black Full Rim Round Sunglasses",
+        "type": "SunGlasses",
+        "image": "../public/images/eyeglasses/eyeglasses (5).png",
+        "price": 2099,
+        "rating": 4.3
+    },
+    {
+        "id": 12,
+        "title": "Gold Full Rim Round Sunglasses",
+        "type": "SunGlasses",
+        "image": "../public/images/eyeglasses/eyeglasses (5).png",
+        "price": 2399,
+        "rating": 4.7
+    },
+    {
+        "id": 13,
+        "title": "Blue Full Rim Wayfarer Sunglasses",
+        "type": "SunGlasses",
+        "image": "../public/images/eyeglasses/eyeglasses (5).png",
+        "price": 2199,
+        "rating": 4.5
+    },
+    {
+        "id": 14,
+        "title": "Matte Gold Full Rim Aviator Sunglasses",
+        "type": "SunGlasses",
+        "image": "../public/images/eyeglasses/eyeglasses (5).png",
+        "price": 2499,
+        "rating": 4.9
+    },
+    {
+        "id": 15,
+        "title": "Golden Full Rim Cat Eye Sunglasses",
+        "type": "SunGlasses",
+        "image": "../public/images/eyeglasses/eyeglasses (5).png",
+        "price": 2299,
+        "rating": 4.7
     }
 ]
