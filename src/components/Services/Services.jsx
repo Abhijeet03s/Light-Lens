@@ -2,6 +2,7 @@ export default function Services() {
   return (
     <>
       <div className="max-w-full lg:min-h-[90vh] text-black flex flex-col justify-center items-center font-Inter px-5 py-16 space-y-10 relative">
+      <h1 className="text-center text-5xl">Services we provide</h1>
         <div className="absolute top-[28%]">
           <img src="/Circle.svg" alt="moto-image" />
         </div>

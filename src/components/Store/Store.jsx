@@ -4,18 +4,21 @@ export default function Hero({ products }) {
   return (
     <>
       <div className="max-w-full py-10 flex flex-col bg-[#f4f4f4] text-black space-y-10 font-Inter relative">
+        <hr />
+        <h1 className="text-center text-5xl">Spectacle Frames</h1>
+
         {/* Blueglasses */}
 
-        <div className="flex flex-col items-start">
-          <h1 className="ml-[100px] mb-10 bg-[#4a99d3] p-2 rounded-lg font-bold text-xl text-white">
-            Blueglasses
-          </h1>
+        <h1 className="text-3xl font-Mukta font-normal border-b border-b-black ml-20  w-36">
+          BLUEGLASSES
+        </h1>
+        <div className="flex flex-col items-center">
           <div className="flex flex-wrap justify-evenly items-center gap-y-16">
             {products.blueglasses.map((product) => {
               return (
                 <div
                   key={product.id}
-                  className="flex flex-col justify-between w-96 overflow-hidden rounded-lg shadow-lg p-5 space-y-5 cursor-pointer bg-color-2"
+                  className="flex flex-col justify-between w-96 overflow-hidden rounded-lg shadow-lg p-5 space-y-5 cursor-pointer card-animate"
                 >
                   <div>
                     <img src={product.image} alt="specs-image" />
@@ -46,16 +49,16 @@ export default function Hero({ products }) {
 
         {/* Eyeglasses */}
 
-        <div className="flex flex-col items-start">
-          <h1 className="ml-[100px]  mb-10 bg-[#4a99d3] p-2 rounded-lg font-bold text-xl text-white">
-            Eyeglasses
-          </h1>
+        <h1 className="text-3xl font-Mukta font-normal border-b border-b-black ml-20 w-36">
+          EYEGLASSES
+        </h1>
+        <div className="flex flex-col items-center">
           <div className="flex flex-wrap justify-evenly items-center gap-y-16">
             {products.eyeglasses.map((product) => {
               return (
                 <div
                   key={product.id}
-                  className="flex flex-col justify-between w-96 overflow-hidden rounded-lg shadow-lg p-5 space-y-5 cursor-pointer bg-color-2"
+                  className="flex flex-col justify-between w-96 overflow-hidden rounded-lg shadow-lg p-5 space-y-5 cursor-pointer card-animate"
                 >
                   <div>
                     <img src={product.image} alt="specs-image" />
@@ -86,16 +89,16 @@ export default function Hero({ products }) {
 
         {/* Sunglasses */}
 
-        <div className="flex flex-col items-start">
-          <h1 className="ml-[100px]  mb-10 bg-[#4a99d3] p-2 rounded-lg font-bold text-xl text-white">
-            Sunglasses
-          </h1>
+        <h1 className="text-3xl font-Mukta font-normal border-b border-b-black ml-20 w-36">
+          SUNGLASSES
+        </h1>
+        <div className="flex flex-col items-center">
           <div className="flex flex-wrap justify-evenly items-center gap-y-16">
             {products.sunglasses.map((product) => {
               return (
                 <div
                   key={product.id}
-                  className="flex flex-col justify-between w-96 overflow-hidden rounded-lg shadow-lg p-5 space-y-5 cursor-pointer bg-color-2"
+                  className="flex flex-col justify-between w-96 overflow-hidden rounded-lg shadow-lg p-5 space-y-5 cursor-pointer card-animate"
                 >
                   <div>
                     <img src={product.image} alt="specs-image" />
