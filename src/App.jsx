@@ -4,17 +4,16 @@ import Navbar from "./components/Navbar/Navbar";
 import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
 import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
-import Store from "./components/Store/Store";
-import About from "./components/About/About";
+import Products from "./components/Products/Products";
+import Cart from "./components/Cart/Cart";
 import Contact from "./components/Contact/Contact";
 import Download from "./components/Download/Download";
 import Socials from "./components/Socials/Socials";
 import Footer from "./components/Footer/Footer";
-import data from "./data.json";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const [products, setProducts] = useState(data);
+  const [cartVisible, setCartVisible] = useState(false);
 
   useEffect(() => {
     const hamburgerMenu = () => {
@@ -33,19 +32,22 @@ export default function App() {
     setIsOpen(!isOpen);
   };
 
+  const toggleCart = () => {
+    setCartVisible(!cartVisible);
+  };
+
   return (
     <>
-      <Navbar toggle={toggle} />
-      <HamburgerMenu isOpen={isOpen} toggle={toggle} />      
+      <Navbar toggle={toggle} toggleCart={toggleCart} />
+      <HamburgerMenu isOpen={isOpen} toggle={toggle} />
       <Routes>
-        <Route path="/" element={<Hero />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/cart" element={cartVisible && <Cart />} />
       </Routes>
-      <Services />
-      <Store products={products} setProducts={setProducts} />
-      <Download />
-      <Socials />
+      {!cartVisible && <Hero />}
+      {!cartVisible && <Services />}
+      {!cartVisible && <Products />}
+      {!cartVisible && <Download />}
+      {!cartVisible && <Socials />}
       <Footer />
     </>
   );

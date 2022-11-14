@@ -1,10 +1,16 @@
 import { MdStar } from "react-icons/md";
+import { useContext } from "react";
+import { DataContext } from "../../context/Context";
 
-export default function Hero({ products }) {
+export default function Products() {
+  const { products} = useContext(DataContext);
+
   return (
     <>
-      <div className="max-w-full py-10 flex flex-col bg-[#f4f4f4] text-black space-y-10 font-Inter relative">
-        <hr />
+      <div
+        id="products"
+        className="max-w-full py-10 flex flex-col bg-[#f4f4f4] text-black space-y-10 font-Inter relative"
+      >
         <h1 className="text-center text-5xl">Spectacle Frames</h1>
 
         {/* Blueglasses */}

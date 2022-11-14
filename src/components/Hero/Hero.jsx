@@ -1,7 +1,8 @@
+
 export default function Hero() {
   return (
     <>
-      <div className="max-w-full lg:min-h-[90vh] bg-color text-black flex flex-col lg:flex-row justify-center items-center font-Inter px-5 py-16 lg:px-20 lg:gap-x-5 relative">
+      <div id="hero" className="max-w-full lg:min-h-[90vh] bg-color text-black flex flex-col lg:flex-row justify-center items-center font-Inter px-5 py-16 lg:px-20 lg:gap-x-5 relative">
         <div className="w-[100%] md:w-[50%] lg:w-[70%]">
           <img
             className="object-cover"
