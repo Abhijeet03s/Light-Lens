@@ -2,29 +2,29 @@ export default function Services() {
   return (
     <>
       <div className="max-w-full lg:min-h-[90vh] text-black flex flex-col justify-center items-center font-Inter px-5 py-16 space-y-10 relative">
-      <h1 className="text-center text-5xl">Services we provide</h1>
-        <div className="absolute top-[28%]">
+        <h1 className="text-center text-5xl">Services we provide</h1>
+        <div className="hidden lg:block absolute top-[28%]">
           <img src="/Circle.svg" alt="moto-image" />
         </div>
-        <div className="lg:grid grid-flow-col gap-4">
+        <div className="space-y-5 lg:space-y-0 lg:grid grid-flow-col gap-4">
           <img
-            className="w-[570px] h-[400px] row-span-3"
+            className="object-cover object-top w-[570px] h-[155px] lg:h-[400px] row-span-3 rounded-xl"
             src="/Group 31.png"
             alt="adv-img"
           />
           <img
-            className="w-[570px] h-[195px] col-span-2"
+            className="object-cover object-top w-[570px] h-[155px] lg:h-[195px] col-span-2 rounded-xl"
             src="/Group 32.png"
             alt="adv-img"
           />
           <img
-            className="w-[570px] h-[190px] row-span-2 col-span-2"
+            className="object-cover object-top w-[570px] h-[155px] lg:h-[190px] row-span-2 col-span-2 rounded-xl"
             src="/Group 33.png"
             alt="adv-img"
           />
         </div>
-        <div className="lg:grid grid-cols-3 place-items-center gap-4 font-Mukta font-medium">
-          <div className="w-[378px] h-[212px] bg-[#C6E7FF] flex flex-col justify-center items-center space-y-10 rounded-xl shadow-xl">
+        <div className="lg:grid grid-cols-3 place-items-center gap-4 font-Mukta font-medium space-y-5 lg:space-y-0">
+          <div className="w-[378px] h-[102px] lg:h-[212px] bg-[#C6E7FF] flex flex-col justify-center items-center space-y-3 lg:space-y-10 rounded-xl shadow-xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -41,7 +41,7 @@ export default function Services() {
             </svg>
             <h1 className="text-lg">Super Fast and Free Delivery</h1>
           </div>
-          <div className="flex flex-col justify-center items-center space-y-2">
+          <div className="flex flex-col justify-center items-center space-y-5 lg:space-y-2">
             <div className="flex flex-col justify-center items-center w-[378px] h-[102px] space-y-3 bg-[#C6E7FF] rounded-xl shadow-xl">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ export default function Services() {
               <h1 className="text-lg">Money-back Guaranteed</h1>
             </div>
           </div>
-          <div className="w-[378px] h-[212px] bg-[#C6E7FF] flex flex-col justify-center items-center space-y-10 rounded-xl shadow-xl">
+          <div className="w-[378px] h-[102px] lg:h-[212px] bg-[#C6E7FF] flex flex-col justify-center items-center space-y-3 lg:space-y-10 rounded-xl shadow-xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
