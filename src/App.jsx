@@ -7,6 +7,8 @@ import Services from "./components/Services/Services";
 import Products from "./components/Products/Products";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart/Cart";
+import Login from "./components/Login/Login";
+import Signup from "./components/SignUp/Signup";
 import Footer from "./components/Footer/Footer";
 
 export default function App() {
@@ -44,6 +46,8 @@ export default function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:ID" element={<ProductDetails />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
       <Footer />
     </>
