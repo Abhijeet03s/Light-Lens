@@ -5,10 +5,8 @@ import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
 import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
 import Products from "./components/Products/Products";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart/Cart";
-import Contact from "./components/Contact/Contact";
-import Download from "./components/Download/Download";
-import Socials from "./components/Socials/Socials";
 import Footer from "./components/Footer/Footer";
 
 export default function App() {
@@ -41,13 +39,12 @@ export default function App() {
       <Navbar toggle={toggle} toggleCart={toggleCart} />
       <HamburgerMenu isOpen={isOpen} toggle={toggle} />
       <Routes>
+        <Route path="/" element={<Hero />} />
         <Route path="/cart" element={cartVisible && <Cart />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:ID" element={<ProductDetails />} />
+        <Route path="/services" element={<Services />} />
       </Routes>
-      {!cartVisible && <Hero />}
-      {!cartVisible && <Services />}
-      {!cartVisible && <Products />}
-      {!cartVisible && <Download />}
-      {!cartVisible && <Socials />}
       <Footer />
     </>
   );

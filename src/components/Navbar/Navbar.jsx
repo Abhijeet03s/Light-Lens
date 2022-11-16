@@ -15,33 +15,30 @@ export default function Navbar({ toggle, toggleCart }) {
         </div>
         <div className="hidden lg:flex justify-between items-center gap-x-10">
           <ul className="lg:flex lg:items-center lg:gap-x-10">
-            <a href="#">
+            <Link to="/">
               <li className="hover:text-[#4A99D3]">Home</li>
-            </a>
-            <a href="#services">
-              <li className="hover:text-[#4A99D3]">Services</li>
-            </a>
-            <a href="#products">
-              <li className="hover:text-[#4A99D3]">Products</li>
-            </a>
-            <a href="#contact">
-              <li className="hover:text-[#4A99D3]">Contact</li>
-            </a>
-          </ul>
-          <div className="lg:flex gap-x-10">
-            <Link to="/cart">
-              <button onClick={toggleCart}>
-                <img className="w-7" src="/assets/cart.svg" alt="cart-img" />
-              </button>
             </Link>
-            <button>
-              <img className="w-7" src="/assets/login.svg" alt="login-img" />
+            <Link to="/services">
+              <li className="hover:text-[#4A99D3]">Services</li>
+            </Link>
+            <Link to="/products">
+              <li className="hover:text-[#4A99D3]">Products</li>
+            </Link>
+          </ul>
+          <Link to="/cart">
+            <button onClick={toggleCart}>
+              <img src="/assets/cart.svg" alt="cart-img" />
             </button>
-          </div>
+          </Link>
+          <Link to="/login">
+            <button>
+              <img src="/assets/login.svg" alt="login-img" />
+            </button>
+          </Link>
         </div>
         <svg
           onClick={toggle}
-          className="w-8 h-8 hover:text-[#0C1821] transition-colors lg:hidden cursor-pointer"
+          className="lg:hidden w-8 h-8 hover:text-[#0C1821] transition-colors cursor-pointer"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

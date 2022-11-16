@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
     <>
-      <div id="hero" className="max-w-full lg:min-h-[90vh] bg-color text-black flex flex-col lg:flex-row justify-center items-center font-Inter px-5 py-16 lg:px-20 lg:gap-x-5 relative">
+      <div
+        id="hero"
+        className="max-w-full lg:min-h-[90vh] bg-color text-black flex flex-col lg:flex-row justify-center items-center font-Inter px-5 py-16 lg:px-20 lg:gap-x-5 relative"
+      >
         <div className="w-[100%] md:w-[50%] lg:w-[70%]">
           <img
             className="object-cover"
@@ -23,9 +27,11 @@ export default function Hero() {
             <button className="w-[160px] py-3 bg-[#4A99D3] shadow-lg hover:text-[#4A99D3] hover:bg-white transition duration-500 text-white lg:rounded-[50px]">
               Buy Now
             </button>
-            <button className="w-[160px] py-3 bg-[#4A99D3] shadow-lg hover:text-[#4A99D3] hover:bg-white transition duration-500 text-white lg:rounded-[50px]">
-              Explore Shop
-            </button>
+            <Link to="/products">
+              <button className="w-[160px] py-3 bg-[#4A99D3] shadow-lg hover:text-[#4A99D3] hover:bg-white transition duration-500 text-white lg:rounded-[50px]">
+                Explore Shop
+              </button>
+            </Link>
           </div>
         </div>
       </div>
