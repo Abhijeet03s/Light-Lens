@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
+import GoogleButton from "react-google-button";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Login() {
+  const { googleSignIn, loggedInUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
@@ -29,14 +33,31 @@ export default function Login() {
       });
   };
 
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (loggedInUser != null) {
+      navigate("/");
+    }
+  }, [loggedInUser]);
+
   return (
     <>
-      <section className="flex flex-col max-w-full lg:min-h-[90vh] mt-8">
+      <section className="flex flex-col max-w-full lg:min-h-[90vh] mt-8 font-Inter font-medium">
         <div className="w-full lg:mx-auto p-4 relative z-100">
           <div className="shadow-2xl max-w-full lg:max-w-[30%] mx-auto rounded-md p-5 lg:p-14 z-100">
             <h2 className="text-2xl lg:text-3xl text-center font-bold mb-8 text-gray-600">
-              Login
+              Sign In
             </h2>
+            <div className="flex justify-center items-center my-8">
+              <GoogleButton onClick={handleGoogleSignIn} />
+            </div>
             <div className="mb-8">
               <p className="text-md text-gray-500 mb-2">Email</p>
               <input
@@ -63,7 +84,7 @@ export default function Login() {
               onClick={handleSubmitForm}
               className="w-full bg-[#38bdf8] py-2 rounded-md text-gray-50"
             >
-              Login
+              Sign In
             </button>
             <div className="max-w-xl mx-auto">
               <p className="text-sm mt-8">

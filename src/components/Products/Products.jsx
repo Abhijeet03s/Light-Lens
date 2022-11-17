@@ -13,7 +13,7 @@ export default function Products() {
 
         {/* Blueglasses */}
 
-        <h1 className="text-3xl font-Mukta font-normal border-b border-b-black ml-20  w-36">
+        <h1 className="text-3xl text-center font-Mukta font-normal lg:text-left lg:ml-10">
           BLUEGLASSES
         </h1>
         <div className="flex flex-col items-center">
@@ -57,7 +57,7 @@ export default function Products() {
 
         {/* Eyeglasses */}
 
-        <h1 className="text-3xl font-Mukta font-normal border-b border-b-black ml-20 w-36">
+        <h1 className="text-3xl text-center font-Mukta font-normal lg:text-left lg:ml-10">
           EYEGLASSES
         </h1>
         <div className="flex flex-col items-center">
@@ -99,7 +99,7 @@ export default function Products() {
 
         {/* Sunglasses */}
 
-        <h1 className="text-3xl font-Mukta font-normal border-b border-b-black ml-20 w-36">
+        <h1 className="text-3xl text-center font-Mukta font-normal lg:text-left lg:ml-10">
           SUNGLASSES
         </h1>
         <div className="flex flex-col items-center">

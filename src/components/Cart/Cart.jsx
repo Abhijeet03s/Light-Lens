@@ -10,9 +10,9 @@ export default function Cart() {
     <>
       <div className="max-w-full min-h-screen bg-[#f4f4f4] font-Inter font-medium">
         {cartItems.length < 1 && (
-          <div>
+          <div className="flex flex-col justify-center items-center">
             <AiOutlineShopping size={150} />
-            <h1>Your Shopping Bag is empty</h1>
+            <h1 className="text-3xl">Your Shopping Bag is empty</h1>
           </div>
         )}
         <div className="card-body container max-w-full md:min-h-screen">

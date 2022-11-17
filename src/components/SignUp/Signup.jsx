@@ -36,7 +36,7 @@ export default function Signup() {
 
   return (
     <>
-      <section className="flex flex-col max-w-full lg:min-h-[90vh] mt-8">
+      <section className="flex flex-col max-w-full lg:min-h-[90vh] mt-8 font-Inter font-medium">
         <div className="w-full lg:mx-auto p-4 relative z-100">
           <div className="shadow-2xl max-w-full lg:max-w-[30%] mx-auto rounded-md p-5 lg:p-14 z-100">
             <h2 className="text-2xl lg:text-3xl text-center font-bold mb-8 text-gray-600">
@@ -86,7 +86,7 @@ export default function Signup() {
               <p className="text-sm mt-8">
                 Already have an account?{" "}
                 <Link to="/login" className="text-[#38bdf8]">
-                  Login
+                  Register
                 </Link>
               </p>
             </div>

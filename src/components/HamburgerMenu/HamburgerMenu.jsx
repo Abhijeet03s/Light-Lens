@@ -5,16 +5,17 @@ export default function HamburgerMenu({ isOpen, toggle }) {
     <>
       <nav
         className={
-          isOpen
-            ? "bg-white w-full min-h-screen fixed inset-0 flex flex-col items-start justify-start gap-5 px-6 font-Inter"
-            : "hidden"
+          isOpen ? "w-full bg-[#f4f4f4] px-6 font-Inter font-medium" : "hidden"
         }
       >
-        <div className="container mx-auto w-full h-[80px] flex justify-between items-center bg-white">
+        <div className="container mx-auto w-full h-[80px] flex justify-between items-center">
           <div>
-            <img src="/assets/LIGHTLENS.svg" alt="brand-logo" />
+            <img
+              className="w-44"
+              src="/assets/LIGHTLENS.svg"
+              alt="brand-logo"
+            />
           </div>
-
           <svg
             onClick={toggle}
             className="w-8 h-8 hover:text-[#0C1821]"
@@ -35,33 +36,33 @@ export default function HamburgerMenu({ isOpen, toggle }) {
           <Link to="/">
             <li
               onClick={toggle}
-              className="text-lg text-gray-600 hover:text-[#0C1821] transition-colors"
+              className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
             >
               Home
             </li>
           </Link>
-          <Link to="/about">
+          <Link to="/services">
             <li
               onClick={toggle}
-              className="text-lg text-gray-600 hover:text-[#0C1821] transition-colors"
+              className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
             >
-              About
+              Services
             </li>
           </Link>
           <Link to="/products">
             <li
               onClick={toggle}
-              className="text-lg text-gray-600 hover:text-[#0C1821] transition-colors"
+              className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
             >
               Products
             </li>
           </Link>
-          <Link to="/contact">
+          <Link to="/login">
             <li
               onClick={toggle}
-              className="text-lg text-gray-600 hover:text-[#0C1821] transition-colors"
+              className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
             >
-              Contact
+              Signin
             </li>
           </Link>
         </ul>

@@ -10,6 +10,7 @@ import Cart from "./components/Cart/Cart";
 import Login from "./components/Login/Login";
 import Signup from "./components/SignUp/Signup";
 import Footer from "./components/Footer/Footer";
+import { AuthContextProvider } from "./context/AuthContext";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function App() {
 
   useEffect(() => {
     const hamburgerMenu = () => {
-      if (window.innerWidth >= 768 && isOpen) {
+      if (window.innerWidth > 768 && isOpen) {
         setIsOpen(isOpen);
       }
     };
@@ -38,18 +39,24 @@ export default function App() {
 
   return (
     <>
-      <Navbar toggle={toggle} toggleCart={toggleCart} />
-      <HamburgerMenu isOpen={isOpen} toggle={toggle} />
-      <Routes>
-        <Route path="/" element={<Hero />} />
-        <Route path="/cart" element={cartVisible && <Cart />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:ID" element={<ProductDetails />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-      <Footer />
+      <AuthContextProvider>
+        <HamburgerMenu isOpen={isOpen} toggle={toggle} />
+        {!isOpen && (
+          <div>
+            <Navbar toggle={toggle} toggleCart={toggleCart} />
+            <Routes>
+              <Route path="/" element={<Hero />} />
+              <Route path="/cart" element={cartVisible && <Cart />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/:ID" element={<ProductDetails />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
+            <Footer />
+          </div>
+        )}
+      </AuthContextProvider>
     </>
   );
 }
