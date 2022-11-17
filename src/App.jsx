@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
 import Hero from "./components/Hero/Hero";
+import About from "./components/About/About";
 import Services from "./components/Services/Services";
 import Products from "./components/Products/Products";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
@@ -46,10 +47,11 @@ export default function App() {
             <Navbar toggle={toggle} toggleCart={toggleCart} />
             <Routes>
               <Route path="/" element={<Hero />} />
-              <Route path="/cart" element={cartVisible && <Cart />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
               <Route path="/products" element={<Products />} />
               <Route path="/products/:ID" element={<ProductDetails />} />
-              <Route path="/services" element={<Services />} />
+              <Route path="/cart" element={cartVisible && <Cart />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
             </Routes>

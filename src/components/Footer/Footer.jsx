@@ -19,7 +19,9 @@ export default function Footer() {
             <a href="#">Home</a>
             <a href="#">About</a>
             <a href="#">Products</a>
-            <a href="#">Contact</a>
+            <a href="https://github.com/Abhijeet03s" target="_blank">
+              Contact
+            </a>
           </div>
           <div className="flex flex-col lg:items-start lg:w-[50%] space-y-5 font-light">
             <h1 className="text-xl font-bold lg:underline-animation">Help</h1>
