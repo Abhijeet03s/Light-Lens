@@ -9,12 +9,12 @@ export default function Products() {
 
   return (
     <>
-      <div className="container max-w-full py-10 flex flex-col items-center">
-        <div className="flex-1 flex">
+      <div className="container max-w-full py-10 flex flex-col">
+        <div className="flex-1 flex flex-col lg:flex-row">
           <div className="basis-72 p-4">
             <Filter />
           </div>
-          <div className="flex-1 p-4">
+          <div className="flex-1 py-4">
             <h1 className="text-center text-5xl font-Mukta">Frames</h1>
             <div className="flex flex-col items-center">
               <div className="flex flex-wrap justify-evenly items-center gap-10">

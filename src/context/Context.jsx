@@ -7,7 +7,8 @@ const DataContext = createContext();
 function ContextProvider({ children }) {
   const [products, setProducts] = useState(data);
   const [cartItems, setCartItems] = useState([]);
-
+  
+  
   const handleAddToCart = (product) => {
     const productExist = cartItems.find((item) => item.id === product.id);
     if (productExist)
@@ -40,6 +41,7 @@ function ContextProvider({ children }) {
     const productsArr = cartItems.filter((item) => item.id !== id);
     setCartItems(productsArr);
   };
+  
 
   return (
     <DataContext.Provider
@@ -50,7 +52,7 @@ function ContextProvider({ children }) {
         setProducts,
         handleAddToCart,
         handleRemoveFromCart,
-        handleRemove
+        handleRemove,        
       }}
     >
       {children}

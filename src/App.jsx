@@ -12,6 +12,7 @@ import Login from "./components/Login/Login";
 import Signup from "./components/SignUp/Signup";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider } from "./context/AuthContext";
+import { FilterContextProvider } from "./context/FilterContext";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,23 +42,25 @@ export default function App() {
   return (
     <>
       <AuthContextProvider>
-        <HamburgerMenu isOpen={isOpen} toggle={toggle} />
-        {!isOpen && (
-          <div>
-            <Navbar toggle={toggle} toggleCart={toggleCart} />
-            <Routes>
-              <Route path="/" element={<Hero />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/products/:ID" element={<ProductDetails />} />
-              <Route path="/cart" element={cartVisible && <Cart />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-            </Routes>
-            <Footer />
-          </div>
-        )}
+        <FilterContextProvider>
+          <HamburgerMenu isOpen={isOpen} toggle={toggle} />
+          {!isOpen && (
+            <div>
+              <Navbar toggle={toggle} toggleCart={toggleCart} />
+              <Routes>
+                <Route path="/" element={<Hero />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/products/:ID" element={<ProductDetails />} />
+                <Route path="/cart" element={cartVisible && <Cart />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+              </Routes>
+              <Footer />
+            </div>
+          )}
+        </FilterContextProvider>
       </AuthContextProvider>
     </>
   );

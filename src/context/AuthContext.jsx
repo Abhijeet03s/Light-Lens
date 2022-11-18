@@ -8,6 +8,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
+
 const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {

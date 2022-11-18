@@ -1,3 +1,8 @@
+import Circle from "../../assets/services/Circle.svg"
+import Serv1 from "../../assets/services/servImg (1).png"
+import Serv2 from "../../assets/services/servImg (2).png"
+import Serv3 from "../../assets/services/servImg (3).png"
+
 export default function Services() {
   return (
     <>
@@ -7,22 +12,22 @@ export default function Services() {
       >
         <h1 className="text-center text-5xl">Services we provide</h1>
         <div className="hidden lg:block absolute top-[28%]">
-          <img src="/Circle.svg" alt="moto-image" />
+          <img src={Circle} alt="moto-image" />
         </div>
         <div className="space-y-5 lg:space-y-0 lg:grid grid-flow-col gap-4">
           <img
             className="object-cover object-top w-[570px] h-[155px] lg:h-[400px] row-span-3 rounded-xl"
-            src="/Group 31.png"
+            src={Serv1}
             alt="adv-img"
           />
           <img
             className="object-cover object-top w-[570px] h-[155px] lg:h-[195px] col-span-2 rounded-xl"
-            src="/Group 32.png"
+            src={Serv2}
             alt="adv-img"
           />
           <img
             className="object-cover object-top w-[570px] h-[155px] lg:h-[190px] row-span-2 col-span-2 rounded-xl"
-            src="/Group 33.png"
+            src={Serv3}
             alt="adv-img"
           />
         </div>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SpecImg from "../../assets/assets/hp-specs-1.svg"
 
 export default function Hero() {
   return (
@@ -10,7 +11,7 @@ export default function Hero() {
         <div className="w-[100%] md:w-[50%] lg:w-[70%]">
           <img
             className="object-cover"
-            src="/specs-1.svg"
+            src={SpecImg}
             alt="homepage-spec-img"
           />
         </div>

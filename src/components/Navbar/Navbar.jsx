@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import Logo from "../../assets/assets/LIGHTLENS-nav.svg";
+import Cart from "../../assets/assets/cart-nav.svg";
+
 
 export default function Navbar({ toggle, toggleCart }) {
   const { loggedInUser, accLogOut } = useContext(AuthContext);
@@ -20,7 +23,7 @@ export default function Navbar({ toggle, toggleCart }) {
           <Link to="/">
             <img
               className="object-cover w-44 lg:w-full"
-              src="/assets/LIGHTLENS.svg"
+              src={Logo}
               alt="brand-logo"
             />
           </Link>
@@ -62,7 +65,7 @@ export default function Navbar({ toggle, toggleCart }) {
           )}
           <Link to="/cart">
             <button onClick={toggleCart}>
-              <img src="/assets/cart.svg" alt="cart-img" />
+              <img src={Cart} alt="cart-img" />
             </button>
           </Link>
           <svg

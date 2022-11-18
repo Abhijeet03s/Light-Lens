@@ -1,3 +1,5 @@
+import LogoNav from "../../assets/assets/LIGHTLENS-footer.svg"
+
 export default function Footer() {
   return (
     <>
@@ -6,7 +8,7 @@ export default function Footer() {
           <div className="w-full flex flex-col justify-center items-center lg:items-start font-light">
             <img
               className="w-48"
-              src="/assets/LIGHTLENS-footer.svg"
+              src={LogoNav}
               alt="logo"
             />
             <h5 className="mt-10">
