@@ -3,13 +3,13 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: import.meta.env.VITE_AUTHDOMAIN,
-  projectId: import.meta.env.VITE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
-  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
-  appId: import.meta.env.VITE_APP_ID,
-  measurementId: import.meta.env.VITE_MEASUREMENTID,
+  apiKey: "AIzaSyCn2vuJ4yHUyghHioX7-TwfPsDxv4NjCjs",
+  authDomain: "light-lens-4b177.firebaseapp.com",
+  projectId: "light-lens-4b177",
+  storageBucket: "light-lens-4b177.appspot.com",
+  messagingSenderId: "273183202479",
+  appId: "1:273183202479:web:edbd69b2cd543ed4a8c85a",
+  measurementId: "G-3BBBZS0HZM"
 };
 
 // Initialize Firebase
@@ -18,3 +18,4 @@ const auth = getAuth();
 const analytics = getAnalytics(app);
 
 export { app, auth };
+

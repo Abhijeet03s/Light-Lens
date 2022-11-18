@@ -30,19 +30,19 @@ export default function Products() {
                           <img src={product.image} alt="specs-image" />
                         </Link>
                       </div>
-                      <div className="flex flex-col justify-center items-start">
+                      <div className="flex flex-col justify-center items-start space-y-3">
                         <h1 className="text-lg font-Poppins font-semibold">{product.title}</h1>
-                        <div className="flex items-center gap-x-1 mt-5">
+                        <div className="flex items-center gap-x-1">
                           <span className="text-md font-medium font-Inter">
                             {product.rating}
                           </span>
                           <MdStar color="#4a99d3" />
                         </div>
                         <div className="w-full flex justify-between items-center">
-                          <h2 className="text-lg mt-1 font-Poppins font-extrabold">
+                          <h2 className="text-lg font-Poppins font-extrabold">
                             ₹ {product.price}
                           </h2>
-                          <div className="flex justify-between items-center bg-[#ed9526] text-white p-2 space-x-2 rounded-md font-Poppins font-normal">
+                          <div className="flex justify-between items-center bg-[#4a99d3] text-white p-2 space-x-2 rounded-md font-Poppins font-normal">
                             <img src={cart} alt="cart-icon" />
                             <button onClick={() => handleAddToCart(product)}>
                               Add To Cart

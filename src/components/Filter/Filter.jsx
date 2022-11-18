@@ -5,7 +5,6 @@ import { FilterContext } from "../../context/FilterContext";
 export default function Filter() {
   const { filter, filterProduct } = useContext(FilterContext);
 
-  
   return (
     <>
       <div className="font-Inter space-y-10">
@@ -23,7 +22,6 @@ export default function Filter() {
             className="w-full max-w-xs"
             value={filterProduct}
             onChange={filter}
-            multiple={true}
           >
             <option value="All">Category</option>
             <option value="BlueGlasses">Blueglasses</option>
