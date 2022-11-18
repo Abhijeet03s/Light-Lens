@@ -23,7 +23,6 @@ function FilterContextProvider({ children }) {
     }
   };
 
-  
   return (
     <FilterContext.Provider
       value={{ filter, filterProduct, setFilterProducts }}
