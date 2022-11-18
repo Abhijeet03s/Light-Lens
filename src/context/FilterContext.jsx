@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import data from "../data.json"
+import data from "../data.json";
 
 const FilterContext = createContext();
 
@@ -7,6 +7,7 @@ function FilterContextProvider({ children }) {
   const [products, setProducts] = useState(data);
   const [filterProduct, setFilterProducts] = useState(data);
 
+  
   const filter = (e) => {
     const selectedVal = e.target.value;
     // console.log(descr);
@@ -18,10 +19,11 @@ function FilterContextProvider({ children }) {
         return item.category === selectedVal;
       });
       setProducts(filteredProducts);
-      //   console.log(setProducts(filteredProducts));
+      console.log(setProducts(filteredProducts));
     }
   };
 
+  
   return (
     <FilterContext.Provider
       value={{ filter, filterProduct, setFilterProducts }}

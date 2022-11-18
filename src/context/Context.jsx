@@ -7,8 +7,7 @@ const DataContext = createContext();
 function ContextProvider({ children }) {
   const [products, setProducts] = useState(data);
   const [cartItems, setCartItems] = useState([]);
-  
-  
+    
   const handleAddToCart = (product) => {
     const productExist = cartItems.find((item) => item.id === product.id);
     if (productExist)

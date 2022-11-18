@@ -13,11 +13,15 @@ import Signup from "./components/SignUp/Signup";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider } from "./context/AuthContext";
 import { FilterContextProvider } from "./context/FilterContext";
+import { useContext } from "react";
+import { DataContext } from "./context/Context";
+
 
 export default function App() {
+  const { cartItems } = useContext(DataContext);
   const [isOpen, setIsOpen] = useState(false);
   const [cartVisible, setCartVisible] = useState(false);
-
+  
   useEffect(() => {
     const hamburgerMenu = () => {
       if (window.innerWidth > 768 && isOpen) {
@@ -36,7 +40,11 @@ export default function App() {
   };
 
   const toggleCart = () => {
-    setCartVisible(!cartVisible);
+    if (cartItems.length < 1) {
+      setCartVisible(false);
+    } else {
+      setCartVisible(true);
+    }
   };
 
   return (
