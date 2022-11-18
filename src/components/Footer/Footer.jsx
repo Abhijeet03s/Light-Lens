@@ -1,4 +1,7 @@
 import LogoNav from "../../assets/assets/LIGHTLENS-footer.svg"
+import Twitter from "../../assets/assets/Twitter.svg"
+import Github from "../../assets/assets/Github.svg"
+import LinkedIn from "../../assets/assets/LinkedIn.svg"
 
 export default function Footer() {
   return (
@@ -46,13 +49,13 @@ export default function Footer() {
             </h1>
             <div className="flex justify-center items-center space-x-5">
               <a href="#">
-                <img src="/assets/Github.svg" alt="" />
+                <img src={Github} alt="github-img" />
               </a>
               <a href="#">
-                <img src="/assets/LinkedIn.svg" alt="" />
+                <img src={LinkedIn} alt="linkedin-img" />
               </a>
               <a href="#">
-                <img src="/assets/Twitter.svg" alt="" />
+                <img src={Twitter} alt="twitter-img" />
               </a>
             </div>
           </div>

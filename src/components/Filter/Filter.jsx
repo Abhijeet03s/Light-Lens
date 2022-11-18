@@ -3,14 +3,14 @@ import { useContext } from "react";
 import { FilterContext } from "../../context/FilterContext";
 
 export default function Filter() {
-  const { filter, filterProduct} = useContext(FilterContext);
+  const { filter, filterProduct } = useContext(FilterContext);
 
   return (
     <>
       <div className="font-Inter space-y-10">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl">Filter</h1>
-          <button className="text-lg bg-gray-400 px-2 py-1 rounded-md">
+          <button className="bg-[#4A99D3] text-white rounded-md py-1 px-3">
             Clear
           </button>
         </div>

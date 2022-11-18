@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        Mukta: ["Mukta", "sans-serif"],
+        Poppins: ["Poppins", "sans-serif"],
         Inter: ["Inter", "sans-serif"],
       },
       colors: {
