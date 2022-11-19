@@ -6,7 +6,7 @@ import LinkedIn from "../../assets/assets/LinkedIn.svg"
 export default function Footer() {
   return (
     <>
-      <div className="max-w-full bg-[#4A99D3] text-white font-Inter lg:p-20 py-10">
+      <div className="max-w-full bg-[#4A99D3] text-white font-Inter lg:py-16 lg:px-20 py-10">
         <div className="w-full text-center lg:text-left lg:grid grid-cols-5 place-items-start p-10 space-y-10 lg:space-y-0 lg:space-x-44 lg:p-0 lg:space-x-18 lg:mb-20">
           <div className="w-full flex flex-col justify-center items-center lg:items-start font-light">
             <img

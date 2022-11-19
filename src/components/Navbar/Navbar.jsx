@@ -4,7 +4,6 @@ import { AuthContext } from "../../context/AuthContext";
 import Logo from "../../assets/assets/LIGHTLENS-nav.svg";
 import Cart from "../../assets/assets/cart-nav.svg";
 
-
 export default function Navbar({ toggle, toggleCart }) {
   const { loggedInUser, accLogOut } = useContext(AuthContext);
 
@@ -18,7 +17,7 @@ export default function Navbar({ toggle, toggleCart }) {
 
   return (
     <>
-      <nav className="container mx-auto max-w-full h-[80px] bg-[#f4f4f4] flex justify-between items-center px-6 lg:px-14 font-Inter font-medium sticky top-0 z-10">
+      <nav className="container mx-auto max-w-full h-[80px] bg-[#f4f4f4] flex justify-between items-center px-6 lg:px-14 font-Inter font-medium sticky top-0 z-10 box-shadow ">
         <div>
           <Link to="/">
             <img

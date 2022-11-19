@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createContext } from "react";
-import data from "../data.json";
+import data from "../data";
 
 const DataContext = createContext();
 

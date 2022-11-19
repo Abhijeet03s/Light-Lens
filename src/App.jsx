@@ -18,6 +18,7 @@ import { DataContext } from "./context/Context";
 
 
 export default function App() {
+  
   const { cartItems } = useContext(DataContext);
   const [isOpen, setIsOpen] = useState(false);
   const [cartVisible, setCartVisible] = useState(false);

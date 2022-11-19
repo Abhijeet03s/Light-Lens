@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Logo from "../../assets/assets/LIGHTLENS-nav.svg";
 
 export default function HamburgerMenu({ isOpen, toggle }) {
   return (
@@ -12,7 +13,7 @@ export default function HamburgerMenu({ isOpen, toggle }) {
           <div>
             <img
               className="w-44"
-              src="/assets/LIGHTLENS.svg"
+              src={Logo}
               alt="brand-logo"
             />
           </div>
