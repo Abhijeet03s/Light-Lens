@@ -1,3 +1,4 @@
+
 import { useContext } from "react";
 import { MdStar, MdShoppingCart } from "react-icons/md";
 import { DataContext } from "../../context/Context";
@@ -12,7 +13,7 @@ export default function ProductDetails() {
       return product;
     }
   });
-  // console.log(selectedProduct);
+  console.log(selectedProduct);
 
   return (
     <>
@@ -53,7 +54,7 @@ export default function ProductDetails() {
                 </p>
                 <div className="flex justify-center items-center bg-[#4a99d3] text-white p-2 space-x-2 rounded-md">
                   <MdShoppingCart size={30} />
-                  <button>
+                  <button onClick={()=>handleAddToCart(selectedProduct[0])}>
                     Add To Cart
                   </button>
                 </div>

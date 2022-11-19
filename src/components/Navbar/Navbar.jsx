@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { DataContext } from "../../context/Context";
 import Logo from "../../assets/assets/LIGHTLENS-nav.svg";
 import Cart from "../../assets/assets/cart-nav.svg";
 
 export default function Navbar({ toggle, toggleCart }) {
   const { loggedInUser, accLogOut } = useContext(AuthContext);
+  const { cartItems } = useContext(DataContext);
 
   const handleLogOut = async () => {
     try {
@@ -66,6 +68,7 @@ export default function Navbar({ toggle, toggleCart }) {
             <button onClick={toggleCart}>
               <img src={Cart} alt="cart-img" />
             </button>
+            <sup className="text-[15px] -top-[1.3rem] text-[#38bdf8]">{cartItems.length}</sup>
           </Link>
           <svg
             onClick={toggle}

@@ -1,9 +1,10 @@
 import React from "react";
 import { useContext } from "react";
-import { FilterContext } from "../../context/FilterContext";
+import { CategoryContext } from "../../context/CategoryContext";
+// import { DataContext } from "../../context/Context";
 
 export default function Filter() {
-  const { filter, filterProduct } = useContext(FilterContext);
+  const { filter, products } = useContext(CategoryContext);
 
   return (
     <>
@@ -20,10 +21,10 @@ export default function Filter() {
         <div>
           <select
             className="w-full max-w-xs"
-            value={filterProduct}
+            value={products.category}
             onChange={filter}
           >
-            <option value="All">Category</option>
+            <option value="">Category</option>
             <option value="BlueGlasses">Blueglasses</option>
             <option value="SunGlasses">Sunglasses</option>
             <option value="EyeGlasses">Eyeglasses</option>
@@ -32,17 +33,17 @@ export default function Filter() {
 
         {/* Price */}
 
-        <div>
+        {/* <div>
           <select className="w-full max-w-xs">
             <option>Price</option>
             <option>Highest to Low</option>
             <option>Low to Highest</option>
           </select>
-        </div>
+        </div> */}
 
         {/* Stars */}
 
-        <div>
+        {/* <div>
           <select className="w-full max-w-xs">
             <option>Rating</option>
             <option>1</option>
@@ -51,7 +52,7 @@ export default function Filter() {
             <option>4</option>
             <option>5</option>
           </select>
-        </div>
+        </div> */}
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { DataContext } from "../../context/Context";
 import { Link } from "react-router-dom";
 import Filter from "../Filter/Filter";
-import cart from "../../assets/assets/cart.svg";
+import CartIcon from "../../assets/assets/cart.svg";
 
 export default function Products() {
   const { products, handleAddToCart } = useContext(DataContext);
@@ -43,7 +43,7 @@ export default function Products() {
                             ₹ {product.price}
                           </h2>
                           <div className="flex justify-between items-center bg-[#4a99d3] text-white p-2 space-x-2 rounded-md font-Poppins font-normal">
-                            <img src={cart} alt="cart-icon" />
+                            <img src={CartIcon} alt="cart-icon" />
                             <button onClick={() => handleAddToCart(product)}>
                               Add To Cart
                             </button>

@@ -12,17 +12,15 @@ import Login from "./components/Login/Login";
 import Signup from "./components/SignUp/Signup";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider } from "./context/AuthContext";
-import { FilterContextProvider } from "./context/FilterContext";
+import { CategoryContextProvider } from "./context/CategoryContext";
 import { useContext } from "react";
 import { DataContext } from "./context/Context";
 
-
 export default function App() {
-  
   const { cartItems } = useContext(DataContext);
   const [isOpen, setIsOpen] = useState(false);
   const [cartVisible, setCartVisible] = useState(false);
-  
+
   useEffect(() => {
     const hamburgerMenu = () => {
       if (window.innerWidth > 768 && isOpen) {
@@ -50,8 +48,8 @@ export default function App() {
 
   return (
     <>
-      <AuthContextProvider>
-        <FilterContextProvider>
+      <CategoryContextProvider>
+        <AuthContextProvider>
           <HamburgerMenu isOpen={isOpen} toggle={toggle} />
           {!isOpen && (
             <div>
@@ -69,8 +67,8 @@ export default function App() {
               <Footer />
             </div>
           )}
-        </FilterContextProvider>
-      </AuthContextProvider>
+        </AuthContextProvider>
+      </CategoryContextProvider>
     </>
   );
 }
