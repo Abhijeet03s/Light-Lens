@@ -22,7 +22,7 @@ export default function ProductDetails() {
           <div className="flex flex-col lg:flex-row flex-1 gap-x-20">
             <div className="basis-full">
               <img
-                className="w-full h-64 object-cover object-center"
+                className="w-full object-cover"
                 src={selectedProduct[0].image}
                 alt={selectedProduct[0].title}
               />
@@ -40,7 +40,7 @@ export default function ProductDetails() {
                   </span>
                 </span>
               </div>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-[15px] lg:text-lg">
                 Fam locavore kickstarter distillery. Mixtape chillwave tumeric
                 sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo
                 juiceramps cornhole raw denim forage brooklyn. Everyday carry +1
