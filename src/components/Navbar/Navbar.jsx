@@ -37,14 +37,14 @@ export default function Navbar({ toggle, toggleCart }) {
             <Link to="/about">
               <li className="hover:text-[#4A99D3] transition-colors">About</li>
             </Link>
-            <Link to="/services">
-              <li className="hover:text-[#4A99D3] transition-colors">
-                Services
-              </li>
-            </Link>
             <Link to="/products">
               <li className="hover:text-[#4A99D3] transition-colors">
                 Products
+              </li>
+            </Link>
+            <Link to="/services">
+              <li className="hover:text-[#4A99D3] transition-colors">
+                Services
               </li>
             </Link>
           </ul>

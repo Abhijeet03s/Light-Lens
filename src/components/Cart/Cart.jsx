@@ -16,7 +16,7 @@ export default function Cart() {
 
   return (
     <>
-      <div className="max-w-full min-h-screen bg-[#f4f4f4] font-Inter font-medium px-5 lg:px-10">
+      <div className="max-w-full min-h-screen bg-[#f4f4f4] font-Inter font-medium px-3 lg:px-10">
         {cartItems.length < 1 && (
           <div className="flex flex-col justify-center items-center mt-20">
             <MdOutlineShoppingBag size={150} />
@@ -26,14 +26,14 @@ export default function Cart() {
           </div>
         )}
         <div className="flex flex-col lg:flex-row gap-10 lg:min-h-screen py-10">
-          <div className="lg:w-[60%]">
+          <div className="lg:w-[80%]">
             {cartItems.map((item) => {
               return (
                 <div
                   key={item.id}
                   className="max-w-full text-black flex lg:flex-wrap justify-evenly items-center py-10"
                 >
-                  <div className="flex flex-col lg:flex-row items-center gap-y-5 lg:gap-x-10">
+                  <div className="text-center flex flex-col lg:flex-row items-center gap-y-5 lg:gap-x-10">
                     <img
                       className="w-32"
                       src={item.image}
@@ -43,21 +43,19 @@ export default function Cart() {
                       {item.title}
                     </h1>
                   </div>
-                  <div className="lg:w-20 md:flex md:justify-evenly md:items-center">
+                  <div className="flex">
                     <button
-                      onClick={() => {
-                        handleRemoveFromCart(item);
-                      }}
-                      className="border-0 p-2 rounded-l-md bg-[#E21717]"
+                      className="bg-neutral-200 px-3 py-2 text-sm rounded-l-md hover:bg-neutral-300 hover:text-dark-orange"
+                      onClick={() => handleRemoveFromCart(item)}
                     >
                       -
                     </button>
-                    <span className="p-2">{item.qty}</span>
+                    <p className="px-3 my-auto bg-neutral-200 py-2 text-sm">
+                      {item.qty}
+                    </p>
                     <button
-                      onClick={() => {
-                        handleAddToCart(item);
-                      }}
-                      className="border-0 p-2 rounded-r-md bg-green-600 "
+                      className="bg-neutral-200 px-3 py-2 text-sm rounded-r-md hover:bg-neutral-300 hover:text-dark-orange"
+                      onClick={() => handleAddToCart(item)}
                     >
                       +
                     </button>
@@ -110,4 +108,24 @@ export default function Cart() {
 </h1>
 <span>{cartItems.length} Items</span>
 </div> */
+}
+
+{
+  /* <button
+                      onClick={() => {
+                        handleRemoveFromCart(item);
+                      }}
+                      className="border-0 p-2 rounded-l-md bg-[#E21717]"
+                    >
+                      -
+                    </button>
+                    <span className="p-2">{item.qty}</span>
+                    <button
+                      onClick={() => {
+                        handleAddToCart(item);
+                      }}
+                      className="border-0 p-2 rounded-r-md bg-green-600 "
+                    >
+                      +
+                    </button> */
 }
