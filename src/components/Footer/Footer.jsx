@@ -1,17 +1,17 @@
 import LogoNav from "../../assets/assets/LIGHTLENS-footer.svg";
-import Twitter from "../../assets/assets/Twitter.svg";
-import Github from "../../assets/assets/Github.svg";
-import LinkedIn from "../../assets/assets/LinkedIn.svg";
+import { AiOutlineGithub } from "react-icons/ai";
+import { FaLinkedin } from "react-icons/fa";
+import { AiOutlineTwitter } from "react-icons/ai";
 
 export default function Footer() {
   return (
     <>
-      <footer className="bg-[#4A99D3]">
+      <footer className="bg-[#4A99D3] font-Inter">
         <div className="container px-8 py-8 mx-auto flex items-center sm:flex-row flex-col">
           <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
             <img src={LogoNav} alt="footer-logo" />
           </a>
-          <p className="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+          <p className="text-sm text-white font-medium sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
             Copyright © 2022 - All right reserved
           </p>
           <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
@@ -20,19 +20,21 @@ export default function Footer() {
               target="_blank"
               className=" text-white"
             >
-              <img src={Github} alt="github-icon" />
+              <AiOutlineGithub size={22} />             
             </a>
             <a
               href="https://www.linkedin.com/in/abhijeet-sharma03/"
+              target="_blank"
               className="ml-3 text-white"
             >
-              <img src={LinkedIn} alt="linkedin-icon" />
+              <FaLinkedin size={22} />              
             </a>
             <a
               href="https://twitter.com/abhijeet_s04"
+              target="_blank"
               className="ml-3 text-white"
             >
-              <img src={Twitter} alt="twitter-icon" />
+              <AiOutlineTwitter size={22} />             
             </a>
           </span>
         </div>

@@ -42,6 +42,14 @@ export default function HamburgerMenu({ isOpen, toggle }) {
               Home
             </li>
           </Link>
+          <Link to="/about">
+            <li
+              onClick={toggle}
+              className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
+            >
+              About
+            </li>
+          </Link>
           <Link to="/services">
             <li
               onClick={toggle}

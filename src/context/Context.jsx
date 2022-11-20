@@ -7,7 +7,6 @@ const DataContext = createContext();
 const ContextProvider = ({ children }) => {
   const [products, setProducts] = useState(data);
   const [cartItems, setCartItems] = useState([]);
-  
 
   const handleAddToCart = (product) => {
     const productExist = cartItems.find((item) => item.id === product.id);
@@ -42,18 +41,15 @@ const ContextProvider = ({ children }) => {
     setCartItems(productsArr);
   };
 
- 
-
   return (
     <DataContext.Provider
       value={{
         cartItems,
         setCartItems,
         products,
-        setProducts,
         handleAddToCart,
         handleRemoveFromCart,
-        handleRemove
+        handleRemove,
       }}
     >
       {children}

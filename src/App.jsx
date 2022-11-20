@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
-import Hero from "./components/Hero/Hero";
+import Landing from "./components/Landing/Landing";
 import About from "./components/About/About";
 import Services from "./components/Services/Services";
 import Products from "./components/Products/Products";
@@ -12,9 +12,10 @@ import Login from "./components/Login/Login";
 import Signup from "./components/SignUp/Signup";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider } from "./context/AuthContext";
-import { CategoryContextProvider } from "./context/CategoryContext";
+import { FilterContextProvider } from "./context/FilterContext";
 import { useContext } from "react";
 import { DataContext } from "./context/Context";
+
 
 export default function App() {
   const { cartItems } = useContext(DataContext);
@@ -48,14 +49,14 @@ export default function App() {
 
   return (
     <>
-      <CategoryContextProvider>
-        <AuthContextProvider>
+      <AuthContextProvider>
+        <FilterContextProvider>
           <HamburgerMenu isOpen={isOpen} toggle={toggle} />
           {!isOpen && (
             <div>
               <Navbar toggle={toggle} toggleCart={toggleCart} />
               <Routes>
-                <Route path="/" element={<Hero />} />
+                <Route path="/" element={<Landing />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/products" element={<Products />} />
@@ -63,12 +64,12 @@ export default function App() {
                 <Route path="/cart" element={cartVisible && <Cart />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-              </Routes>
+              </Routes>              
               <Footer />
             </div>
           )}
-        </AuthContextProvider>
-      </CategoryContextProvider>
+        </FilterContextProvider>
+      </AuthContextProvider>
     </>
   );
 }
