@@ -5,7 +5,7 @@ import { DataContext } from "../../context/Context";
 import Logo from "../../assets/assets/LIGHTLENS-nav.svg";
 import Cart from "../../assets/assets/cart-nav.svg";
 
-export default function Navbar({ toggle}) {
+export default function Navbar({ toggle }) {
   const { loggedInUser, accLogOut } = useContext(AuthContext);
   const { cartItems } = useContext(DataContext);
 
@@ -64,14 +64,16 @@ export default function Navbar({ toggle}) {
               </button>
             </Link>
           )}
-          <Link to="/cart">
-            <button>
-              <img src={Cart} alt="cart-img" />
-            </button>
-            <sup className="text-[15px] -top-[1.3rem] text-[#38bdf8]">
-              {cartItems.length}
-            </sup>
-          </Link>
+          {loggedInUser && (
+            <Link to="/cart">
+              <button>
+                <img src={Cart} alt="cart-img" />
+              </button>
+              <sup className="text-[15px] -top-[1.3rem] text-[#38bdf8]">
+                {cartItems.length}
+              </sup>
+            </Link>
+          )}
           <svg
             onClick={toggle}
             className="lg:hidden w-8 h-8 hover:text-[#0C1821] transition-colors cursor-pointer"

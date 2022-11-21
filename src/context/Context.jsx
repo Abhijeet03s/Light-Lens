@@ -8,7 +8,6 @@ const ContextProvider = ({ children }) => {
   const [products, setProducts] = useState(data);
   const [cartItems, setCartItems] = useState([]);
   const [filterProduct, setFilterProduct] = useState(data);
-  
 
   const handleAddToCart = (product) => {
     const productExist = cartItems.find((item) => item.id === product.id);
@@ -44,15 +43,19 @@ const ContextProvider = ({ children }) => {
   };
 
   const category = (e) => {
-    const selectedVal = e.target.value;
-    if (selectedVal === "All") {
+    const selectedCat = e.target.value;
+    if (selectedCat === "All") {
       setProducts(filterProduct);
     } else {
       const filteredProducts = filterProduct.filter((item) => {
-        return item.category === selectedVal;
+        return item.category === selectedCat;
       });
       setProducts(filteredProducts);
     }
+  };
+
+  const handleClearFilters = () => {
+    setProducts(filterProduct);
   };
 
   return (
@@ -66,7 +69,8 @@ const ContextProvider = ({ children }) => {
         handleRemoveFromCart,
         handleRemoveProduct,
         category,
-        filterProduct       
+        filterProduct,
+        handleClearFilters,
       }}
     >
       {children}

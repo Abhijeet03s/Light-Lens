@@ -1,12 +1,15 @@
 import React, { useContext, useEffect } from "react";
 import { MdStar } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CartIcon from "../../assets/assets/cart.svg";
 import { DataContext } from "../../context/Context";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Cards() {
+  const navigate = useNavigate();
   const { products, setProducts, handleAddToCart } = useContext(DataContext);
-    
+  const { loggedInUser } = useContext(AuthContext);
+
   useEffect(() => {
     setProducts(products);
   }, [products]);
@@ -44,9 +47,19 @@ export default function Cards() {
                       </h2>
                       <div className="flex justify-between items-center bg-[#4a99d3] text-white p-2 space-x-2 rounded-md font-Poppins font-normal">
                         <img src={CartIcon} alt="cart-icon" />
-                        <button onClick={() => handleAddToCart(product)}>
-                          Add To Cart
-                        </button>
+                        {loggedInUser ? (
+                          <button onClick={() => handleAddToCart(product)}>
+                            Add To Cart
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => {
+                              navigate("/login");
+                            }}
+                          >
+                            Add To Cart
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>

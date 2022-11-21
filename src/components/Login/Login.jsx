@@ -41,6 +41,10 @@ export default function Login() {
     }
   };
 
+  const handleGuestLogin = () => {
+    setUserData({ email: "abhi12@gmail.com", pass: "test123" });
+  };
+
   useEffect(() => {
     if (loggedInUser != null) {
       navigate("/");
@@ -58,6 +62,9 @@ export default function Login() {
             <div className="flex justify-center items-center my-8">
               <GoogleButton onClick={handleGoogleSignIn} />
             </div>
+            <p className="text-center text-lg text-gray-600 font-semibold my-1">
+              OR
+            </p>
             <div className="mb-8">
               <p className="text-md text-gray-500 mb-2">Email</p>
               <input
@@ -84,7 +91,13 @@ export default function Login() {
               onClick={handleSubmitForm}
               className="w-full bg-[#38bdf8] py-2 rounded-md text-gray-50"
             >
-              Sign In
+              Login
+            </button>
+            <button
+              onClick={handleGuestLogin}
+              className="w-full bg-[#38bdf8] py-2 rounded-md text-gray-50 mt-2"
+            >
+              Guest Login
             </button>
             <div className="max-w-xl mx-auto">
               <p className="text-sm mt-8">
