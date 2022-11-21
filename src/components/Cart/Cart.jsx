@@ -3,8 +3,12 @@ import { DataContext } from "../../context/Context";
 import { MdCancel, MdOutlineShoppingBag } from "react-icons/md";
 
 export default function Cart() {
-  const { cartItems, handleAddToCart, handleRemoveFromCart, handleRemove} =
-    useContext(DataContext);
+  const {
+    cartItems,
+    handleAddToCart,
+    handleRemoveFromCart,
+    handleRemoveProduct,
+  } = useContext(DataContext);
 
   const subtotal = cartItems.reduce(
     (price, item) => price + item.qty * item.price,
@@ -63,7 +67,10 @@ export default function Cart() {
                   <h1 className="lg:w-20 lg:text-[16px] text-center">
                     ${item.price}
                   </h1>
-                  <MdCancel size={20} onClick={() => handleRemove(item.id)} />
+                  <MdCancel
+                    size={20}
+                    onClick={() => handleRemoveProduct(item.id)}
+                  />
                 </div>
               );
             })}
@@ -99,33 +106,4 @@ export default function Cart() {
       </div>
     </>
   );
-}
-
-{
-  /* <div className="flex justify-between items-center mb-10">
-<h1 className="text-left text-4xl font-Poppins font-bold">
-  Shopping Cart
-</h1>
-<span>{cartItems.length} Items</span>
-</div> */
-}
-
-{
-  /* <button
-                      onClick={() => {
-                        handleRemoveFromCart(item);
-                      }}
-                      className="border-0 p-2 rounded-l-md bg-[#E21717]"
-                    >
-                      -
-                    </button>
-                    <span className="p-2">{item.qty}</span>
-                    <button
-                      onClick={() => {
-                        handleAddToCart(item);
-                      }}
-                      className="border-0 p-2 rounded-r-md bg-green-600 "
-                    >
-                      +
-                    </button> */
 }

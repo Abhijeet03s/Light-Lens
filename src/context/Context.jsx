@@ -8,15 +8,7 @@ const ContextProvider = ({ children }) => {
   const [products, setProducts] = useState(data);
   const [cartItems, setCartItems] = useState([]);
   const [filterProduct, setFilterProduct] = useState(data);
-  const [cartVisible, setCartVisible] = useState(false);
-
-  const toggleCart = () => {
-    if (cartItems.length < 1) {
-      setCartVisible(false);
-    } else {
-      setCartVisible(true);
-    }
-  };
+  
 
   const handleAddToCart = (product) => {
     const productExist = cartItems.find((item) => item.id === product.id);
@@ -46,7 +38,7 @@ const ContextProvider = ({ children }) => {
     }
   };
 
-  const handleRemove = (id) => {
+  const handleRemoveProduct = (id) => {
     const productsArr = cartItems.filter((item) => item.id !== id);
     setCartItems(productsArr);
   };
@@ -72,11 +64,9 @@ const ContextProvider = ({ children }) => {
         setProducts,
         handleAddToCart,
         handleRemoveFromCart,
-        handleRemove,
+        handleRemoveProduct,
         category,
-        filterProduct,
-        cartVisible,       
-        toggleCart
+        filterProduct       
       }}
     >
       {children}

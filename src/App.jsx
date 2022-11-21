@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
 import Landing from "./components/Landing/Landing";
@@ -12,12 +12,10 @@ import Login from "./components/Login/Login";
 import Signup from "./components/SignUp/Signup";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider } from "./context/AuthContext";
-import { useContext } from "react";
-import { DataContext } from "./context/Context";
 
-export default function App() {
-  const { cartItems, cartVisible, toggleCart } = useContext(DataContext);
-  const [isOpen, setIsOpen] = useState(false);
+
+export default function App() {  
+  const [isOpen, setIsOpen] = useState(false);  
 
   useEffect(() => {
     const hamburgerMenu = () => {
@@ -35,7 +33,7 @@ export default function App() {
   const toggle = () => {
     setIsOpen(!isOpen);
   };
-
+ 
   return (
     <>
       <AuthContextProvider>
@@ -49,7 +47,7 @@ export default function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/products" element={<Products />} />
               <Route path="/products/:ID" element={<ProductDetails />} />
-              <Route path="/cart" element={cartVisible && <Cart />} />
+              <Route path="/cart" element={<Cart />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
             </Routes>
