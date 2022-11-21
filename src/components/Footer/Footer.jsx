@@ -3,6 +3,7 @@ import { AiOutlineGithub } from "react-icons/ai";
 import { FaLinkedin } from "react-icons/fa";
 import { AiOutlineTwitter } from "react-icons/ai";
 
+
 export default function Footer() {
   return (
     <>
@@ -38,7 +39,7 @@ export default function Footer() {
             </a>
           </span>
         </div>
-      </footer>
+      </footer>     
     </>
   );
 }

@@ -3,7 +3,7 @@ import { DataContext } from "../../context/Context";
 import { MdCancel, MdOutlineShoppingBag } from "react-icons/md";
 
 export default function Cart() {
-  const { cartItems, handleAddToCart, handleRemoveFromCart, handleRemove } =
+  const { cartItems, handleAddToCart, handleRemoveFromCart, handleRemove} =
     useContext(DataContext);
 
   const subtotal = cartItems.reduce(

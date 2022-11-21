@@ -1,12 +1,16 @@
-import React,{useContext} from "react";
+import React, { useContext, useEffect } from "react";
 import { MdStar } from "react-icons/md";
 import { Link } from "react-router-dom";
 import CartIcon from "../../assets/assets/cart.svg";
 import { DataContext } from "../../context/Context";
 
 export default function Cards() {
-  const { products, handleAddToCart } = useContext(DataContext);
-  
+  const { products, setProducts, handleAddToCart } = useContext(DataContext);
+    
+  useEffect(() => {
+    setProducts(products);
+  }, [products]);
+
   return (
     <>
       <div className="flex-1 py-4">

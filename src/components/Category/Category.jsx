@@ -33,8 +33,8 @@ export default function Category() {
                   <img src={categoryItem.image} />
                 </div>
                 <div className="p-4 bg-[#bfe0fb] w-full text-center rounded-b-xl">
-                  <h6 className="font-medium text-gray-600">
-                    {categoryItem.category}
+                  <h6 className="font-normal text-gray-600">
+                    {(categoryItem.category).toUpperCase()}
                   </h6>
                 </div>
               </div>

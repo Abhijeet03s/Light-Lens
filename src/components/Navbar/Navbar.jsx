@@ -5,9 +5,9 @@ import { DataContext } from "../../context/Context";
 import Logo from "../../assets/assets/LIGHTLENS-nav.svg";
 import Cart from "../../assets/assets/cart-nav.svg";
 
-export default function Navbar({ toggle, toggleCart }) {
+export default function Navbar({ toggle }) {
   const { loggedInUser, accLogOut } = useContext(AuthContext);
-  const { cartItems } = useContext(DataContext);
+  const { cartItems, toggleCart } = useContext(DataContext);
 
   const handleLogOut = async () => {
     try {
@@ -68,7 +68,9 @@ export default function Navbar({ toggle, toggleCart }) {
             <button onClick={toggleCart}>
               <img src={Cart} alt="cart-img" />
             </button>
-            <sup className="text-[15px] -top-[1.3rem] text-[#38bdf8]">{cartItems.length}</sup>
+            <sup className="text-[15px] -top-[1.3rem] text-[#38bdf8]">
+              {cartItems.length}
+            </sup>
           </Link>
           <svg
             onClick={toggle}

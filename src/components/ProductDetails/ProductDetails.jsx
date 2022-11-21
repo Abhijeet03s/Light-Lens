@@ -1,4 +1,3 @@
-
 import { useContext } from "react";
 import { MdStar, MdShoppingCart } from "react-icons/md";
 import { DataContext } from "../../context/Context";
@@ -6,14 +5,16 @@ import { useParams } from "react-router-dom";
 
 export default function ProductDetails() {
   const { ID } = useParams();
-  const { products, handleAddToCart } = useContext(DataContext);
+  const { products, handleAddToCart, handleRemoveFromCart } =
+    useContext(DataContext);
 
   const selectedProduct = products.filter((product) => {
     if (product.id === Number(ID)) {
       return product;
     }
   });
-  console.log(selectedProduct);
+  // console.log(selectedProduct[0]);
+
 
   return (
     <>
@@ -47,14 +48,14 @@ export default function ProductDetails() {
                 seitan poutine tumeric. Gastropub blue bottle austin listicle
                 pour-over, neutra jean shorts keytar banjo tattooed umami
                 cardigan.
-              </p>
+              </p>             
               <div className="w-72 flex flex-col justify-center space-y-3 pt-2">
                 <p className="title-font font-medium text-2xl text-gray-900">
                   ₹ {selectedProduct[0].price}
                 </p>
                 <div className="flex justify-center items-center bg-[#4a99d3] text-white p-2 space-x-2 rounded-md">
                   <MdShoppingCart size={30} />
-                  <button onClick={()=>handleAddToCart(selectedProduct[0])}>
+                  <button onClick={() => handleAddToCart(selectedProduct[0])}>
                     Add To Cart
                   </button>
                 </div>

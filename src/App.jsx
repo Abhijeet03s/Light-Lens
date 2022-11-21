@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
 import Landing from "./components/Landing/Landing";
@@ -12,15 +12,12 @@ import Login from "./components/Login/Login";
 import Signup from "./components/SignUp/Signup";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider } from "./context/AuthContext";
-import { FilterContextProvider } from "./context/FilterContext";
 import { useContext } from "react";
 import { DataContext } from "./context/Context";
 
-
 export default function App() {
-  const { cartItems } = useContext(DataContext);
+  const { cartItems, cartVisible, toggleCart } = useContext(DataContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [cartVisible, setCartVisible] = useState(false);
 
   useEffect(() => {
     const hamburgerMenu = () => {
@@ -39,36 +36,26 @@ export default function App() {
     setIsOpen(!isOpen);
   };
 
-  const toggleCart = () => {
-    if (cartItems.length < 1) {
-      setCartVisible(false);
-    } else {
-      setCartVisible(true);
-    }
-  };
-
   return (
     <>
       <AuthContextProvider>
-        <FilterContextProvider>
-          <HamburgerMenu isOpen={isOpen} toggle={toggle} />
-          {!isOpen && (
-            <div>
-              <Navbar toggle={toggle} toggleCart={toggleCart} />
-              <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/products/:ID" element={<ProductDetails />} />
-                <Route path="/cart" element={cartVisible && <Cart />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-              </Routes>              
-              <Footer />
-            </div>
-          )}
-        </FilterContextProvider>
+        <HamburgerMenu isOpen={isOpen} toggle={toggle} />
+        {!isOpen && (
+          <div>
+            <Navbar toggle={toggle} />
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/:ID" element={<ProductDetails />} />
+              <Route path="/cart" element={cartVisible && <Cart />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
+            <Footer />
+          </div>
+        )}
       </AuthContextProvider>
     </>
   );

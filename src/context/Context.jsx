@@ -7,6 +7,16 @@ const DataContext = createContext();
 const ContextProvider = ({ children }) => {
   const [products, setProducts] = useState(data);
   const [cartItems, setCartItems] = useState([]);
+  const [filterProduct, setFilterProduct] = useState(data);
+  const [cartVisible, setCartVisible] = useState(false);
+
+  const toggleCart = () => {
+    if (cartItems.length < 1) {
+      setCartVisible(false);
+    } else {
+      setCartVisible(true);
+    }
+  };
 
   const handleAddToCart = (product) => {
     const productExist = cartItems.find((item) => item.id === product.id);
@@ -41,15 +51,32 @@ const ContextProvider = ({ children }) => {
     setCartItems(productsArr);
   };
 
+  const category = (e) => {
+    const selectedVal = e.target.value;
+    if (selectedVal === "All") {
+      setProducts(filterProduct);
+    } else {
+      const filteredProducts = filterProduct.filter((item) => {
+        return item.category === selectedVal;
+      });
+      setProducts(filteredProducts);
+    }
+  };
+
   return (
     <DataContext.Provider
       value={{
         cartItems,
         setCartItems,
         products,
+        setProducts,
         handleAddToCart,
         handleRemoveFromCart,
         handleRemove,
+        category,
+        filterProduct,
+        cartVisible,       
+        toggleCart
       }}
     >
       {children}
