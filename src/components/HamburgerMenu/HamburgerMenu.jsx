@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import Logo from "../../assets/assets/LIGHTLENS-nav.svg";
 
 export default function HamburgerMenu({ isOpen, toggle }) {
+  const { loggedInUser, handleLogOut } = useContext(AuthContext);
+
   return (
     <>
       <nav
@@ -11,11 +15,7 @@ export default function HamburgerMenu({ isOpen, toggle }) {
       >
         <div className="container mx-auto w-full h-[80px] flex justify-between items-center">
           <div>
-            <img
-              className="w-44"
-              src={Logo}
-              alt="brand-logo"
-            />
+            <img className="w-44" src={Logo} alt="brand-logo" />
           </div>
           <svg
             onClick={toggle}
@@ -66,14 +66,23 @@ export default function HamburgerMenu({ isOpen, toggle }) {
               Products
             </li>
           </Link>
-          <Link to="/login">
+          {loggedInUser ? (
             <li
-              onClick={toggle}
+              onClick={handleLogOut}
               className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
             >
-              Signin
+              Logout
             </li>
-          </Link>
+          ) : (
+            <Link to="/login">
+              <li
+                onClick={toggle}
+                className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
+              >
+                SignIn
+              </li>
+            </Link>
+          )}
         </ul>
       </nav>
     </>

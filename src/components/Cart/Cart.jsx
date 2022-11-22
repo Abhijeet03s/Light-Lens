@@ -37,13 +37,13 @@ export default function Cart() {
                   key={item.id}
                   className="max-w-full text-black flex lg:flex-wrap justify-evenly items-center py-10"
                 >
-                  <div className="flex flex-col lg:flex-row items-center gap-y-5 lg:gap-x-10">
+                  <div className="w-[40%] flex flex-col lg:flex-row items-center gap-y-5 lg:gap-x-10">
                     <img
                       className="w-32 bg-neutral-200 p-1 rounded"
                       src={item.image}
                       alt="product-image"
                     />
-                    <h1 className="lg:w-36 text-center text-black">
+                    <h1 className="lg:w-36 lg:ml-14 text-center text-black">
                       {item.title}
                     </h1>
                   </div>

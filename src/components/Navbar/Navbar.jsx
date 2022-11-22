@@ -6,17 +6,10 @@ import Logo from "../../assets/assets/LIGHTLENS-nav.svg";
 import Cart from "../../assets/assets/cart-nav.svg";
 
 export default function Navbar({ toggle }) {
-  const { loggedInUser, accLogOut } = useContext(AuthContext);
+  const { loggedInUser, handleLogOut } = useContext(AuthContext);
   const { cartItems } = useContext(DataContext);
 
-  const handleLogOut = async () => {
-    try {
-      await accLogOut();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  
   return (
     <>
       <nav className="container mx-auto max-w-full h-[80px] bg-[#f4f4f4] flex justify-between items-center px-6 lg:px-14 font-Inter font-medium sticky top-0 z-10 box-shadow ">

@@ -20,8 +20,12 @@ function AuthContextProvider({ children }) {
     // signInWithRedirect(auth, provider);
   };
 
-  const accLogOut = () => {
-    signOut(auth);
+  const handleLogOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -34,7 +38,7 @@ function AuthContextProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ googleSignIn, loggedInUser, accLogOut }}>
+    <AuthContext.Provider value={{ googleSignIn, loggedInUser, handleLogOut }}>
       {children}
     </AuthContext.Provider>
   );
