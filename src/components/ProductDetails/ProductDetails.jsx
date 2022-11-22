@@ -19,7 +19,7 @@ export default function ProductDetails() {
   return (
     <>
       <section className="text-gray-600 font-Inter overflow-hidden">
-        <div className="container min-h-screen flex justify-center items-center px-10 lg:px-24 py-10 mx-auto">
+        <div className="container lg:min-h-screen flex justify-center items-center px-10 lg:px-24 py-10 mx-auto">
           <div className="flex flex-col lg:flex-row flex-1 gap-x-20">
             <div className="basis-full">
               <img

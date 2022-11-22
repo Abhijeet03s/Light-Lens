@@ -25,8 +25,6 @@ export default function Signup() {
         await updateProfile(user, {
           displayName: userData.name,
         });
-        // console.log(user);
-        // console.log(res);
         navigate("/login");
       })
       .catch((error) => {
@@ -75,7 +73,7 @@ export default function Signup() {
                 }
               />
             </div>
-
+            <p className="text-red-400">{errorMessage}</p>
             <button
               onClick={handleSubmitForm}
               className="w-full bg-[#38bdf8] py-2 rounded-md text-gray-50"
@@ -86,7 +84,7 @@ export default function Signup() {
               <p className="text-sm mt-8">
                 Already have an account?{" "}
                 <Link to="/login" className="text-[#38bdf8]">
-                  Register
+                  Login
                 </Link>
               </p>
             </div>

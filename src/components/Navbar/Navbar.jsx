@@ -50,7 +50,7 @@ export default function Navbar({ toggle }) {
           </ul>
         </div>
         <div className="flex items-center justify-center space-x-4">
-          {loggedInUser?.displayName ? (
+          {loggedInUser ? (
             <button
               onClick={handleLogOut}
               className="bg-[#4A99D3] hidden lg:block text-white rounded-sm py-1 px-3"

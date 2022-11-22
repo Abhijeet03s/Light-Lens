@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import SpecImg from "../../assets/assets/hp-specs-1.svg";
 import Category from "../Category/Category";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
 
 export default function Hero() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const { loggedInUser } = useContext(AuthContext);
   return (
     <>
       <div
@@ -22,14 +27,24 @@ export default function Hero() {
             itaque ullam!
           </p>
           <div className="flex justify-between items-center space-x-5">
-            <button className="w-[160px] py-3 bg-[#4A99D3] shadow-lg hover:text-[#4A99D3] hover:bg-white transition duration-500 text-white lg:rounded-[50px]">
-              Buy Now
-            </button>
             <Link to="/products">
               <button className="w-[160px] py-3 bg-[#4A99D3] shadow-lg hover:text-[#4A99D3] hover:bg-white transition duration-500 text-white lg:rounded-[50px]">
                 Explore Shop
               </button>
             </Link>
+            {loggedInUser ? (
+              <Link to="/login">
+                <button className="w-[160px] py-3 bg-[#4A99D3] shadow-lg hover:text-[#4A99D3] hover:bg-white transition duration-500 text-white lg:rounded-[50px]">
+                  Buy Now
+                </button>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <button className="w-[160px] py-3 bg-[#4A99D3] shadow-lg hover:text-[#4A99D3] hover:bg-white transition duration-500 text-white lg:rounded-[50px]">
+                  Buy Now
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

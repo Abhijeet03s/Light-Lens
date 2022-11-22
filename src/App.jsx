@@ -13,9 +13,8 @@ import Signup from "./components/SignUp/Signup";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider } from "./context/AuthContext";
 
-
-export default function App() {  
-  const [isOpen, setIsOpen] = useState(false);  
+export default function App() {
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const hamburgerMenu = () => {
@@ -33,7 +32,6 @@ export default function App() {
   const toggle = () => {
     setIsOpen(!isOpen);
   };
- 
   return (
     <>
       <AuthContextProvider>

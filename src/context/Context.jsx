@@ -7,7 +7,7 @@ const DataContext = createContext();
 const ContextProvider = ({ children }) => {
   const [products, setProducts] = useState(data);
   const [cartItems, setCartItems] = useState([]);
-  const [filterProduct, setFilterProduct] = useState(data);
+  const [filterProducts, setFilterProducts] = useState(data);
 
   const handleAddToCart = (product) => {
     const productExist = cartItems.find((item) => item.id === product.id);
@@ -42,20 +42,39 @@ const ContextProvider = ({ children }) => {
     setCartItems(productsArr);
   };
 
-  const category = (e) => {
+  const filterCategory = (e) => {
     const selectedCat = e.target.value;
     if (selectedCat === "All") {
-      setProducts(filterProduct);
+      setProducts(filterProducts);
     } else {
-      const filteredProducts = filterProduct.filter((item) => {
+      const filteredProducts = filterProducts.filter((item) => {
         return item.category === selectedCat;
       });
       setProducts(filteredProducts);
     }
   };
 
+  const filterPriceRange = (e) => {
+    const selectedRange = e.target.value;
+    const result = [...filterProducts].sort((a, b) => b.price - a.price);
+    const result2 = [...filterProducts].sort((a, b) => a.price - b.price);
+    switch (selectedRange) {
+      case "High to Low":
+        return setProducts(result);
+        break;
+      case "Low to High":
+        return setProducts(result2);
+        break;
+      case "default":
+        return setProducts(filterProducts);
+        break;
+      default:
+        return;
+    }
+  };
+
   const handleClearFilters = () => {
-    setProducts(filterProduct);
+    setProducts(filterProducts);
   };
 
   return (
@@ -68,9 +87,10 @@ const ContextProvider = ({ children }) => {
         handleAddToCart,
         handleRemoveFromCart,
         handleRemoveProduct,
-        category,
-        filterProduct,
+        filterCategory,
+        filterProducts,
         handleClearFilters,
+        filterPriceRange,
       }}
     >
       {children}

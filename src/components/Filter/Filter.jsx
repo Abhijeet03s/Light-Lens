@@ -3,8 +3,12 @@ import { useContext } from "react";
 import { DataContext } from "../../context/Context";
 
 export default function Filter() {
-  const { category, filterProduct, handleClearFilters } =
-    useContext(DataContext);
+  const {
+    filterProducts,
+    filterCategory,
+    handleClearFilters,
+    filterPriceRange,
+  } = useContext(DataContext);
 
   return (
     <>
@@ -25,13 +29,27 @@ export default function Filter() {
           <div className="flex justify-center">
             <select
               className="w-full max-w-xs p-1 rounded"
-              value={filterProduct.category}
-              onChange={category}
+              value={filterProducts.category}
+              onChange={filterCategory}
             >
               <option value="All">Category</option>
               <option value="BlueGlasses">Blueglasses</option>
               <option value="SunGlasses">Sunglasses</option>
               <option value="EyeGlasses">Eyeglasses</option>
+            </select>
+          </div>
+
+          {/* Price */}
+
+          <div className="flex justify-center">
+            <select
+              className="w-full max-w-xs p-1 rounded"
+              value={filterProducts.price}
+              onChange={filterPriceRange}
+            >
+              <option value="default">Price</option>
+              <option value="High to Low">High to Low</option>
+              <option value="Low to High">Low to High</option>
             </select>
           </div>
         </div>
