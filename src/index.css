@@ -42,6 +42,10 @@ body {
   box-shadow: 0px 2px 4px rgb(97 97 97 / 18%), 0px 4px 8px rgb(97 97 97 / 18%);
 }
 
+.active {
+  color: #4a99d3;
+}
+
 .underline-animation {
   display: inline-block;
   position: relative;

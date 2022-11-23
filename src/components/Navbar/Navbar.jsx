@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { DataContext } from "../../context/Context";
@@ -8,7 +8,6 @@ import Cart from "../../assets/assets/cart-nav.svg";
 export default function Navbar({ toggle }) {
   const { loggedInUser, handleLogOut } = useContext(AuthContext);
   const { cartItems } = useContext(DataContext);
-
   
   return (
     <>
@@ -24,35 +23,35 @@ export default function Navbar({ toggle }) {
         </div>
         <div className="flex justify-between items-center gap-x-10 font-Inter font-medium">
           <ul className="hidden lg:flex lg:items-center lg:gap-x-10">
-            <Link to="/">
+            <NavLink to="/">
               <li className="hover:text-[#4A99D3] transition-colors">Home</li>
-            </Link>
-            <Link to="/about">
+            </NavLink>
+            <NavLink to="/about">
               <li className="hover:text-[#4A99D3] transition-colors">About</li>
-            </Link>
-            <Link to="/products">
+            </NavLink>
+            <NavLink to="/products">
               <li className="hover:text-[#4A99D3] transition-colors">
                 Products
               </li>
-            </Link>
-            <Link to="/services">
+            </NavLink>
+            <NavLink to="/services">
               <li className="hover:text-[#4A99D3] transition-colors">
                 Services
               </li>
-            </Link>
+            </NavLink>
           </ul>
         </div>
         <div className="flex items-center justify-center space-x-4">
           {loggedInUser ? (
             <button
               onClick={handleLogOut}
-              className="bg-[#4A99D3] hidden lg:block text-white rounded-sm py-1 px-3"
+              className="bg-[#4A99D3] hidden lg:block text-white rounded py-1 px-3"
             >
               Logout
             </button>
           ) : (
             <Link to="/login">
-              <button className="bg-[#4A99D3] hidden lg:block text-white rounded-sm py-1 px-3">
+              <button className="bg-[#4A99D3] hidden lg:block text-white rounded py-1 px-3">
                 Sign In
               </button>
             </Link>

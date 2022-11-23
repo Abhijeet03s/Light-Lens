@@ -12,7 +12,7 @@ export default function Filter() {
 
   return (
     <>
-      <div className="basis-72 p-4">
+      <div className="basis-64 lg:basis-72 p-4 h-min">
         <div className="font-Inter space-y-10">
           <div className="flex justify-between items-center px-[32px] lg:px-0">
             <h1 className="text-2xl">Filter</h1>

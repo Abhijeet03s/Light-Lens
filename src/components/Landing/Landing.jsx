@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SpecImg from "../../assets/assets/hp-specs-1.svg";
+import SpecImg from "../../assets/assets/hp-specs-1.png";
 import Category from "../Category/Category";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
@@ -19,7 +19,7 @@ export default function Hero() {
         </div>
         <div className="flex flex-col justify-start items-center space-y-8">
           <h1 className="text-5xl md:text-5xl lg:text-4xl xl:text-[50px] font-Poppins font-bolder mt-5 lg:mt-0">
-            Discover The World Of Glasses
+            <span>Discover</span> The World Of <span>Glasses</span>
           </h1>
           <p className="text-md md:text-lg md:text-center lg:text-center lg:w-[80%]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga harum
