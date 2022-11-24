@@ -14,7 +14,7 @@ const ContextProvider = ({ children }) => {
     if (productExist)
       setCartItems(
         cartItems.map((item) =>
-          item.id === product.id ? { ...product, qty: product.qty + 1 } : item
+          item.id === product.id ? { ...productExist, qty: productExist.qty + 1 } : item
         )
       );
     else {
