@@ -16,9 +16,9 @@ export default function Hero() {
         className="max-w-full lg:min-h-[90vh] bg-color text-white flex flex-col lg:flex-row justify-center items-center font-Inter px-5 py-16 lg:px-20 lg:gap-x-5 relative"
       >
         <motion.div
-          initial={{ y: -300 }}
+          initial={{ y: "-100vh" }}
           animate={{ y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ type: "spring", stiffness: 120 }}
           className="w-[100%] md:w-[50%] lg:w-[70%]"
         >
           <img
@@ -27,16 +27,32 @@ export default function Hero() {
             alt="homepage-spec-img"
           />
         </motion.div>
+
         <div className="flex flex-col justify-start items-center space-y-8">
-          <h1 className="text-5xl md:text-5xl lg:text-4xl xl:text-[50px] font-Poppins font-bolder mt-5 lg:mt-0">
+          <motion.h1
+            initial={{ y: "100vw" }}
+            animate={{ y: 0 }}
+            transition={{ type: "tween", duration: 0.8 }}
+            className="text-5xl md:text-5xl lg:text-4xl xl:text-[50px] font-Poppins font-bolder mt-5 lg:mt-0"
+          >
             <span>Discover</span> The World Of <span>Glasses</span>
-          </h1>
-          <p className="text-md md:text-lg md:text-center lg:text-center lg:w-[80%]">
+          </motion.h1>
+          <motion.p
+            initial={{ y: "100vw" }}
+            animate={{ y: 0 }}
+            transition={{ type: "tween", duration: 1.1 }}
+            className="text-md md:text-lg md:text-center lg:text-center lg:w-[80%]"
+          >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga harum
             eius similique praesentium atque tempore incidunt ratione debitis
             itaque ullam!
-          </p>
-          <div className="flex justify-between items-center space-x-5">
+          </motion.p>
+          <motion.div
+            initial={{ y: "100vw" }}
+            animate={{ y: 0 }}
+            transition={{ type: "tween", duration: 1.4 }}
+            className="flex justify-between items-center space-x-5"
+          >
             <Link to="/products">
               <button className="w-[160px] py-3 bg-[#4A99D3] shadow-lg hover:text-[#4A99D3] hover:bg-white transition duration-500 text-white lg:rounded-[50px]">
                 Explore Shop
@@ -55,7 +71,7 @@ export default function Hero() {
                 </button>
               </Link>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
       <Category />

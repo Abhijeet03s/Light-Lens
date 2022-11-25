@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useContext } from "react";
 import { DataContext } from "../../context/Context";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +15,7 @@ export default function Category() {
 
   return (
     <>
-      <section className="max-w-full flex flex-col justify-center py-10 font-Inter">
+      <motion.section className="max-w-full flex flex-col justify-center py-10 font-Inter">
         <div className="max-w-[80%] w-full mx-auto flex flex-col text-center">
           <h1 className="text-4xl mb-4 font-Poppins font-semibold">
             Categories
@@ -43,7 +44,7 @@ export default function Category() {
             );
           })}
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }
