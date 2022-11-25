@@ -35,8 +35,8 @@ export default function Hero() {
             transition={{ type: "tween", duration: 0.8 }}
             className="text-5xl md:text-5xl lg:text-4xl xl:text-[50px] font-Poppins font-bolder mt-5 lg:mt-0"
           >
-            <span className="text-[#4A99D3]">Discover</span> The World Of{" "}
-            <span className="text-[#4A99D3]">Glasses</span>
+            <span>Discover</span> The World Of
+            <span> Glasses</span>
           </motion.h1>
           <motion.p
             initial={{ y: "100vw" }}
