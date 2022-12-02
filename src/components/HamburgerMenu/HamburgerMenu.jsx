@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Logo from "../../assets/assets/LIGHTLENS-nav.svg";
@@ -34,38 +34,30 @@ export default function HamburgerMenu({ isOpen, toggle }) {
           </svg>
         </div>
         <ul className="flex flex-col items-start gap-7">
-          <Link to="/">
+          <NavLink to="/">
             <li
               onClick={toggle}
               className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
             >
               Home
             </li>
-          </Link>
-          <Link to="/about">
-            <li
-              onClick={toggle}
-              className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
-            >
-              About
-            </li>
-          </Link>
-          <Link to="/services">
+          </NavLink>
+          <NavLink to="/services">
             <li
               onClick={toggle}
               className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
             >
               Services
             </li>
-          </Link>
-          <Link to="/products">
+          </NavLink>
+          <NavLink to="/products">
             <li
               onClick={toggle}
               className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
             >
               Products
             </li>
-          </Link>
+          </NavLink>
           {loggedInUser ? (
             <li
               onClick={handleLogOut}
@@ -74,14 +66,14 @@ export default function HamburgerMenu({ isOpen, toggle }) {
               Logout
             </li>
           ) : (
-            <Link to="/login">
+            <NavLink to="/login">
               <li
                 onClick={toggle}
                 className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
               >
                 SignIn
               </li>
-            </Link>
+            </NavLink>
           )}
         </ul>
       </nav>

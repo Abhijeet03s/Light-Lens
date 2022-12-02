@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { DataContext } from "../../context/Context";
 import { MdCancel, MdOutlineShoppingBag } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   const {
@@ -27,6 +28,9 @@ export default function Cart() {
             <h1 className="text-2xl lg:text-3xl font-Poppins font-medium mt-10">
               Your Shopping Bag is empty
             </h1>
+            <Link to="/products">
+              <button className="mt-10 bg-[#4A99D3] block text-white text-lg rounded py-2 px-3">Shop Now</button>
+            </Link>
           </div>
         )}
         <div className="flex flex-col lg:flex-row gap-10 lg:min-h-screen py-10">

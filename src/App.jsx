@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
 import Landing from "./components/Landing/Landing";
-import About from "./components/About/About";
 import Services from "./components/Services/Services";
 import Products from "./components/Products/Products";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
@@ -41,7 +40,6 @@ export default function App() {
             <Navbar toggle={toggle} />
             <Routes>
               <Route path="/" element={<Landing />} />
-              <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/products" element={<Products />} />
               <Route path="/products/:ID" element={<ProductDetails />} />

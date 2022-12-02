@@ -26,9 +26,6 @@ export default function Navbar({ toggle }) {
             <NavLink to="/">
               <li className="hover:text-[#4A99D3] transition-colors">Home</li>
             </NavLink>
-            <NavLink to="/about">
-              <li className="hover:text-[#4A99D3] transition-colors">About</li>
-            </NavLink>
             <NavLink to="/products">
               <li className="hover:text-[#4A99D3] transition-colors">
                 Products
@@ -43,15 +40,17 @@ export default function Navbar({ toggle }) {
         </div>
         <div className="flex items-center justify-center space-x-4">
           {loggedInUser ? (
-            <button
-              onClick={handleLogOut}
-              className="bg-[#4A99D3] hidden lg:block text-white rounded py-1 px-3"
-            >
-              Logout
-            </button>
+            <Link to="/">
+              <button
+                onClick={handleLogOut}
+                className="bg-[#4A99D3] hidden lg:block text-white rounded-sm py-1 px-3"
+              >
+                Logout
+              </button>
+            </Link>
           ) : (
             <Link to="/login">
-              <button className="bg-[#4A99D3] hidden lg:block text-white rounded py-1 px-3">
+              <button className="bg-[#4A99D3] hidden lg:block text-white rounded-sm py-1 px-3">
                 Sign In
               </button>
             </Link>

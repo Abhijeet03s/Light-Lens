@@ -10,9 +10,7 @@ export default function Category() {
   const categoryHandler = () => {
     navigate("/products");
   };
-  const categories = [...new Set(products.map((item) => item.category))];
-  // console.log(categories)
-
+    
   return (
     <>
       <motion.section className="max-w-full flex flex-col justify-center py-10 font-Inter">
@@ -37,7 +35,7 @@ export default function Category() {
                 </div>
                 <div className="p-4 bg-[#bfe0fb] w-full text-center rounded-b-xl">
                   <h6 className="font-normal text-gray-600">
-                    {categoryItem.category}
+                    {categoryItem.category.toUpperCase()}
                   </h6>
                 </div>
               </div>

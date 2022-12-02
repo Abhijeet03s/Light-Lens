@@ -26,7 +26,7 @@ export default function Filter() {
 
           {/* Category */}
 
-          <div className="flex justify-center">
+          <div className="flex justify-center border border-gray-600 rounded-sm">
             <select
               className="w-full max-w-xs p-1 rounded"
               value={filterProducts.category}
@@ -41,7 +41,7 @@ export default function Filter() {
 
           {/* Price */}
 
-          <div className="flex justify-center">
+          <div className="flex justify-center border border-gray-600 rounded-sm">
             <select
               className="w-full max-w-xs p-1 rounded"
               value={filterProducts.price}
