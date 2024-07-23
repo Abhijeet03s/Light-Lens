@@ -14,7 +14,9 @@ const ContextProvider = ({ children }) => {
     if (productExist)
       setCartItems(
         cartItems.map((item) =>
-          item.id === product.id ? { ...productExist, qty: productExist.qty + 1 } : item
+          item.id === product.id
+            ? { ...productExist, qty: productExist.qty + 1 }
+            : item
         )
       );
     else {
@@ -56,11 +58,11 @@ const ContextProvider = ({ children }) => {
 
   const filterPriceRange = (e) => {
     const selectedRange = e.target.value;
-    const result = [...filterProducts].sort((a, b) => b.price - a.price);
+    const result1 = [...filterProducts].sort((a, b) => b.price - a.price);
     const result2 = [...filterProducts].sort((a, b) => a.price - b.price);
     switch (selectedRange) {
       case "High to Low":
-        return setProducts(result);
+        return setProducts(result1);
         break;
       case "Low to High":
         return setProducts(result2);

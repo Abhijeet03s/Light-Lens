@@ -29,7 +29,9 @@ export default function Cart() {
               Your Shopping Bag is empty
             </h1>
             <Link to="/products">
-              <button className="mt-10 bg-[#4A99D3] block text-white text-lg rounded py-2 px-3">Shop Now</button>
+              <button className="mt-10 bg-[#4A99D3] block text-white text-lg rounded py-2 px-3">
+                Shop Now
+              </button>
             </Link>
           </div>
         )}

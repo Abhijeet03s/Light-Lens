@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
-import { MdStar } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import CartIcon from "../../assets/assets/cart.svg";
 import { DataContext } from "../../context/Context";
 import { AuthContext } from "../../context/AuthContext";
+import { MdStar } from "react-icons/md";
+import CartIcon from "../../assets/assets/cart.svg";
 
 export default function Cards() {
   const navigate = useNavigate();

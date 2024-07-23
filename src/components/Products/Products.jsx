@@ -2,7 +2,6 @@ import Filter from "../Filter/Filter";
 import Cards from "../Cards/Cards";
 
 export default function Products() {
-
   return (
     <>
       <div className="container max-w-full py-10">
