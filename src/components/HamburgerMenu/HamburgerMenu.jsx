@@ -17,18 +17,18 @@ export default function HamburgerMenu({ isOpen, toggle }) {
   return (
     <nav
       className={`fixed top-0 left-0 w-full h-full bg-white transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
-        } z-9999`}
+        } z-50`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center mb-8">
-          <img className="h-4  w-auto" src={Logo} alt="LightLens logo" />
+          <img className="h-5 w-auto" src={Logo} alt="LightLens logo" />
           <button
             onClick={toggle}
             className="p-2 rounded-full hover:bg-gray-100 transition-colors"
             aria-label="Close menu"
           >
             <svg
-              className="w-6 h-6 text-gray-600"
+              className="w-7 h-7 text-gray-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

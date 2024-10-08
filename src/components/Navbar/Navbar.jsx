@@ -18,10 +18,10 @@ export default function Navbar({ toggle }) {
   ];
 
   return (
-    <nav className="container mx-auto max-w-full h-20 bg-white shadow-md flex justify-between items-center px-6 lg:px-14 font-Inter font-medium sticky top-0 z-9999 transition-all duration-300 ease-in-out">
+    <nav className="container mx-auto max-w-full h-20 bg-white shadow-md flex justify-between items-center px-6 lg:px-14 font-Inter font-medium sticky top-0 transition-all duration-300 ease-in-out z-0 md:z-50">
       <Link to="/" className="flex items-center">
         <img
-          className="h-4 md:h-6 w-auto"
+          className="h-5 md:h-6 w-auto"
           src={Logo}
           alt="LightLens"
           loading="lazy"
@@ -73,7 +73,7 @@ export default function Navbar({ toggle }) {
           aria-label="Toggle menu"
         >
           <svg
-            className="w-6 h-6 text-gray-600"
+            className="w-7 h-7 text-gray-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
