@@ -11,6 +11,6 @@ An ecommerce website for spectacles built using Reactjs.
 ## Screenshots:
 
 ### Desktop:
-![](./public/screenshots/Light-Lens.jpg)
+![](./public/screenshots/Light-Lens.png)
 ### Mobile:
-![](./public/screenshots/Light-Lens-Mobile.jpg)
+![](./public/screenshots/Light-Lens-mobile.png)

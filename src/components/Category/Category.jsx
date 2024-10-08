@@ -88,19 +88,18 @@ export default function Category() {
             whileHover={{ y: -5 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="relative h-36 sm:h-48 w-full">
+            <div className="relative h-36 sm:h-48 w-full overflow-hidden">
               <img
                 src={categoryItem.image}
                 alt={categoryItem.category}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 opacity-0 group-hover:opacity-100"></div>
             </div>
-            <div className="p-4 sm:p-6 bg-white">
+            <div className="p-4 sm:p-6 bg-white font-Poppins">
               <h6 className="text-lg sm:text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
                 {categoryItem.category.toUpperCase()}
               </h6>
-              <p className="mt-2 text-sm sm:text-base text-gray-600">Explore products</p>
             </div>
           </motion.button>
         ))}

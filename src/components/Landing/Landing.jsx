@@ -82,8 +82,8 @@ export default function Hero() {
                   alt="Premium Eyewear Collection"
                 />
               </motion.div>
-              <div className="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-white/20 rounded-tl-3xl"></div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-white/20 rounded-br-3xl"></div>
+              <div className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 w-16 h-16 sm:w-24 sm:h-24 border-t-2 sm:border-t-4 border-l-2 sm:border-l-4 border-white/20 rounded-tl-2xl sm:rounded-tl-3xl"></div>
+              <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 border-b-2 sm:border-b-4 border-r-2 sm:border-r-4 border-white/20 rounded-br-2xl sm:rounded-br-3xl"></div>
             </div>
           </motion.div>
 
