@@ -1,82 +1,96 @@
+import React from "react";
+import PropTypes from 'prop-types';
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import Logo from "../../assets/assets/LIGHTLENS-nav.svg";
+import Logo from "../../assets/images/LIGHTLENS-nav.svg";
 
 export default function HamburgerMenu({ isOpen, toggle }) {
   const { loggedInUser, handleLogOut } = useContext(AuthContext);
 
+  const navLinks = [
+    { to: "/", text: "Home" },
+    { to: "/services", text: "Services" },
+    { to: "/products", text: "Products" },
+  ];
+
   return (
-    <>
-      <nav
-        className={
-          isOpen ? "w-full bg-[#f4f4f4] px-6 font-Inter font-medium" : "hidden"
-        }
-      >
-        <div className="container mx-auto w-full h-[80px] flex justify-between items-center">
-          <div>
-            <img className="w-44" src={Logo} alt="brand-logo" />
-          </div>
-          <svg
+    <nav
+      className={`fixed top-0 left-0 w-full h-full bg-white transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
+        } z-9999`}
+    >
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex justify-between items-center mb-8">
+          <img className="h-4  w-auto" src={Logo} alt="LightLens logo" />
+          <button
             onClick={toggle}
-            className="w-8 h-8 hover:text-[#0C1821]"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+            className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+            aria-label="Close menu"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+            <svg
+              className="w-6 h-6 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
         </div>
-        <ul className="flex flex-col items-start gap-7">
-          <NavLink to="/">
-            <li
-              onClick={toggle}
-              className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
-            >
-              Home
+        <ul className="flex flex-col items-start gap-6">
+          {navLinks.map((link) => (
+            <li key={link.to}>
+              <NavLink
+                to={link.to}
+                onClick={toggle}
+                className={({ isActive }) =>
+                  `text-xl font-medium ${isActive ? 'text-[#4A99D3]' : 'text-gray-600'
+                  } hover:text-[#4A99D3] transition-colors`
+                }
+              >
+                {link.text}
+              </NavLink>
             </li>
-          </NavLink>
-          <NavLink to="/services">
-            <li
-              onClick={toggle}
-              className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
-            >
-              Services
-            </li>
-          </NavLink>
-          <NavLink to="/products">
-            <li
-              onClick={toggle}
-              className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
-            >
-              Products
-            </li>
-          </NavLink>
+          ))}
           {loggedInUser ? (
-            <li
-              onClick={handleLogOut}
-              className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
-            >
-              Logout
+            <li>
+              <button
+                onClick={() => {
+                  handleLogOut();
+                  toggle();
+                }}
+                className="text-xl font-medium text-gray-600 hover:text-[#4A99D3] transition-colors"
+              >
+                Logout
+              </button>
             </li>
           ) : (
-            <NavLink to="/login">
-              <li
+            <li>
+              <NavLink
+                to="/login"
                 onClick={toggle}
-                className="text-lg text-gray-600 hover:text-[#4A99D3] transition-colors"
+                className={({ isActive }) =>
+                  `text-xl font-medium ${isActive ? 'text-[#4A99D3]' : 'text-gray-600'
+                  } hover:text-[#4A99D3] transition-colors`
+                }
               >
-                SignIn
-              </li>
-            </NavLink>
+                Login
+              </NavLink>
+            </li>
           )}
         </ul>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 }
+
+HamburgerMenu.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
+};

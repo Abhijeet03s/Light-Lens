@@ -1,4 +1,5 @@
-import LogoNav from "../../assets/assets/LIGHTLENS-footer.svg";
+import React from "react";
+import LogoNav from "../../assets/images/LIGHTLENS-footer.svg";
 import { AiOutlineGithub } from "react-icons/ai";
 import { FaLinkedin } from "react-icons/fa";
 import { AiOutlineTwitter } from "react-icons/ai";
@@ -21,25 +22,25 @@ export default function Footer() {
               target="_blank"
               className=" text-white"
             >
-              <AiOutlineGithub size={22} />             
+              <AiOutlineGithub size={22} />
             </a>
             <a
               href="https://www.linkedin.com/in/abhijeet-sharma03/"
               target="_blank"
               className="ml-3 text-white"
             >
-              <FaLinkedin size={22} />              
+              <FaLinkedin size={22} />
             </a>
             <a
               href="https://twitter.com/abhijeet_s04"
               target="_blank"
               className="ml-3 text-white"
             >
-              <AiOutlineTwitter size={22} />             
+              <AiOutlineTwitter size={22} />
             </a>
           </span>
         </div>
-      </footer>     
+      </footer>
     </>
   );
 }

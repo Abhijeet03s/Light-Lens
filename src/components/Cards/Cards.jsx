@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/Context";
 import { AuthContext } from "../../context/AuthContext";
 import { MdStar } from "react-icons/md";
-import CartIcon from "../../assets/assets/cart.svg";
+import CartIcon from "../../assets/images/cart.svg";
 
 export default function Cards() {
   const navigate = useNavigate();

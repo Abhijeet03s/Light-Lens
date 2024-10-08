@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
@@ -31,6 +31,7 @@ export default function App() {
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <>
       <AuthContextProvider>
