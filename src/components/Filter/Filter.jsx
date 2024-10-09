@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../context/Context";
-import { MdFilterList, MdClear, MdSearch, MdStar } from "react-icons/md";
+import { MdFilterList, MdClear, MdStar } from "react-icons/md";
 
 export default function Filter() {
   const {
@@ -9,22 +9,26 @@ export default function Filter() {
     handleClearFilters,
     filterPriceRange,
     filterByRating,
-    searchProducts,
     sortByPrice,
   } = useContext(DataContext);
 
-  const [priceRange, setPriceRange] = useState([0, 5000]);
+  const [priceRange, setPriceRange] = useState([0, 2500]);
   const [minRating, setMinRating] = useState(0);
-  const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("default");
 
+  const [color, setColor] = useState("All");
+  const [frameStyle, setFrameStyle] = useState("All");
+  const [shape, setShape] = useState("All");
+  const { filterByColor, filterByFrameStyle, filterByShape } = useContext(DataContext);
+
   useEffect(() => {
-    // Reset local state when clear all is called
     const resetFilters = () => {
-      setPriceRange([0, 5000]);
+      setPriceRange([0, 2500]);
       setMinRating(0);
-      setSearchTerm("");
       setSortOrder("default");
+      setColor("All");
+      setFrameStyle("All");
+      setShape("All");
     };
 
     handleClearFilters(resetFilters);
@@ -39,12 +43,6 @@ export default function Filter() {
   const handleRatingChange = (rating) => {
     setMinRating(rating);
     filterByRating(rating);
-  };
-
-  const handleSearch = (event) => {
-    const term = event.target.value;
-    setSearchTerm(term);
-    searchProducts(term);
   };
 
   const handleSortChange = (event) => {
@@ -68,24 +66,6 @@ export default function Filter() {
           </button>
         </div>
 
-        {/* Search */}
-        <div className="space-y-3">
-          <label htmlFor="search" className="block text-sm font-semibold text-gray-700">
-            Search
-          </label>
-          <div className="relative">
-            <MdSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              id="search"
-              type="text"
-              placeholder="Search products..."
-              value={searchTerm}
-              onChange={handleSearch}
-              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4A99D3] focus:border-[#4A99D3]"
-            />
-          </div>
-        </div>
-
         {/* Category */}
         <div className="space-y-3">
           <label htmlFor="category" className="block text-sm font-semibold text-gray-700">
@@ -104,6 +84,75 @@ export default function Filter() {
           </select>
         </div>
 
+        {/* Color */}
+        <div className="space-y-3">
+          <label htmlFor="color" className="block text-sm font-semibold text-gray-700">
+            Color
+          </label>
+          <select
+            id="color"
+            className="w-full p-2 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#4A99D3] focus:border-[#4A99D3] transition-all duration-300"
+            value={color}
+            onChange={(e) => {
+              setColor(e.target.value);
+              filterByColor(e.target.value);
+            }}
+          >
+            <option value="All">All Colors</option>
+            <option value="Gray">Gray</option>
+            <option value="Black">Black</option>
+            <option value="Blue">Blue</option>
+            <option value="Gold">Gold</option>
+            <option value="Red">Red</option>
+            <option value="Silver">Silver</option>
+            <option value="Pink">Pink</option>
+            <option value="Transparent">Transparent</option>
+          </select>
+        </div>
+
+        {/* Frame Style */}
+        <div className="space-y-3">
+          <label htmlFor="frameStyle" className="block text-sm font-semibold text-gray-700">
+            Frame Style
+          </label>
+          <select
+            id="frameStyle"
+            className="w-full p-2 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#4A99D3] focus:border-[#4A99D3] transition-all duration-300"
+            value={frameStyle}
+            onChange={(e) => {
+              setFrameStyle(e.target.value);
+              filterByFrameStyle(e.target.value);
+            }}
+          >
+            <option value="All">All Styles</option>
+            <option value="Full Rim">Full Rim</option>
+          </select>
+        </div>
+
+        {/* Shape */}
+        <div className="space-y-3">
+          <label htmlFor="shape" className="block text-sm font-semibold text-gray-700">
+            Shape
+          </label>
+          <select
+            id="shape"
+            className="w-full p-2 text-sm border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#4A99D3] focus:border-[#4A99D3] transition-all duration-300"
+            value={shape}
+            onChange={(e) => {
+              setShape(e.target.value);
+              filterByShape(e.target.value);
+            }}
+          >
+            <option value="All">All Shapes</option>
+            <option value="Square">Square</option>
+            <option value="Rectangle">Rectangle</option>
+            <option value="Wayfarer">Wayfarer</option>
+            <option value="Cat Eye">Cat Eye</option>
+            <option value="Round">Round</option>
+            <option value="Aviator">Aviator</option>
+          </select>
+        </div>
+
         {/* Price Range */}
         <div className="space-y-3">
           <label htmlFor="priceRange" className="block text-sm font-semibold text-gray-700">
@@ -113,7 +162,7 @@ export default function Filter() {
             type="range"
             id="priceRange"
             min="0"
-            max="5000"
+            max="2500"
             step="100"
             value={priceRange[1]}
             onChange={handlePriceChange}
@@ -121,7 +170,7 @@ export default function Filter() {
           />
           <div className="flex justify-between text-sm text-gray-600">
             <span>₹0</span>
-            <span>₹5000</span>
+            <span>₹2500</span>
           </div>
         </div>
 

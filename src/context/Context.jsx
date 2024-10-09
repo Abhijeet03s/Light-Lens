@@ -88,6 +88,33 @@ const ContextProvider = ({ children }) => {
     setProducts(sortedProducts);
   };
 
+  const filterByColor = (color) => {
+    if (color === "All") {
+      setProducts(filterProducts);
+    } else {
+      const filteredProducts = filterProducts.filter((item) => item.color.includes(color));
+      setProducts(filteredProducts);
+    }
+  };
+
+  const filterByFrameStyle = (style) => {
+    if (style === "All") {
+      setProducts(filterProducts);
+    } else {
+      const filteredProducts = filterProducts.filter((item) => item.frameStyle === style);
+      setProducts(filteredProducts);
+    }
+  };
+
+  const filterByShape = (shape) => {
+    if (shape === "All") {
+      setProducts(filterProducts);
+    } else {
+      const filteredProducts = filterProducts.filter((item) => item.shape === shape);
+      setProducts(filteredProducts);
+    }
+  };
+
   const handleClearFilters = useCallback((resetFilterState) => {
     setProducts(data);
     setFilterProducts(data);
@@ -113,6 +140,9 @@ const ContextProvider = ({ children }) => {
         filterByRating,
         searchProducts,
         sortByPrice,
+        filterByColor,
+        filterByFrameStyle,
+        filterByShape,
       }}
     >
       {children}
