@@ -15,60 +15,49 @@ export default function Cards() {
   }, [products]);
 
   return (
-    <>
-      <div className="flex-1 py-4">
-        <h1 className="text-center text-5xl font-Poppins mb-10">Frames</h1>
-        <div className="flex flex-col items-center">
-          <div className="flex flex-wrap justify-evenly items-center gap-10">
-            {products.map((product) => {
-              return (
-                <div
-                  key={product.id}
-                  className="flex flex-col justify-between w-80 overflow-hidden rounded-lg shadow-lg p-5 space-y-5 cursor-pointer"
+    <div className="w-full">
+      <h1 className="text-2xl md:text-3xl font-Poppins font-bold mb-6 text-gray-800">
+        Explore Our Frames
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl"
+          >
+            <Link to={`/products/${product.id}`} className="block">
+              <img
+                src={product.image}
+                alt={product.title}
+                className="w-full h-40 object-cover"
+              />
+            </Link>
+            <div className="p-4 space-y-3">
+              <h2 className="text-lg font-Poppins font-semibold text-gray-800 line-clamp-2">
+                {product.title}
+              </h2>
+              <div className="flex items-center">
+                <span className="text-sm font-medium font-Inter text-gray-700">
+                  {product.rating}
+                </span>
+                <MdStar className="text-yellow-400 ml-1" size={16} />
+              </div>
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg font-Poppins font-bold text-gray-900">
+                  ₹{product.price}
+                </h3>
+                <button
+                  onClick={() => loggedInUser ? handleAddToCart(product) : navigate("/login")}
+                  className="flex items-center bg-[#4a99d3] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-[#3a7ca8]"
                 >
-                  <div>
-                    <Link to={`/products/${product.id}`}>
-                      <img src={product.image} alt="specs-image" />
-                    </Link>
-                  </div>
-                  <div className="flex flex-col justify-center items-start space-y-3">
-                    <h1 className="text-lg font-Poppins font-semibold">
-                      {product.title}
-                    </h1>
-                    <div className="flex items-center gap-x-1">
-                      <span className="text-md font-medium font-Inter">
-                        {product.rating}
-                      </span>
-                      <MdStar color="#4a99d3" />
-                    </div>
-                    <div className="w-full flex justify-between items-center">
-                      <h2 className="text-lg font-Poppins font-extrabold">
-                        ₹ {product.price}
-                      </h2>
-                      <div className="flex justify-between items-center bg-[#4a99d3] text-white p-2 space-x-2 rounded-md font-Poppins font-normal">
-                        <img src={CartIcon} alt="cart-icon" />
-                        {loggedInUser ? (
-                          <button onClick={() => handleAddToCart(product)}>
-                            Add To Cart
-                          </button>
-                        ) : (
-                          <button
-                            onClick={() => {
-                              navigate("/login");
-                            }}
-                          >
-                            Add To Cart
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+                  <img src={CartIcon} alt="cart-icon" className="w-4 h-4 mr-1" />
+                  Add To Cart
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 }

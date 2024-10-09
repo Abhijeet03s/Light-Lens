@@ -3,11 +3,11 @@ import { createContext } from "react";
 import {
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
+import PropTypes from 'prop-types';
 
 const AuthContext = createContext();
 
@@ -17,7 +17,6 @@ function AuthContextProvider({ children }) {
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
-    // signInWithRedirect(auth, provider);
   };
 
   const handleLogOut = async () => {
@@ -43,5 +42,9 @@ function AuthContextProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
+AuthContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export { AuthContext, AuthContextProvider };

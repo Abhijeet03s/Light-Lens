@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { createContext } from "react";
 import data from "../data";
+import PropTypes from 'prop-types';
 
 const DataContext = createContext();
 
@@ -56,28 +57,44 @@ const ContextProvider = ({ children }) => {
     }
   };
 
-  const filterPriceRange = (e) => {
-    const selectedRange = e.target.value;
-    const result1 = [...filterProducts].sort((a, b) => b.price - a.price);
-    const result2 = [...filterProducts].sort((a, b) => a.price - b.price);
-    switch (selectedRange) {
-      case "High to Low":
-        return setProducts(result1);
-        break;
-      case "Low to High":
-        return setProducts(result2);
-        break;
-      case "default":
-        return setProducts(filterProducts);
-        break;
-      default:
-        return;
-    }
+  const filterPriceRange = ([min, max]) => {
+    const filteredProducts = filterProducts.filter(
+      (product) => product.price >= min && product.price <= max
+    );
+    setProducts(filteredProducts);
   };
 
-  const handleClearFilters = () => {
-    setProducts(filterProducts);
+  const filterByRating = (rating) => {
+    const filteredProducts = filterProducts.filter(
+      (product) => product.rating >= rating
+    );
+    setProducts(filteredProducts);
   };
+
+  const searchProducts = (term) => {
+    const filteredProducts = filterProducts.filter((product) =>
+      product.title.toLowerCase().includes(term.toLowerCase())
+    );
+    setProducts(filteredProducts);
+  };
+
+  const sortByPrice = (order) => {
+    let sortedProducts = [...products];
+    if (order === "lowToHigh") {
+      sortedProducts.sort((a, b) => a.price - b.price);
+    } else if (order === "highToLow") {
+      sortedProducts.sort((a, b) => b.price - a.price);
+    }
+    setProducts(sortedProducts);
+  };
+
+  const handleClearFilters = useCallback((resetFilterState) => {
+    setProducts(data);
+    setFilterProducts(data);
+    if (resetFilterState) {
+      resetFilterState();
+    }
+  }, []);
 
   return (
     <DataContext.Provider
@@ -93,11 +110,18 @@ const ContextProvider = ({ children }) => {
         filterProducts,
         handleClearFilters,
         filterPriceRange,
+        filterByRating,
+        searchProducts,
+        sortByPrice,
       }}
     >
       {children}
     </DataContext.Provider>
   );
+};
+
+ContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export { DataContext, ContextProvider };
