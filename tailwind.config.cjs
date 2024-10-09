@@ -10,6 +10,9 @@ module.exports = {
       colors: {
         Download: "rgb(74, 153, 211, 0.3)",
       },
+      animation: {
+        'spin-slow': 'spin 20s linear infinite',
+      }
     },
   },
   plugins: [],

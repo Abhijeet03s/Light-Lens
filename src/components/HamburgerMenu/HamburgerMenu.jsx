@@ -17,7 +17,7 @@ export default function HamburgerMenu({ isOpen, toggle }) {
   return (
     <nav
       className={`fixed top-0 left-0 w-full h-full bg-white transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
-        } z-50`}
+        }`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center mb-8">

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { MdStar, MdShoppingCart } from "react-icons/md";
 import { DataContext } from "../../context/Context";
@@ -10,74 +10,58 @@ export default function ProductDetails() {
   const { loggedInUser } = useContext(AuthContext);
   const { products, handleAddToCart } = useContext(DataContext);
 
-  const selectedProduct = products.filter((product) => {
-    if (product.id === Number(ID)) {
-      return product;
-    }
-  });
+  const selectedProduct = products.find((product) => product.id === Number(ID));
 
   return (
-    <>
-      <section className="text-gray-600 font-Inter overflow-hidden">
-        <div className="container lg:min-h-screen flex justify-center items-center px-10 lg:px-24 py-10 mx-auto">
-          <div className="flex flex-col lg:flex-row flex-1 gap-x-20">
-            <div className="basis-full">
-              <img
-                className="w-full object-cover"
-                src={selectedProduct[0].image}
-                alt={selectedProduct[0].title}
-              />
+    <section className="text-gray-600 font-Inter overflow-hidden">
+      <div className="container min-h-screen flex justify-center items-center px-4 sm:px-6 lg:px-8 py-8 mx-auto">
+        <div className="flex flex-col lg:flex-row w-full max-w-6xl gap-8 lg:gap-12">
+          <div className="w-full lg:w-1/2 flex justify-center items-center">
+            <img
+              className="w-full h-auto object-cover rounded-lg shadow-md"
+              src={selectedProduct.image}
+              alt={selectedProduct.title}
+            />
+          </div>
+          <div className="w-full lg:w-1/2 space-y-4">
+            <h1 className="text-gray-900 text-2xl sm:text-3xl font-semibold mb-2">
+              {selectedProduct.title}
+            </h1>
+            <h3 className="text-gray-600 text-lg">Category: {selectedProduct.category}</h3>
+            <div className="flex items-center mb-4">
+              <MdStar className="text-yellow-400" />
+              <span className="text-gray-600 ml-2">{selectedProduct.rating}</span>
             </div>
-            <div className="w-full space-y-3">
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                {selectedProduct[0].title}
-              </h1>
-              <h3>Category: {selectedProduct[0].category}</h3>
-              <div className="flex mb-4">
-                <span className="flex items-center">
-                  <MdStar />
-                  <span className="text-gray-600 ml-3">
-                    {selectedProduct[0].rating}
-                  </span>
-                </span>
-              </div>
-              <p className="leading-relaxed text-[15px] lg:text-lg">
-                Fam locavore kickstarter distillery. Mixtape chillwave tumeric
-                sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo
-                juiceramps cornhole raw denim forage brooklyn. Everyday carry +1
-                seitan poutine tumeric. Gastropub blue bottle austin listicle
-                pour-over, neutra jean shorts keytar banjo tattooed umami
-                cardigan.
+            <p className="leading-relaxed text-base sm:text-lg">
+              {selectedProduct.description || "No description available."}
+            </p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-4">
+              <p className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4 sm:mb-0">
+                ₹ {selectedProduct.price}
               </p>
-              <div className="w-72 flex flex-col justify-center space-y-3 pt-2">
-                <p className="title-font font-medium text-2xl text-gray-900">
-                  ₹ {selectedProduct[0].price}
-                </p>
-                <div className="flex justify-center items-center bg-[#4a99d3] text-white p-2 space-x-2 rounded-md">
-                  <MdShoppingCart size={30} />
-                  {loggedInUser ? (
-                    <Link to={`/products/${selectedProduct[0].id}`}>
-                      <button
-                        onClick={() => handleAddToCart(selectedProduct[0])}
-                      >
-                        Add To Cart
-                      </button>
-                    </Link>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        navigate("/login");
-                      }}
-                    >
-                      Add To Cart
-                    </button>
-                  )}
-                </div>
+              <div className="w-full sm:w-auto">
+                {loggedInUser ? (
+                  <button
+                    onClick={() => handleAddToCart(selectedProduct)}
+                    className="w-full sm:w-auto flex justify-center items-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md transition duration-300 ease-in-out"
+                  >
+                    <MdShoppingCart size={24} className="mr-2" />
+                    Add To Cart
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => navigate("/login")}
+                    className="w-full sm:w-auto flex justify-center items-center bg-gray-600 hover:bg-gray-700 text-white py-2 px-6 rounded-md transition duration-300 ease-in-out"
+                  >
+                    <MdShoppingCart size={24} className="mr-2" />
+                    Login to Add to Cart
+                  </button>
+                )}
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
