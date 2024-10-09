@@ -16,16 +16,19 @@ export default function Services() {
             className="object-cover object-top w-full h-full row-span-3 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:brightness-110"
             src={serviceImage1}
             alt="service-image-1"
+            loading="lazy"
           />
           <img
             className="object-cover object-top w-full h-full col-span-2 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:brightness-110"
             src={serviceImage2}
             alt="service-image-2"
+            loading="lazy"
           />
           <img
             className="object-cover object-top w-full h-full row-span-2 col-span-2 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:brightness-110"
             src={serviceImage3}
             alt="service-image-3"
+            loading="lazy"
           />
         </div>
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 font-Mukta font-medium">

@@ -45,8 +45,16 @@ const ContextProvider = ({ children }) => {
     setCartItems(productsArr);
   };
 
-  const filterCategory = (e) => {
-    const selectedCat = e.target.value;
+  const filterCategory = (categoryOrEvent) => {
+    let selectedCat;
+    if (typeof categoryOrEvent === 'string') {
+      selectedCat = categoryOrEvent;
+    } else if (categoryOrEvent && categoryOrEvent.target) {
+      selectedCat = categoryOrEvent.target.value;
+    } else {
+      selectedCat = 'All';
+    }
+
     if (selectedCat === "All") {
       setProducts(filterProducts);
     } else {

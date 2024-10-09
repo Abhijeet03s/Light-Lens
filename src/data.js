@@ -8,7 +8,6 @@ const data = [
     rating: 3.2,
     description: "Classic gray full rim square glasses with blue light filtering lenses. Perfect for long hours of computer work, these glasses combine style with eye protection.",
     color: "Gray",
-    frameStyle: "Full Rim",
     shape: "Square"
   },
   {
@@ -20,19 +19,17 @@ const data = [
     rating: 4.7,
     description: "Sophisticated black frame with sky blue accents. These full rim glasses offer a striking contrast that's both modern and professional.",
     color: "Black/Sky Blue",
-    frameStyle: "Full Rim",
     shape: "Rectangle"
   },
   {
     id: 3,
     title: "Gold Full Rim Wayfarer",
-    category: "Sun",
+    category: "SunGlasses",
     image: "https://res.cloudinary.com/djhxhasu0/image/upload/v1668793551/Light-Lens%20Images/sunglasses_1_hcyi65.png",
     price: 1899.00,
     rating: 3.5,
     description: "Timeless gold wayfarer sunglasses with dark lenses. These full rim shades offer classic style with modern sun protection.",
     color: "Gold",
-    frameStyle: "Full Rim",
     shape: "Wayfarer"
   },
   {
@@ -44,7 +41,6 @@ const data = [
     rating: 2.3,
     description: "Bold blue cat eye glasses with blue light filtering technology. Perfect for making a statement while protecting your eyes during screen time.",
     color: "Blue",
-    frameStyle: "Full Rim",
     shape: "Cat Eye"
   },
   {
@@ -56,7 +52,6 @@ const data = [
     rating: 3.3,
     description: "Sleek matte black frames with blue light filtering lenses. These versatile glasses offer a professional look with digital eye strain protection.",
     color: "Matte Black",
-    frameStyle: "Full Rim",
     shape: "Rectangle"
   },
   {
@@ -68,7 +63,6 @@ const data = [
     rating: 4.6,
     description: "Trendy blue round frames with blue light filtering technology. These glasses combine retro style with modern eye protection for digital device users.",
     color: "Blue",
-    frameStyle: "Full Rim",
     shape: "Round"
   },
   {
@@ -80,7 +74,6 @@ const data = [
     rating: 4.8,
     description: "Stylish black and blue round frames with advanced blue light filtering. These glasses offer a perfect blend of fashion and function for the digital age.",
     color: "Black/Blue",
-    frameStyle: "Full Rim",
     shape: "Round"
   },
   {
@@ -92,7 +85,6 @@ const data = [
     rating: 3.1,
     description: "Vibrant red cat eye glasses that make a bold statement. These full rim frames are perfect for those who want to stand out with their eyewear.",
     color: "Red",
-    frameStyle: "Full Rim",
     shape: "Cat Eye"
   },
   {
@@ -104,7 +96,6 @@ const data = [
     rating: 4.4,
     description: "Sleek silver rectangular frames that offer a sophisticated look. These versatile glasses are suitable for both professional and casual settings.",
     color: "Silver",
-    frameStyle: "Full Rim",
     shape: "Rectangle"
   },
   {
@@ -116,7 +107,6 @@ const data = [
     rating: 4.2,
     description: "Charming pink round frames that add a touch of whimsy to your look. These full rim glasses are perfect for those who love a pop of color.",
     color: "Pink",
-    frameStyle: "Full Rim",
     shape: "Round"
   },
   {
@@ -128,7 +118,6 @@ const data = [
     rating: 4.9,
     description: "Modern transparent round frames that offer a lightweight, barely-there look. These glasses are perfect for those who prefer a subtle, minimalist style.",
     color: "Transparent",
-    frameStyle: "Full Rim",
     shape: "Round"
   },
   {
@@ -140,7 +129,6 @@ const data = [
     rating: 4.6,
     description: "Luxurious gold round sunglasses that exude elegance. These full rim shades offer both style and superior UV protection for sunny days.",
     color: "Gold",
-    frameStyle: "Full Rim",
     shape: "Round"
   },
   {
@@ -152,7 +140,6 @@ const data = [
     rating: 3.0,
     description: "Glamorous golden cat eye sunglasses that channel vintage Hollywood. These full rim shades are perfect for making a statement while protecting your eyes.",
     color: "Gold",
-    frameStyle: "Full Rim",
     shape: "Cat Eye"
   },
   {
@@ -164,7 +151,6 @@ const data = [
     rating: 5.0,
     description: "Classic matte gold aviator sunglasses with a modern twist. These full rim shades offer timeless style with state-of-the-art sun protection.",
     color: "Matte Gold",
-    frameStyle: "Full Rim",
     shape: "Aviator"
   },
   {
@@ -176,7 +162,6 @@ const data = [
     rating: 4.5,
     description: "Sleek black round sunglasses that offer a cool, urban look. These full rim shades provide excellent sun protection with a touch of mystery.",
     color: "Black",
-    frameStyle: "Full Rim",
     shape: "Round"
   }
 ];

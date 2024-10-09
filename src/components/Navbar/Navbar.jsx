@@ -21,7 +21,7 @@ export default function Navbar({ toggle }) {
     <nav className="container mx-auto max-w-full h-20 bg-white shadow-md flex justify-between items-center px-6 lg:px-14 font-Inter font-medium sticky top-0 transition-all duration-300 ease-in-out z-50">
       <Link to="/" className="flex items-center">
         <img
-          className="h-5 md:h-6 w-auto"
+          className="h-4 md:h-6 w-auto"
           src={Logo}
           alt="LightLens"
           loading="lazy"
