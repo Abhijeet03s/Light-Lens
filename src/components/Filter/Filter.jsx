@@ -1,34 +1,30 @@
 import React, { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../context/Context";
-import { MdFilterList, MdClear, MdStar } from "react-icons/md";
+import { MdFilterList, MdClear } from "react-icons/md";
 import PropTypes from 'prop-types';
 
 export default function Filter({ isFilterExpanded, closeFilter }) {
   const {
-    filterProducts,
     filterCategory,
     handleClearFilters,
     filterPriceRange,
     filterByRating,
-    sortByPrice,
+    filterByColor,
+    filterByShape,
   } = useContext(DataContext);
 
   const [priceRange, setPriceRange] = useState([0, 2500]);
   const [minRating, setMinRating] = useState(0);
-  const [sortOrder, setSortOrder] = useState("default");
-
+  const [category, setCategory] = useState("All");
   const [color, setColor] = useState("All");
-  const [frameStyle, setFrameStyle] = useState("All");
   const [shape, setShape] = useState("All");
-  const { filterByColor, filterByFrameStyle, filterByShape } = useContext(DataContext);
 
   useEffect(() => {
     const resetFilters = () => {
       setPriceRange([0, 2500]);
       setMinRating(0);
-      setSortOrder("default");
+      setCategory("All");
       setColor("All");
-      setFrameStyle("All");
       setShape("All");
     };
 
@@ -36,38 +32,34 @@ export default function Filter({ isFilterExpanded, closeFilter }) {
   }, [handleClearFilters]);
 
   const handlePriceChange = (event) => {
-    const newValue = parseInt(event.target.value);
-    setPriceRange([priceRange[0], newValue]);
-    filterPriceRange([priceRange[0], newValue]);
+    const newValue = parseInt(event.target.value, 10);
+    setPriceRange([0, newValue]);
   };
 
   const handleRatingChange = (rating) => {
     setMinRating(rating);
-    filterByRating(rating);
-  };
-
-  const handleSortChange = (event) => {
-    const order = event.target.value;
-    setSortOrder(order);
-    sortByPrice(order);
-  };
-
-  const handleClearAll = () => {
-    handleClearFilters();
-    closeFilter();
   };
 
   const handleApplyFilters = (e) => {
     e.preventDefault();
-    filterCategory(filterProducts.category);
+    filterCategory(category); // Apply selected category
     filterByColor(color);
-    filterByFrameStyle(frameStyle);
     filterByShape(shape);
     filterPriceRange(priceRange);
     filterByRating(minRating);
-    sortByPrice(sortOrder);
 
     closeFilter();
+  };
+
+  const handleClearAll = (e) => {
+    e.preventDefault();
+    handleClearFilters(() => {
+      setPriceRange([0, 2500]);
+      setMinRating(0);
+      setCategory("All");
+      setColor("All");
+      setShape("All");
+    });
   };
 
   return (
@@ -94,13 +86,13 @@ export default function Filter({ isFilterExpanded, closeFilter }) {
             <select
               id="category"
               className="w-full p-2 text-xs lg:text-sm border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#4A99D3] focus:border-[#4A99D3] transition-all duration-300"
-              value={filterProducts.category}
-              onChange={filterCategory}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
             >
               <option value="All">All Categories</option>
-              <option value="BlueLightGlasses">BlueLight Glasses</option>
-              <option value="SunGlasses">Sun Glasses</option>
-              <option value="ScreenGlasses">Screen Glasses</option>
+              <option value="BlueLight">Blue Light</option>
+              <option value="Optical">Optical</option>
+              <option value="SunGlasses">SunGlasses</option>
             </select>
           </div>
 
@@ -122,30 +114,11 @@ export default function Filter({ isFilterExpanded, closeFilter }) {
               <option value="Gray">Gray</option>
               <option value="Black">Black</option>
               <option value="Blue">Blue</option>
-              <option value="Gold">Gold</option>
-              <option value="Red">Red</option>
-              <option value="Silver">Silver</option>
+              <option value="Matte Black">Matte Black</option>
+              <option value="Black/Blue">Black/Blue</option>
               <option value="Pink">Pink</option>
               <option value="Transparent">Transparent</option>
-            </select>
-          </div>
-
-          {/* Frame Style */}
-          <div className="space-y-2 lg:space-y-3">
-            <label htmlFor="frameStyle" className="block text-xs lg:text-sm font-semibold text-gray-700">
-              Frame Style
-            </label>
-            <select
-              id="frameStyle"
-              className="w-full p-2 text-xs lg:text-sm border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#4A99D3] focus:border-[#4A99D3] transition-all duration-300"
-              value={frameStyle}
-              onChange={(e) => {
-                setFrameStyle(e.target.value);
-                filterByFrameStyle(e.target.value);
-              }}
-            >
-              <option value="All">All Styles</option>
-              <option value="Full Rim">Full Rim</option>
+              <option value="Matte Gold">Matte Gold</option>
             </select>
           </div>
 
@@ -194,47 +167,40 @@ export default function Filter({ isFilterExpanded, closeFilter }) {
             </div>
           </div>
 
-          {/* Sort by Price */}
+          {/* Minimum Rating */}
           <div className="space-y-2 lg:space-y-3">
-            <label htmlFor="sortPrice" className="block text-xs lg:text-sm font-semibold text-gray-700">
-              Sort by Price
+            <label htmlFor="minRating" className="block text-xs lg:text-sm font-semibold text-gray-700">
+              Minimum Rating
             </label>
             <select
-              id="sortPrice"
+              id="minRating"
               className="w-full p-2 text-xs lg:text-sm border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#4A99D3] focus:border-[#4A99D3] transition-all duration-300"
-              value={sortOrder}
-              onChange={handleSortChange}
+              value={minRating}
+              onChange={(e) => handleRatingChange(Number(e.target.value))}
             >
-              <option value="default">Default</option>
-              <option value="lowToHigh">Low to High</option>
-              <option value="highToLow">High to Low</option>
+              <option value={0}>All ratings</option>
+              <option value={1}>1 & above</option>
+              <option value={2}>2 & above</option>
+              <option value={3}>3 & above</option>
+              <option value={4}>4 & above</option>
+              <option value={5}>5</option>
             </select>
           </div>
 
-          {/* Rating */}
-          <div className="space-y-2 lg:space-y-3">
-            <label className="block text-xs lg:text-sm font-semibold text-gray-700">
-              Minimum Rating
-            </label>
-            <div className="flex items-center space-x-2">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <button
-                  key={star}
-                  onClick={() => handleRatingChange(star)}
-                  className={`text-2xl focus:outline-none ${star <= minRating ? 'text-yellow-400' : 'text-gray-300'}`}
-                >
-                  <MdStar />
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:hidden">
+          {/* Action Buttons */}
+          <div className="flex flex-col lg:hidden">
             <button
               type="submit"
               className="w-full bg-[#4a99d3] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-[#3a7ca8]"
             >
               Apply
+            </button>
+            <button
+              type="button"
+              onClick={handleClearAll}
+              className="w-full bg-gray-300 text-gray-700 px-4 py-2 rounded-full text-sm font-medium mt-2 hover:bg-gray-400 transition-colors duration-300"
+            >
+              Clear Filters
             </button>
           </div>
         </form>
@@ -246,4 +212,4 @@ export default function Filter({ isFilterExpanded, closeFilter }) {
 Filter.propTypes = {
   isFilterExpanded: PropTypes.bool.isRequired,
   closeFilter: PropTypes.func.isRequired,
-}
+};

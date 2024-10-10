@@ -1,92 +1,90 @@
-import React, { useState, useCallback } from "react";
-import { createContext } from "react";
+import React, { createContext, useState, useCallback } from "react";
 import data from "../data";
-import PropTypes from 'prop-types';
 
-const DataContext = createContext();
+export const DataContext = createContext();
 
-const ContextProvider = ({ children }) => {
+export const ContextProvider = ({ children }) => {
   const [products, setProducts] = useState(data);
-  const [cartItems, setCartItems] = useState([]);
   const [filterProducts, setFilterProducts] = useState(data);
+  const [cartItems, setCartItems] = useState([]);
 
-  const handleAddToCart = (product) => {
-    const productExist = cartItems.find((item) => item.id === product.id);
-    if (productExist)
-      setCartItems(
-        cartItems.map((item) =>
-          item.id === product.id
-            ? { ...productExist, qty: productExist.qty + 1 }
-            : item
-        )
+  const handleAddToCart = useCallback((product) => {
+    setCartItems((prevCartItems) => {
+      const existingItem = prevCartItems.find(item => item.id === product.id);
+      if (existingItem) {
+        return prevCartItems.map(item =>
+          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+        );
+      }
+      return [...prevCartItems, { ...product, qty: 1 }];
+    });
+  }, []);
+
+  const handleRemoveFromCart = useCallback((product) => {
+    setCartItems((prevCartItems) => {
+      const existingItem = prevCartItems.find(item => item.id === product.id);
+      if (existingItem.qty === 1) {
+        return prevCartItems.filter(item => item.id !== product.id);
+      }
+      return prevCartItems.map(item =>
+        item.id === product.id ? { ...item, qty: item.qty - 1 } : item
       );
-    else {
-      setCartItems([...cartItems, { ...product, qty: 1 }]);
+    });
+  }, []);
+
+  const handleRemoveProduct = useCallback((id) => {
+    setCartItems((prevCartItems) => prevCartItems.filter(item => item.id !== id));
+  }, []);
+
+  // Filter functions
+  const filterCategory = useCallback((category) => {
+    let filtered = data;
+    if (category !== "All") {
+      filtered = filtered.filter(product => product.category === category);
     }
-  };
+    filtered = applyColorFilter(filtered, color);
+    filtered = applyShapeFilter(filtered, shape);
+    filtered = applyPriceRangeFilter(filtered, priceRange);
+    filtered = applyRatingFilter(filtered, minRating);
+    filtered = applySortByPrice(filtered, sortOrder);
+    setFilterProducts(filtered);
+    setProducts(filtered);
+  }, []);
 
-  const handleRemoveFromCart = (product) => {
-    const prodExist = cartItems.find((item) => item.id === product.id);
-    if (prodExist.qty === 1) {
-      setCartItems(cartItems.filter((item) => item.id !== product.id));
-    } else {
-      setCartItems(
-        cartItems.map((item) =>
-          item.id === product.id
-            ? { ...prodExist, qty: prodExist.qty - 1 }
-            : item
-        )
-      );
-    }
-  };
-
-  const handleRemoveProduct = (id) => {
-    const productsArr = cartItems.filter((item) => item.id !== id);
-    setCartItems(productsArr);
-  };
-
-  const filterCategory = (categoryOrEvent) => {
-    let selectedCat;
-    if (typeof categoryOrEvent === 'string') {
-      selectedCat = categoryOrEvent;
-    } else if (categoryOrEvent && categoryOrEvent.target) {
-      selectedCat = categoryOrEvent.target.value;
-    } else {
-      selectedCat = 'All';
-    }
-
-    if (selectedCat === "All") {
+  const filterByColor = useCallback((color) => {
+    if (color === "All") {
       setProducts(filterProducts);
     } else {
-      const filteredProducts = filterProducts.filter((item) => {
-        return item.category === selectedCat;
-      });
-      setProducts(filteredProducts);
+      const filtered = filterProducts.filter(product => product.color.includes(color));
+      setProducts(filtered);
     }
-  };
+  }, [filterProducts]);
 
-  const filterPriceRange = ([min, max]) => {
-    const filteredProducts = filterProducts.filter(
-      (product) => product.price >= min && product.price <= max
-    );
-    setProducts(filteredProducts);
-  };
 
-  const filterByRating = (rating) => {
-    const filteredProducts = filterProducts.filter(
-      (product) => product.rating >= rating
-    );
-    setProducts(filteredProducts);
-  };
+  const filterByShape = useCallback((shape) => {
+    if (shape === "All") {
+      setProducts(filterProducts);
+    } else {
+      const filtered = filterProducts.filter(product => product.shape === shape);
+      setProducts(filtered);
+    }
+  }, [filterProducts]);
 
-  const searchProducts = (term) => {
-    const filteredProducts = filterProducts.filter((product) =>
-      product.title.toLowerCase().includes(term.toLowerCase())
-    );
-    setProducts(filteredProducts);
-  };
+  const filterPriceRange = useCallback(([min, max]) => {
+    const filtered = filterProducts.filter(product => product.price >= min && product.price <= max);
+    setProducts(filtered);
+  }, [filterProducts]);
 
-  const sortByPrice = (order) => {
+  const filterByRating = useCallback((rating) => {
+    if (rating === 0) {
+      setProducts(filterProducts);
+    } else {
+      const filtered = filterProducts.filter(product => product.rating >= rating);
+      setProducts(filtered);
+    }
+  }, [filterProducts]);
+
+  const sortByPrice = useCallback((order) => {
     let sortedProducts = [...products];
     if (order === "lowToHigh") {
       sortedProducts.sort((a, b) => a.price - b.price);
@@ -94,34 +92,7 @@ const ContextProvider = ({ children }) => {
       sortedProducts.sort((a, b) => b.price - a.price);
     }
     setProducts(sortedProducts);
-  };
-
-  const filterByColor = (color) => {
-    if (color === "All") {
-      setProducts(filterProducts);
-    } else {
-      const filteredProducts = filterProducts.filter((item) => item.color.includes(color));
-      setProducts(filteredProducts);
-    }
-  };
-
-  const filterByFrameStyle = (style) => {
-    if (style === "All") {
-      setProducts(filterProducts);
-    } else {
-      const filteredProducts = filterProducts.filter((item) => item.frameStyle === style);
-      setProducts(filteredProducts);
-    }
-  };
-
-  const filterByShape = (shape) => {
-    if (shape === "All") {
-      setProducts(filterProducts);
-    } else {
-      const filteredProducts = filterProducts.filter((item) => item.shape === shape);
-      setProducts(filteredProducts);
-    }
-  };
+  }, [products]);
 
   const handleClearFilters = useCallback((resetFilterState) => {
     setProducts(data);
@@ -129,7 +100,7 @@ const ContextProvider = ({ children }) => {
     if (resetFilterState) {
       resetFilterState();
     }
-  }, []);
+  }, [data]);
 
   return (
     <DataContext.Provider
@@ -146,10 +117,8 @@ const ContextProvider = ({ children }) => {
         handleClearFilters,
         filterPriceRange,
         filterByRating,
-        searchProducts,
         sortByPrice,
         filterByColor,
-        filterByFrameStyle,
         filterByShape,
       }}
     >
@@ -157,9 +126,3 @@ const ContextProvider = ({ children }) => {
     </DataContext.Provider>
   );
 };
-
-ContextProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export { DataContext, ContextProvider };

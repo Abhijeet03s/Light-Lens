@@ -18,7 +18,7 @@ export default function App() {
   useEffect(() => {
     const hamburgerMenu = () => {
       if (window.innerWidth > 768 && isOpen) {
-        setIsOpen(isOpen);
+        setIsOpen(false);
       }
     };
     window.addEventListener("resize", hamburgerMenu);
@@ -26,7 +26,7 @@ export default function App() {
     return () => {
       window.removeEventListener("resize", hamburgerMenu);
     };
-  });
+  }, [isOpen]);
 
   const toggle = () => {
     setIsOpen(!isOpen);

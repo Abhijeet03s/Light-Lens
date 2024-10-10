@@ -2,23 +2,26 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/Context";
 import { AuthContext } from "../../context/AuthContext";
-import { MdStar, MdSearch } from "react-icons/md";
+import { MdStar, MdSearch, MdSort } from "react-icons/md";
 import CartIcon from "../../assets/images/cart.svg";
 
 export default function Cards() {
   const navigate = useNavigate();
-  const { products, setProducts, handleAddToCart, searchProducts } = useContext(DataContext);
+  const { products, handleAddToCart, searchProducts, sortByPrice } = useContext(DataContext);
   const { loggedInUser } = useContext(AuthContext);
   const [searchTerm, setSearchTerm] = useState("");
-
-  useEffect(() => {
-    setProducts(products);
-  }, [products]);
+  const [sortOrder, setSortOrder] = useState("default");
 
   const handleSearch = (event) => {
     const term = event.target.value;
     setSearchTerm(term);
     searchProducts(term);
+  };
+
+  const handleSortChange = (event) => {
+    const order = event.target.value;
+    setSortOrder(order);
+    sortByPrice(order);
   };
 
   return (
@@ -31,13 +34,33 @@ export default function Cards() {
           <MdSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           <input
             type="text"
-            placeholder="Search products..."
+            placeholder="Search products"
             value={searchTerm}
             onChange={handleSearch}
             className="w-full pl-10 pr-3 py-2 text-sm lg:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4A99D3] focus:border-[#4A99D3]"
           />
         </div>
+
+        {/* Sort By Price */}
+        <div className="flex items-center w-full lg:w-1/5 mt-4 lg:mt-0 relative">
+          <select
+            value={sortOrder}
+            onChange={handleSortChange}
+            className="w-full p-2 pr-8 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4A99D3] focus:border-[#4A99D3] text-sm lg:text-base appearance-none"
+          >
+            <option value="default">Sort by Price</option>
+            <option value="lowToHigh">Low to High</option>
+            <option value="highToLow">High to Low</option>
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+            </svg>
+          </div>
+        </div>
       </div>
+
+      {/* Product Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
         {products.map((product) => (
           <div

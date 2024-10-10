@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../../firebase/firebase";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const { googleSignIn, loggedInUser } = useContext(AuthContext);
+  const { googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const [userData, setUserData] = useState({
@@ -39,30 +39,40 @@ export default function Login() {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
+      navigate("/");
     } catch (error) {
       setErrorMessage(error.message);
     }
   };
 
-  const handleGuestLogin = () => {
+  const handleGuestLogin = async () => {
     setUserData({ email: "test@gmail.com", pass: "test123" });
+    setErrorMessage("");
+    setIsLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, "test@gmail.com", "test123");
+      navigate("/");
+    } catch (error) {
+      setErrorMessage(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const isValidEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  useEffect(() => {
-    if (loggedInUser) {
-      navigate("/");
-    }
-  }, [loggedInUser, navigate]);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prev) => ({ ...prev, [name]: value }));
+  };
 
   return (
     <section className="flex items-center justify-center min-h-screen bg-gray-100 font-Inter px-4 py-8 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8 bg-white rounded-lg shadow-2xl p-6 sm:p-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800">
-          Welcome to Light-Lens
+          Login to Your Account
         </h2>
         <button
           onClick={handleGoogleSignIn}
@@ -88,10 +98,11 @@ export default function Login() {
               id="email"
               name="email"
               type="email"
+              value={userData.email}
+              onChange={handleInputChange}
               required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base"
-              value={userData.email}
-              onChange={(e) => setUserData((prev) => ({ ...prev, email: e.target.value }))}
+              placeholder="Email Address"
             />
           </div>
           <div>
@@ -102,42 +113,35 @@ export default function Login() {
               id="password"
               name="password"
               type="password"
+              value={userData.pass}
+              onChange={handleInputChange}
               required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base"
-              value={userData.pass}
-              onChange={(e) => setUserData((prev) => ({ ...prev, pass: e.target.value }))}
+              placeholder="Password"
             />
           </div>
-          <div className="flex items-center justify-end">
-            <Link to="/forgot-password" className="text-xs sm:text-sm text-indigo-600 hover:text-indigo-500">
-              Forgot your password?
-            </Link>
-          </div>
           {errorMessage && (
-            <p className="text-xs sm:text-sm text-red-600">{errorMessage}</p>
+            <div className="text-red-500 text-sm text-center">
+              {errorMessage}
+            </div>
           )}
-          <div>
+          <div className="space-y-4">
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm sm:text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300"
             >
-              {isLoading ? 'Signing in...' : 'Sign in'}
+              {isLoading ? "Logging in..." : "Login"}
+            </button>
+            <button
+              type="button"
+              onClick={handleGuestLogin}
+              className="w-full bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition duration-300"
+            >
+              Login as Guest
             </button>
           </div>
         </form>
-        <button
-          onClick={handleGuestLogin}
-          className="w-full px-4 py-2 text-xs sm:text-sm font-medium text-indigo-600 bg-indigo-100 rounded-md hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Try as Guest
-        </button>
-        <p className="text-xs sm:text-sm text-center text-gray-600">
-          Don&apos;t have an account?{" "}
-          <Link to="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
-            Sign up
-          </Link>
-        </p>
       </div>
     </section>
   );

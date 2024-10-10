@@ -12,6 +12,14 @@ export default function ProductDetails() {
 
   const selectedProduct = products.find((product) => product.id === Number(ID));
 
+  if (!selectedProduct) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-gray-600">Product not found.</p>
+      </div>
+    );
+  }
+
   return (
     <section className="text-gray-600 font-Inter overflow-hidden">
       <div className="container min-h-screen flex justify-center items-center px-4 sm:px-6 lg:px-8 py-8 mx-auto">
