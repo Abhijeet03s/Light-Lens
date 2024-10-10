@@ -14,17 +14,21 @@ import { AuthContextProvider } from "./context/AuthContext";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
-    const hamburgerMenu = () => {
-      if (window.innerWidth > 768 && isOpen) {
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      if (!mobile && isOpen) {
         setIsOpen(false);
       }
     };
-    window.addEventListener("resize", hamburgerMenu);
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", hamburgerMenu);
+      window.removeEventListener("resize", handleResize);
     };
   }, [isOpen]);
 
@@ -48,7 +52,7 @@ export default function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
             </Routes>
-            <Footer />
+            {!isMobile && <Footer />}
           </div>
         )}
       </AuthContextProvider>

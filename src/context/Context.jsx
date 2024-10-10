@@ -1,4 +1,4 @@
-import React, { createContext, useState, useCallback } from "react";
+import React, { createContext, useState, useCallback, useEffect } from "react";
 import data from "../data";
 import PropTypes from 'prop-types';
 export const DataContext = createContext();
@@ -6,14 +6,28 @@ export const DataContext = createContext();
 export const ContextProvider = ({ children }) => {
   const [products, setProducts] = useState(data);
   const [filterProducts, setFilterProducts] = useState(data);
-  const [cartItems, setCartItems] = useState([]);
+  const [savedForLater, setSavedForLater] = useState(() => {
+    const savedItems = localStorage.getItem('savedForLater');
+    return savedItems ? JSON.parse(savedItems) : [];
+  });
+  const [cartItems, setCartItems] = useState(() => {
+    const savedCartItems = localStorage.getItem('cartItems');
+    return savedCartItems ? JSON.parse(savedCartItems) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
+
 
   const handleAddToCart = useCallback((product) => {
     setCartItems((prevCartItems) => {
       const existingItem = prevCartItems.find(item => item.id === product.id);
       if (existingItem) {
         return prevCartItems.map(item =>
-          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+          item.id === product.id
+            ? { ...item, qty: Math.min(item.qty + 1, 5) }
+            : item
         );
       }
       return [...prevCartItems, { ...product, qty: 1 }];
@@ -123,6 +137,8 @@ export const ContextProvider = ({ children }) => {
         sortByPrice,
         filterByColor,
         filterByShape,
+        savedForLater,
+        setSavedForLater,
       }}
     >
       {children}

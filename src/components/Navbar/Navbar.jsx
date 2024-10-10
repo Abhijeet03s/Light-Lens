@@ -43,24 +43,24 @@ export default function Navbar({ toggle }) {
         ))}
       </div>
 
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-8">
+        {loggedInUser && (
+          <Link to="/cart" className="relative p-2">
+            <img src={Cart} alt="Cart" className="w-6 h-6" />
+            {cartItems.length > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {cartItems.length}
+              </span>
+            )}
+          </Link>
+        )}
         {loggedInUser ? (
-          <>
-            <button
-              onClick={handleLogOut}
-              className="bg-[#4A99D3] hidden lg:block text-white rounded-md py-2 px-4 hover:bg-[#3a7aa6] transition-colors"
-            >
-              Logout
-            </button>
-            <Link to="/cart" className="relative p-2">
-              <img src={Cart} alt="Cart" className="w-6 h-6" />
-              {cartItems.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {cartItems.length}
-                </span>
-              )}
-            </Link>
-          </>
+          <button
+            onClick={handleLogOut}
+            className="bg-[#4A99D3] hidden lg:block text-white rounded-md py-2 px-4 hover:bg-[#3a7aa6] transition-colors"
+          >
+            Logout
+          </button>
         ) : (
           <Link to="/login">
             <button className="bg-[#4A99D3] hidden lg:block text-white rounded-md py-2 px-4 hover:bg-[#3a7aa6] transition-colors">

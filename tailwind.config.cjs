@@ -8,14 +8,16 @@ module.exports = {
         Inter: ["Inter", "sans-serif"],
       },
       colors: {
-        Download: "rgb(74, 153, 211, 0.3)",
+        primary: "#4A99D3",
       },
       animation: {
         'spin-slow': 'spin 20s linear infinite',
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide')
+  ],
   content: [
     "./public/**/*.html",
     "./src/**/*.{js,jsx,ts,tsx}",
