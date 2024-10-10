@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/Context";
 import { AuthContext } from "../../context/AuthContext";
-import { MdStar, MdSearch, MdSort } from "react-icons/md";
+import { MdStar, MdSearch } from "react-icons/md";
 import CartIcon from "../../assets/images/cart.svg";
 
 export default function Cards() {
@@ -71,7 +71,7 @@ export default function Cards() {
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-full h-32 lg:h-40 object-cover"
+                className="w-full h-32 lg:h-40 object-contain"
               />
             </Link>
             <div className="p-3 lg:p-4 space-y-2 lg:space-y-3">
@@ -86,7 +86,7 @@ export default function Cards() {
               </div>
               <div className="flex justify-between items-center">
                 <h3 className="text-base lg:text-lg font-Poppins font-bold text-gray-900">
-                  ₹{product.price}
+                  ₹{" "}{product.price}
                 </h3>
                 <button
                   onClick={() => loggedInUser ? handleAddToCart(product) : navigate("/login")}

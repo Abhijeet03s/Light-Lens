@@ -1,6 +1,6 @@
 import React, { createContext, useState, useCallback } from "react";
 import data from "../data";
-
+import PropTypes from 'prop-types';
 export const DataContext = createContext();
 
 export const ContextProvider = ({ children }) => {
@@ -36,20 +36,22 @@ export const ContextProvider = ({ children }) => {
     setCartItems((prevCartItems) => prevCartItems.filter(item => item.id !== id));
   }, []);
 
-  // Filter functions
   const filterCategory = useCallback((category) => {
     let filtered = data;
     if (category !== "All") {
       filtered = filtered.filter(product => product.category === category);
     }
-    filtered = applyColorFilter(filtered, color);
-    filtered = applyShapeFilter(filtered, shape);
-    filtered = applyPriceRangeFilter(filtered, priceRange);
-    filtered = applyRatingFilter(filtered, minRating);
-    filtered = applySortByPrice(filtered, sortOrder);
     setFilterProducts(filtered);
     setProducts(filtered);
   }, []);
+
+  const searchProducts = useCallback((term) => {
+    const filteredProducts = filterProducts.filter((product) =>
+      product.title.toLowerCase().includes(term.toLowerCase())
+    );
+    setProducts(filteredProducts);
+  }, [filterProducts]);
+
 
   const filterByColor = useCallback((color) => {
     if (color === "All") {
@@ -106,6 +108,7 @@ export const ContextProvider = ({ children }) => {
     <DataContext.Provider
       value={{
         cartItems,
+        searchProducts,
         setCartItems,
         products,
         setProducts,
@@ -125,4 +128,8 @@ export const ContextProvider = ({ children }) => {
       {children}
     </DataContext.Provider>
   );
+};
+
+ContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

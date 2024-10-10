@@ -34,20 +34,27 @@ export default function Filter({ isFilterExpanded, closeFilter }) {
   const handlePriceChange = (event) => {
     const newValue = parseInt(event.target.value, 10);
     setPriceRange([0, newValue]);
+    filterPriceRange([0, newValue]);
   };
 
   const handleRatingChange = (rating) => {
     setMinRating(rating);
+    filterByRating(rating);
+  };
+
+  const handleCategoryChange = (e) => {
+    const newCategory = e.target.value;
+    setCategory(newCategory);
+    filterCategory(newCategory);
   };
 
   const handleApplyFilters = (e) => {
     e.preventDefault();
-    filterCategory(category); // Apply selected category
+    filterCategory(category);
     filterByColor(color);
     filterByShape(shape);
     filterPriceRange(priceRange);
     filterByRating(minRating);
-
     closeFilter();
   };
 
@@ -87,7 +94,7 @@ export default function Filter({ isFilterExpanded, closeFilter }) {
               id="category"
               className="w-full p-2 text-xs lg:text-sm border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#4A99D3] focus:border-[#4A99D3] transition-all duration-300"
               value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              onChange={handleCategoryChange}
             >
               <option value="All">All Categories</option>
               <option value="BlueLight">Blue Light</option>
