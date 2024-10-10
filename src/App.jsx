@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
 import Landing from "./components/Landing/Landing";
-import Services from "./components/Services/Services";
+import Aboutus from "./components/AboutUs/Aboutus";
 import Products from "./components/Products/Products";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart/Cart";
@@ -45,7 +45,7 @@ export default function App() {
             <Navbar toggle={toggle} />
             <Routes>
               <Route path="/" element={<Landing />} />
-              <Route path="/services" element={<Services />} />
+              <Route path="/aboutus" element={<Aboutus />} />
               <Route path="/products" element={<Products />} />
               <Route path="/products/:ID" element={<ProductDetails />} />
               <Route path="/cart" element={<Cart />} />

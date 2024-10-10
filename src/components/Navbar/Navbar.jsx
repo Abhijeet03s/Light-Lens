@@ -14,7 +14,7 @@ export default function Navbar({ toggle }) {
   const navLinks = [
     { to: "/", text: "Home" },
     { to: "/products", text: "Products" },
-    { to: "/services", text: "Services" },
+    { to: "/aboutus", text: "About Us" },
   ];
 
   return (

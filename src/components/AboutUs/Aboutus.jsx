@@ -1,33 +1,33 @@
 import React from "react";
-import serviceImage1 from "../../assets/services/service-image-1.png"
-import serviceImage2 from "../../assets/services/service-image-2.png"
-import serviceImage3 from "../../assets/services/service-image-3.png"
+import aboutusImage1 from "../../assets/aboutus/about-image-1.png"
+import aboutusImage2 from "../../assets/aboutus/about-image-2.png"
+import aboutusImage3 from "../../assets/aboutus/about-image-3.png"
 
-export default function Services() {
+export default function Aboutus() {
   return (
     <>
       <div
-        id="services"
+        id="aboutus"
         className="container max-w-7xl mx-auto text-black flex flex-col justify-center items-center font-Inter px-5 py-16 space-y-12 relative"
       >
         <h1 className="text-center text-3xl sm:text-5xl font-Poppins font-bold text-gray-800">Why Choose Us</h1>
         <div className="space-y-5 lg:space-y-0 lg:grid grid-flow-col gap-6">
           <img
             className="object-cover object-top w-full h-full row-span-3 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:brightness-110"
-            src={serviceImage1}
-            alt="service-image-1"
+            src={aboutusImage1}
+            alt="aboutus-image-1"
             loading="lazy"
           />
           <img
             className="object-cover object-top w-full h-full col-span-2 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:brightness-110"
-            src={serviceImage2}
-            alt="service-image-2"
+            src={aboutusImage2}
+            alt="aboutus-image-2"
             loading="lazy"
           />
           <img
             className="object-cover object-top w-full h-full row-span-2 col-span-2 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:brightness-110"
-            src={serviceImage3}
-            alt="service-image-3"
+            src={aboutusImage3}
+            alt="aboutus-image-3"
             loading="lazy"
           />
         </div>

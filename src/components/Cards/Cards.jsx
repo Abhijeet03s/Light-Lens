@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/Context";
 import { AuthContext } from "../../context/AuthContext";
-import { MdStar, MdSearch } from "react-icons/md";
+import { MdStar, MdSearch, MdAdd, MdRemove } from "react-icons/md";
 import CartIcon from "../../assets/images/cart.svg";
 
 export default function Cards() {
   const navigate = useNavigate();
-  const { products, handleAddToCart, searchProducts, sortByPrice } = useContext(DataContext);
+  const { products, handleAddToCart, handleRemoveFromCart, searchProducts, sortByPrice, cartItems } = useContext(DataContext);
   const { loggedInUser } = useContext(AuthContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("default");
@@ -22,6 +22,19 @@ export default function Cards() {
     const order = event.target.value;
     setSortOrder(order);
     sortByPrice(order);
+  };
+
+  const getItemQuantity = (productId) => {
+    const item = cartItems.find(item => item.id === productId);
+    return item ? item.qty : 0;
+  };
+
+  const handleCartAction = (product) => {
+    if (!loggedInUser) {
+      navigate("/login");
+      return;
+    }
+    handleAddToCart(product);
   };
 
   return (
@@ -62,43 +75,66 @@ export default function Cards() {
 
       {/* Product Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl"
-          >
-            <Link to={`/products/${product.id}`} className="block">
-              <img
-                src={product.image}
-                alt={product.title}
-                className="w-full h-32 lg:h-40 object-contain"
-              />
-            </Link>
-            <div className="p-3 lg:p-4 space-y-2 lg:space-y-3">
-              <h2 className="text-base lg:text-lg font-Poppins font-semibold text-gray-800 line-clamp-2">
-                {product.title}
-              </h2>
-              <div className="flex items-center">
-                <span className="text-xs lg:text-sm font-medium font-Inter text-gray-700">
-                  {product.rating}
-                </span>
-                <MdStar className="text-yellow-400 ml-1" size={14} />
-              </div>
-              <div className="flex justify-between items-center">
-                <h3 className="text-base lg:text-lg font-Poppins font-bold text-gray-900">
-                  ₹{" "}{product.price}
-                </h3>
-                <button
-                  onClick={() => loggedInUser ? handleAddToCart(product) : navigate("/login")}
-                  className="flex items-center bg-[#4a99d3] text-white px-4 py-2 rounded-full text-xs lg:text-sm font-medium transition-colors duration-300 hover:bg-[#3a7ca8]"
-                >
-                  <img src={CartIcon} alt="cart-icon" className="w-4 h-4 mr-1" />
-                  Add To Cart
-                </button>
+        {products.map((product) => {
+          const quantity = getItemQuantity(product.id);
+          return (
+            <div
+              key={product.id}
+              className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl"
+            >
+              <Link to={`/products/${product.id}`} className="block">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-32 lg:h-40 object-contain"
+                />
+              </Link>
+              <div className="p-3 lg:p-4 space-y-2 lg:space-y-3">
+                <h2 className="text-base lg:text-lg font-Poppins font-semibold text-gray-800 line-clamp-2">
+                  {product.title}
+                </h2>
+                <div className="flex items-center">
+                  <span className="text-xs lg:text-sm font-medium font-Inter text-gray-700">
+                    {product.rating.toFixed(1)}
+                  </span>
+                  <MdStar className="text-yellow-400 ml-1" size={14} />
+                </div>
+                <div className="flex justify-between items-center">
+                  <h3 className="text-base lg:text-lg font-Poppins font-bold text-gray-900">
+                    ₹{" "}{product.price}
+                  </h3>
+                  {quantity === 0 ? (
+                    <button
+                      onClick={() => handleCartAction(product)}
+                      className="flex items-center bg-[#4a99d3] text-white px-4 py-2 rounded-full text-xs lg:text-sm font-medium transition-colors duration-300 hover:bg-[#3a7ca8]"
+                    >
+                      <img src={CartIcon} alt="cart-icon" className="w-4 h-4 mr-1" />
+                      Add To Cart
+                    </button>
+                  ) : (
+                    <div className="flex items-center bg-[#4a99d3] text-white rounded-full">
+                      <button
+                        onClick={() => handleRemoveFromCart(product)}
+                        className="px-4 py-2 hover:bg-[#3a7ca8] rounded-l-full transition-colors duration-300 flex items-center"
+                      >
+                        <MdRemove size={16} />
+                      </button>
+                      <span className="p-2 text-xs lg:text-sm font-medium">
+                        {quantity}
+                      </span>
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        className="px-4 py-2 hover:bg-[#3a7ca8] rounded-r-full transition-colors duration-300 flex items-center"
+                      >
+                        <MdAdd size={16} />
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
