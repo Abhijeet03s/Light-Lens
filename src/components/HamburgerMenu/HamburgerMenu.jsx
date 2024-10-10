@@ -11,7 +11,7 @@ export default function HamburgerMenu({ isOpen, toggle }) {
   const navLinks = [
     { to: "/", text: "Home" },
     { to: "/products", text: "Products" },
-    { to: "/aboutus", text: "About Us" },
+    { to: "/services", text: "Services" },
   ];
 
   return (

@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { DataContext } from "../../context/Context";
-import Logo from "../../assets/images/LIGHTLENS-nav.svg";
+import Logo from "../../assets/images/logo-color.svg";
 import Cart from "../../assets/images/cart-nav.svg";
 
 export default function Navbar({ toggle }) {
@@ -21,7 +21,7 @@ export default function Navbar({ toggle }) {
     <nav className="container mx-auto max-w-full h-20 bg-white shadow-md flex justify-between items-center px-6 lg:px-14 font-Inter font-medium sticky top-0 transition-all duration-300 ease-in-out z-50">
       <Link to="/" className="flex items-center">
         <img
-          className="h-4 md:h-6 w-auto"
+          className="h-14 md:h-20 w-auto"
           src={Logo}
           alt="LightLens"
           loading="lazy"
@@ -44,7 +44,7 @@ export default function Navbar({ toggle }) {
       </div>
 
       <div className="flex items-center space-x-8">
-        {loggedInUser && (
+        {loggedInUser !== null && (
           <Link to="/cart" className="relative p-2">
             <img src={Cart} alt="Cart" className="w-6 h-6" />
             {cartItems.length > 0 && (
