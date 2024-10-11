@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const { googleSignIn } = useContext(AuthContext);
@@ -46,14 +46,21 @@ export default function Login() {
   };
 
   const handleGuestLogin = async () => {
-    setUserData({ email: "test@gmail.com", pass: "test123" });
+    const guestCredentials = {
+      email: "testinguser@gmail.com",
+      pass: "eD8+nU9@xK",
+    };
+
+    setUserData(guestCredentials);
     setErrorMessage("");
     setIsLoading(true);
+
     try {
-      await signInWithEmailAndPassword(auth, "test@gmail.com", "test123");
+      await signInWithEmailAndPassword(auth, guestCredentials.email, guestCredentials.pass);
       navigate("/");
     } catch (error) {
-      setErrorMessage(error.message);
+      console.error("Guest login error:", error);
+      setErrorMessage("Failed to login as guest. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -72,11 +79,11 @@ export default function Login() {
     <section className="flex items-center justify-center min-h-screen bg-gray-100 font-Inter px-4 py-8 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8 bg-white rounded-lg shadow-2xl p-6 sm:p-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800">
-          Login to Your Account
+          Welcome to Light-Lens
         </h2>
         <button
           onClick={handleGoogleSignIn}
-          className="w-full px-4 py-2 flex items-center justify-center space-x-2 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 text-sm sm:text-base"
+          className="w-full px-4 py-2 flex items-center justify-center space-x-2 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition duration-300 text-sm sm:text-base"
         >
           <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" className="w-5 h-5" />
           <span>Sign in with Google</span>
@@ -101,7 +108,7 @@ export default function Login() {
               value={userData.email}
               onChange={handleInputChange}
               required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-sm sm:text-base"
               placeholder="Email Address"
             />
           </div>
@@ -115,9 +122,9 @@ export default function Login() {
               type="password"
               value={userData.pass}
               onChange={handleInputChange}
-              required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-sm sm:text-base"
               placeholder="Password"
+              required
             />
           </div>
           {errorMessage && (
@@ -125,22 +132,27 @@ export default function Login() {
               {errorMessage}
             </div>
           )}
-          <div className="space-y-4">
+          <div>
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm sm:text-base font-medium text-white bg-primary/90 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? "Logging in..." : "Login"}
             </button>
-            <button
-              type="button"
-              onClick={handleGuestLogin}
-              className="w-full bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition duration-300"
-            >
-              Login as Guest
-            </button>
           </div>
+          <button
+            onClick={handleGuestLogin}
+            className="w-full flex justify-center py-2 px-4 text-sm sm:text-base font-medium text-primary bg-primary/10 rounded-md hover:bg-primary/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+          >
+            Login as Guest
+          </button>
+          <p className="text-xs sm:text-sm text-center text-gray-600">
+            Don&apos;t have an account?{" "}
+            <Link to="/signup" className="font-medium text-primary/90 hover:text-primary">
+              Sign up
+            </Link>
+          </p>
         </form>
       </div>
     </section>
