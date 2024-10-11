@@ -17,7 +17,7 @@ export default function Signup() {
 
   useEffect(() => {
     if (loggedInUser) {
-      navigate("/");
+      navigate("/products");
     }
   }, [loggedInUser, navigate]);
 

@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { MdStar, MdShoppingCart } from "react-icons/md";
+import React, { useContext, useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { MdStar, MdShoppingCart, MdCheck, MdAdd, MdRemove } from "react-icons/md";
 import { DataContext } from "../../context/Context";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -19,6 +19,26 @@ export default function ProductDetails() {
       </div>
     );
   }
+
+  const [isAdded, setIsAdded] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [isAdding, setIsAdding] = useState(false);
+
+  useEffect(() => {
+    if (isAdding) {
+      const timer = setTimeout(() => setIsAdding(false), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [isAdding]);
+
+  const handleAddToCartClick = () => {
+    handleAddToCart(selectedProduct, quantity);
+    setIsAdding(true);
+    setQuantity(1);
+  };
+
+  const incrementQuantity = () => setQuantity(prev => Math.min(prev + 1, 10));
+  const decrementQuantity = () => setQuantity(prev => Math.max(prev - 1, 1));
 
   return (
     <section className="text-gray-600 font-Inter overflow-hidden">
@@ -49,13 +69,40 @@ export default function ProductDetails() {
               </p>
               <div className="w-full sm:w-auto">
                 {loggedInUser ? (
-                  <button
-                    onClick={() => handleAddToCart(selectedProduct)}
-                    className="w-full sm:w-auto flex justify-center items-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md transition duration-300 ease-in-out"
-                  >
-                    <MdShoppingCart size={24} className="mr-2" />
-                    Add To Cart
-                  </button>
+                  <div className="flex items-center space-x-2">
+                    <div className="flex items-center border border-gray-300 rounded-md">
+                      <button
+                        onClick={decrementQuantity}
+                        className="px-2 py-1 text-gray-600 hover:bg-gray-100"
+                      >
+                        <MdRemove />
+                      </button>
+                      <span className="px-4 py-1 text-gray-700">{quantity}</span>
+                      <button
+                        onClick={incrementQuantity}
+                        className="px-2 py-1 text-gray-600 hover:bg-gray-100"
+                      >
+                        <MdAdd />
+                      </button>
+                    </div>
+                    <button
+                      onClick={handleAddToCartClick}
+                      disabled={isAdding}
+                      className={`relative overflow-hidden w-48 h-12 flex justify-center items-center ${isAdding ? 'bg-green-500' : 'bg-blue-600 hover:bg-blue-700'
+                        } text-white rounded-md transition-all duration-300 ease-in-out`}
+                    >
+                      <span className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isAdding ? 'translate-y-0' : 'translate-y-full'
+                        }`}>
+                        <MdCheck size={24} className="mr-2" />
+                        Added to Cart
+                      </span>
+                      <span className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isAdding ? '-translate-y-full' : 'translate-y-0'
+                        }`}>
+                        <MdShoppingCart size={24} className="mr-2" />
+                        Add To Cart
+                      </span>
+                    </button>
+                  </div>
                 ) : (
                   <button
                     onClick={() => navigate("/login")}

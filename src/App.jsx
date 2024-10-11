@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { AuthContext, AuthContextProvider } from "./context/AuthContext";
 import Navbar from "./components/Navbar/Navbar";
 import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
@@ -26,6 +26,7 @@ function AppContent() {
   const { loading } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const location = useLocation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -42,6 +43,10 @@ function AppContent() {
       window.removeEventListener("resize", handleResize);
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const toggle = () => {
     setIsOpen(!isOpen);

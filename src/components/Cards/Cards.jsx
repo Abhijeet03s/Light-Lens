@@ -2,8 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/Context";
 import { AuthContext } from "../../context/AuthContext";
-import { MdStar, MdSearch, MdAdd, MdRemove } from "react-icons/md";
-import CartIcon from "../../assets/images/cart.svg";
+import { MdStar, MdSearch, MdAdd, MdRemove, MdShoppingCart } from "react-icons/md";
+
+const getRatingColor = (rating) => {
+  if (rating >= 4.5) return 'bg-green-100 text-green-700';
+  if (rating >= 4) return 'bg-lime-100 text-lime-700';
+  if (rating >= 3.5) return 'bg-yellow-100 text-yellow-700';
+  if (rating >= 3) return 'bg-orange-100 text-orange-700';
+  return 'bg-red-100 text-red-700';
+};
 
 export default function Cards() {
   const navigate = useNavigate();
@@ -38,9 +45,9 @@ export default function Cards() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full font-Poppins">
       <div className="mb-8 lg:mb-12 flex flex-col lg:flex-row justify-between items-start lg:items-center">
-        <h1 className="text-xl lg:text-3xl font-Poppins font-bold text-gray-800 mb-4 lg:mb-0">
+        <h1 className="text-xl lg:text-3xl font-bold text-gray-800 mb-4 lg:mb-0">
           Explore Our Frames
         </h1>
         <div className="w-full lg:w-1/3 relative">
@@ -50,12 +57,12 @@ export default function Cards() {
             placeholder="Search products"
             value={searchTerm}
             onChange={handleSearch}
-            className="w-full pl-10 pr-3 py-2 text-sm lg:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4A99D3] focus:border-[#4A99D3]"
+            className="w-full pl-10 pr-3 py-2 text-sm lg:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
           />
         </div>
 
         {/* Sort By Price */}
-        <div className="flex items-center w-full lg:w-1/5 mt-4 lg:mt-0 relative">
+        <div className="w-full lg:w-1/5 mt-4 lg:mt-0">
           <select
             value={sortOrder}
             onChange={handleSortChange}
@@ -74,60 +81,73 @@ export default function Cards() {
       </div>
 
       {/* Product Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {products.map((product) => {
           const quantity = getItemQuantity(product.id);
+          const ratingColorClass = getRatingColor(product.rating);
           return (
             <div
               key={product.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl"
+              className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-102 flex flex-col"
             >
-              <Link to={`/products/${product.id}`} className="block">
+              <Link to={`/products/${product.id}`} className="block relative pb-[100%]">
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="w-full h-32 lg:h-40 object-contain"
+                  className="absolute inset-0 w-full h-full object-contain p-4"
                 />
               </Link>
-              <div className="p-3 lg:p-4 space-y-2 lg:space-y-3">
-                <h2 className="text-base lg:text-lg font-Poppins font-semibold text-gray-800 line-clamp-2">
-                  {product.title}
-                </h2>
-                <div className="flex items-center">
-                  <span className="text-xs lg:text-sm font-medium font-Inter text-gray-700">
-                    {product.rating.toFixed(1)}
-                  </span>
-                  <MdStar className="text-yellow-400 ml-1" size={14} />
+              <div className="p-4 flex-grow flex flex-col justify-between space-y-4">
+                <div>
+                  <h2 className="text-lg font-semibold text-gray-800 line-clamp-2 mb-4">
+                    {product.title}
+                  </h2>
+                  <div className="flex items-center justify-between">
+                    <div className={`flex items-center px-2 py-1 rounded-full ${ratingColorClass}`}>
+                      <span className="text-sm font-medium mr-1">
+                        {product.rating.toFixed(1)}
+                      </span>
+                      <MdStar className="text-current" size={16} />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900">
+                      ₹{product.price.toLocaleString()}
+                    </h3>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center">
-                  <h3 className="text-base lg:text-lg font-Poppins font-bold text-gray-900">
-                    ₹{" "}{product.price}
-                  </h3>
+                <div className="pt-2">
                   {quantity === 0 ? (
                     <button
                       onClick={() => handleCartAction(product)}
-                      className="flex items-center bg-[#4a99d3] text-white px-4 py-2 rounded-full text-xs lg:text-sm font-medium transition-colors duration-300 hover:bg-[#3a7ca8]"
+                      className="w-full bg-primary text-white py-3 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-primary-dark flex items-center justify-center"
                     >
-                      <img src={CartIcon} alt="cart-icon" className="w-4 h-4 mr-1" />
+                      <MdShoppingCart className="w-5 h-5 mr-2" />
                       Add To Cart
                     </button>
                   ) : (
-                    <div className="flex items-center bg-[#4a99d3] text-white rounded-full">
-                      <button
-                        onClick={() => handleRemoveFromCart(product)}
-                        className="px-4 py-2 hover:bg-[#3a7ca8] rounded-l-full transition-colors duration-300 flex items-center"
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between bg-gray-100 rounded-full">
+                        <button
+                          onClick={() => handleRemoveFromCart(product)}
+                          className="p-3 text-primary hover:bg-gray-200 rounded-full transition-colors duration-300"
+                        >
+                          <MdRemove size={20} />
+                        </button>
+                        <span className="text-sm font-medium">
+                          {quantity}
+                        </span>
+                        <button
+                          onClick={() => handleAddToCart(product)}
+                          className="p-3 text-primary hover:bg-gray-200 rounded-full transition-colors duration-300"
+                        >
+                          <MdAdd size={20} />
+                        </button>
+                      </div>
+                      <Link
+                        to="/cart"
+                        className="block w-full text-center bg-primary text-white py-3 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-primary-dark"
                       >
-                        <MdRemove size={16} />
-                      </button>
-                      <span className="p-2 text-xs lg:text-sm font-medium">
-                        {quantity}
-                      </span>
-                      <button
-                        onClick={() => handleAddToCart(product)}
-                        className="px-4 py-2 hover:bg-[#3a7ca8] rounded-r-full transition-colors duration-300 flex items-center"
-                      >
-                        <MdAdd size={16} />
-                      </button>
+                        Go to Cart
+                      </Link>
                     </div>
                   )}
                 </div>

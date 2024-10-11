@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
-import { DataContext } from "../../context/Context";
-import { MdCancel, MdOutlineShoppingBag } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
+import { DataContext } from "../../context/Context";
 import Confetti from "react-confetti";
+import EmptyCart from "../../assets/images/empty-cart.svg";
+import { MdCancel } from "react-icons/md";
 
 export default function Cart() {
   const {
@@ -83,13 +84,13 @@ export default function Cart() {
         </div>
       )}
       {cartItems.length < 1 ? (
-        <div className="flex flex-col justify-center items-center mt-20">
-          <MdOutlineShoppingBag size={150} className="text-gray-400" />
-          <h1 className="text-2xl lg:text-3xl font-Poppins font-medium mt-10 text-gray-800">
+        <div className="flex flex-col justify-center items-center mt-20 space-y-10">
+          <img src={EmptyCart} alt="Empty Cart" className="w-48 h-48" loading="lazy" />
+          <h1 className="text-2xl text-center lg:text-3xl font-Poppins font-medium mt-10 text-gray-800">
             Your Shopping Bag is Empty
           </h1>
           <Link to="/products">
-            <button className="mt-10 bg-primary/90 hover:bg-primary transition-colors duration-300 text-white text-lg rounded-full py-3 px-6 shadow-md">
+            <button className="bg-primary/90 hover:bg-primary transition-colors duration-300 text-white text-lg rounded-full py-3 px-6 shadow-md">
               Start Shopping
             </button>
           </Link>
@@ -109,22 +110,22 @@ export default function Cart() {
             {cartItems.map((item) => (
               <div
                 key={item.id}
-                className="flex flex-col sm:flex-row sm:items-center justify-between py-4 lg:py-6 border-b border-gray-200 last:border-b-0"
+                className="flex items-center justify-between py-4 lg:py-6 border-b border-gray-200 last:border-b-0"
               >
-                <div className="flex items-center space-x-4 mb-4 sm:mb-0">
-                  <div className="w-24 h-24 lg:w-32 lg:h-24 rounded-lg flex items-center justify-center">
+                <div className="flex items-center space-x-4">
+                  <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-lg flex items-center justify-center">
                     <img
-                      className="w-20 h-auto object-contain lg:w-24"
+                      className="w-16 h-auto object-contain lg:w-20"
                       src={item.image}
                       alt={item.title}
                     />
                   </div>
                   <div>
                     <h3 className="text-base lg:text-lg font-medium text-gray-800">{item.title}</h3>
-                    <p className="text-blue-600 font-semibold mb-2">₹{item.price.toFixed(2)}</p>
+                    <p className="text-blue-600 font-semibold mb-1">₹{item.price.toFixed(2)}</p>
                     <button
                       onClick={() => handleSaveForLater(item)}
-                      className="text-blue-500 hover:text-blue-700 text-sm"
+                      className="text-primary hover:text-primary/80 text-sm"
                     >
                       Save for Later
                     </button>
@@ -133,14 +134,14 @@ export default function Cart() {
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center border rounded-md">
                     <button
-                      className="px-2 py-1 lg:px-3 lg:py-1 text-gray-600 hover:bg-gray-100"
+                      className="px-2 py-1 text-gray-600 hover:bg-gray-100"
                       onClick={() => handleRemoveFromCart(item)}
                     >
                       -
                     </button>
-                    <span className="px-2 py-1 lg:px-3 lg:py-1 text-gray-800">{item.qty}</span>
+                    <span className="px-2 py-1 text-gray-800">{item.qty}</span>
                     <button
-                      className={`px-2 py-1 lg:px-3 lg:py-1 text-gray-600 hover:bg-gray-100 ${item.qty >= 5 ? 'opacity-50 cursor-not-allowed' : ''
+                      className={`px-2 py-1 text-gray-600 hover:bg-gray-100 ${item.qty >= 5 ? 'opacity-50 cursor-not-allowed' : ''
                         }`}
                       onClick={() => handleAddToCart(item)}
                       disabled={item.qty >= 5}
@@ -152,7 +153,7 @@ export default function Cart() {
                     onClick={() => handleRemoveProduct(item.id)}
                     className="text-red-500 hover:text-red-700"
                   >
-                    <MdCancel size={24} />
+                    <MdCancel size={20} />
                   </button>
                 </div>
               </div>

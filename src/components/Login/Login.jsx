@@ -28,7 +28,7 @@ export default function Login() {
     setIsLoading(true);
     try {
       await signInWithEmailAndPassword(auth, userData.email, userData.pass);
-      navigate("/");
+      navigate("/products");
     } catch (error) {
       setErrorMessage(error.message);
     } finally {
@@ -39,7 +39,7 @@ export default function Login() {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
-      navigate("/");
+      navigate("/products");
     } catch (error) {
       setErrorMessage(error.message);
     }
@@ -57,7 +57,7 @@ export default function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, guestCredentials.email, guestCredentials.pass);
-      navigate("/");
+      navigate("/products");
     } catch (error) {
       console.error("Guest login error:", error);
       setErrorMessage("Failed to login as guest. Please try again.");
