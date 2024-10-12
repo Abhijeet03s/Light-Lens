@@ -5,7 +5,7 @@ const data = [
     category: "BlueLight",
     image: "https://res.cloudinary.com/djhxhasu0/image/upload/v1668790979/Light-Lens%20Images/blueglasses_1_imlnnm.png",
     price: 1299.99,
-    rating: 3.2,
+    rating: 4.2,
     description: "Classic gray full rim square glasses with blue light filtering lenses. Perfect for long hours of computer work, these glasses combine style with eye protection.",
     color: "Gray",
     shape: "Square"
@@ -49,7 +49,7 @@ const data = [
     category: "BlueLight",
     image: "https://res.cloudinary.com/djhxhasu0/image/upload/v1668790979/Light-Lens%20Images/blueglasses_3_iko6jj.png",
     price: 1399.50,
-    rating: 3.3,
+    rating: 4.3,
     description: "Sleek matte black frames with blue light filtering lenses. These versatile glasses offer a professional look with digital eye strain protection.",
     color: "Matte Black",
     shape: "Rectangle"
@@ -71,7 +71,7 @@ const data = [
     category: "BlueLight",
     image: "https://res.cloudinary.com/djhxhasu0/image/upload/v1668790979/Light-Lens%20Images/blueglasses_5_nfzoti.png",
     price: 1699.00,
-    rating: 4.8,
+    rating: 3.8,
     description: "Stylish black and blue round frames with advanced blue light filtering. These glasses offer a perfect blend of fashion and function for the digital age.",
     color: "Black/Blue",
     shape: "Round"
@@ -123,7 +123,7 @@ const data = [
   {
     id: 12,
     title: "Gold Full Rim Round Sunglasses",
-    category: "Sun",
+    category: "SunGlasses",
     image: "https://res.cloudinary.com/djhxhasu0/image/upload/v1668793550/Light-Lens%20Images/sunglasses_2_cr8kly.png",
     price: 2199.99,
     rating: 4.6,
@@ -134,7 +134,7 @@ const data = [
   {
     id: 13,
     title: "Golden Full Rim Cat Eye Sunglasses",
-    category: "Sun",
+    category: "SunGlasses",
     image: "https://res.cloudinary.com/djhxhasu0/image/upload/v1668793549/Light-Lens%20Images/sunglasses_3_acnpvo.png",
     price: 1999.50,
     rating: 3.0,
@@ -145,7 +145,7 @@ const data = [
   {
     id: 14,
     title: "Matte Gold Full Rim Aviator",
-    category: "Sun",
+    category: "SunGlasses",
     image: "https://res.cloudinary.com/djhxhasu0/image/upload/v1668793549/Light-Lens%20Images/sunglasses_4_anzmn1.png",
     price: 2299.00,
     rating: 5.0,
@@ -156,7 +156,7 @@ const data = [
   {
     id: 15,
     title: "Black Full Rim Round Sunglasses",
-    category: "Sun",
+    category: "SunGlasses",
     image: "https://res.cloudinary.com/djhxhasu0/image/upload/v1668793549/Light-Lens%20Images/sunglasses_5_db4knl.png",
     price: 2099.99,
     rating: 4.5,

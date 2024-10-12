@@ -82,7 +82,7 @@ export default function Category() {
           <motion.button
             key={categoryItem.id}
             onClick={() => categoryHandler(categoryItem.category)}
-            className="group bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="group bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:scale-105"
             variants={itemVariants}
             whileHover={{ y: -5 }}
             whileTap={{ scale: 0.95 }}

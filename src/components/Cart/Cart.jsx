@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/Context";
 import Confetti from "react-confetti";
 import EmptyCart from "../../assets/images/empty-cart.svg";
-import { MdCancel } from "react-icons/md";
+import { MdDeleteSweep } from "react-icons/md";
 
 export default function Cart() {
   const {
@@ -102,17 +102,18 @@ export default function Cart() {
               <h2 className="text-xl lg:text-2xl font-Poppins font-semibold">Your Cart</h2>
               <button
                 onClick={handleRemoveAll}
-                className="flex items-center text-red-500 hover:text-red-700 transition-colors duration-300"
+                className="flex items-center text-red-500 hover:text-red-700 transition-colors duration-300 bg-gray-100 hover:bg-gray-200 rounded-md px-2 py-1 sm:px-3 sm:py-2"
               >
-                <span className="text-xs lg:text-sm font-medium">Remove All</span>
+                <MdDeleteSweep className="mr-1 text-lg" />
+                <span className="text-xs md:text-sm font-medium">Clear Cart</span>
               </button>
             </div>
             {cartItems.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between py-4 lg:py-6 border-b border-gray-200 last:border-b-0"
+                className="flex flex-col sm:flex-row sm:items-center justify-between py-4 lg:py-6 border-b border-gray-200 last:border-b-0"
               >
-                <div className="flex items-center space-x-4">
+                <div className="flex items-start space-x-4 mb-4 sm:mb-0">
                   <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-lg flex items-center justify-center">
                     <img
                       className="w-16 h-auto object-contain lg:w-20"
@@ -120,18 +121,26 @@ export default function Cart() {
                       alt={item.title}
                     />
                   </div>
-                  <div>
+                  <div className="flex-grow">
                     <h3 className="text-base lg:text-lg font-medium text-gray-800">{item.title}</h3>
                     <p className="text-blue-600 font-semibold mb-1">₹{item.price.toFixed(2)}</p>
-                    <button
-                      onClick={() => handleSaveForLater(item)}
-                      className="text-primary hover:text-primary/80 text-sm"
-                    >
-                      Save for Later
-                    </button>
+                    <div className="flex space-x-4">
+                      <button
+                        onClick={() => handleSaveForLater(item)}
+                        className="text-primary hover:text-primary/80 text-sm"
+                      >
+                        Save for Later
+                      </button>
+                      <button
+                        onClick={() => handleRemoveProduct(item.id)}
+                        className="text-red-500 hover:text-red-700 text-sm"
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center justify-start sm:justify-end sm:space-x-4 mt-2 sm:mt-0">
                   <div className="flex items-center border rounded-md">
                     <button
                       className="px-2 py-1 text-gray-600 hover:bg-gray-100"
@@ -149,12 +158,6 @@ export default function Cart() {
                       +
                     </button>
                   </div>
-                  <button
-                    onClick={() => handleRemoveProduct(item.id)}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    <MdCancel size={20} />
-                  </button>
                 </div>
               </div>
             ))}
