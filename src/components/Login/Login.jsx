@@ -47,8 +47,8 @@ export default function Login() {
 
   const handleGuestLogin = async () => {
     const guestCredentials = {
-      email: "testinguser@gmail.com",
-      pass: "eD8+nU9@xK",
+      email: "guestuser@gmail.com",
+      pass: "guestuser@123",
     };
 
     setUserData(guestCredentials);

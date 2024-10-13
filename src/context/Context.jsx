@@ -118,6 +118,33 @@ export const ContextProvider = ({ children }) => {
     }
   }, [data]);
 
+  const applyAllFilters = useCallback(({ category, color, shape, priceRange, minRating }) => {
+    let filteredProducts = data;
+
+    if (category !== "All") {
+      filteredProducts = filteredProducts.filter(product => product.category === category);
+    }
+
+    if (color !== "All") {
+      filteredProducts = filteredProducts.filter(product => product.color.includes(color));
+    }
+
+    if (shape !== "All") {
+      filteredProducts = filteredProducts.filter(product => product.shape === shape);
+    }
+
+    filteredProducts = filteredProducts.filter(product =>
+      product.price >= priceRange[0] && product.price <= priceRange[1]
+    );
+
+    if (minRating > 0) {
+      filteredProducts = filteredProducts.filter(product => product.rating >= minRating);
+    }
+
+    setProducts(filteredProducts);
+    setFilterProducts(filteredProducts);
+  }, []);
+
   return (
     <DataContext.Provider
       value={{
@@ -139,6 +166,7 @@ export const ContextProvider = ({ children }) => {
         filterByShape,
         savedForLater,
         setSavedForLater,
+        applyAllFilters,
       }}
     >
       {children}

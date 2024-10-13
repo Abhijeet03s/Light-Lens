@@ -122,7 +122,7 @@ export default function Cards() {
                   {quantity === 0 ? (
                     <button
                       onClick={() => handleCartAction(product)}
-                      className="w-full bg-primary text-white py-2 sm:py-3 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-primary-dark flex items-center justify-center"
+                      className="w-full bg-primary text-white py-3 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-primary-dark flex items-center justify-center"
                     >
                       <MdShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                       Add To Cart
@@ -132,21 +132,21 @@ export default function Cards() {
                       <div className="flex items-center justify-between bg-gray-100 rounded-full">
                         <button
                           onClick={() => handleRemoveFromCart(product)}
-                          className="p-2 sm:p-3 text-primary hover:bg-gray-200 rounded-full transition-colors duration-300"
+                          className="p-3 text-primary hover:bg-gray-200 rounded-full transition-colors duration-300"
                         >
                           <MdRemove size={18} />
                         </button>
                         <span className="text-sm font-medium">{quantity}</span>
                         <button
                           onClick={() => handleAddToCart(product)}
-                          className="p-2 sm:p-3 text-primary hover:bg-gray-200 rounded-full transition-colors duration-300"
+                          className="p-3 text-primary hover:bg-gray-200 rounded-full transition-colors duration-300"
                         >
                           <MdAdd size={18} />
                         </button>
                       </div>
                       <Link
                         to="/cart"
-                        className="block w-full text-center bg-primary text-white py-2 sm:py-3 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-primary-dark"
+                        className="block w-full text-center bg-primary text-white py-3 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-primary-dark"
                       >
                         Go to Cart
                       </Link>

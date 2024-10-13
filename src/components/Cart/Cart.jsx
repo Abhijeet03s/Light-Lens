@@ -77,8 +77,8 @@ export default function Cart() {
       {showConfetti && <Confetti />}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-16 rounded-lg shadow-xl text-center max-w-lg w-full">
-            <h2 className="text-2xl font-bold mb-4">Order Placed Successfully!</h2>
+          <div className="bg-white m-4 p-8 sm:p-16 rounded-lg shadow-xl text-center max-w-lg w-full">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4">Order Placed Successfully!</h2>
             <p className="text-lg">Thank you for your purchase.</p>
           </div>
         </div>
@@ -114,7 +114,7 @@ export default function Cart() {
                 className="flex flex-col sm:flex-row sm:items-center justify-between py-4 lg:py-6 border-b border-gray-200 last:border-b-0"
               >
                 <div className="flex items-start space-x-4 mb-4 sm:mb-0">
-                  <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-lg flex items-center justify-center">
+                  <div className="w-20 h-20 lg:w-24 lg:h-24 flex items-center justify-center bg-gray-100 p-2 rounded-lg">
                     <img
                       className="w-16 h-auto object-contain lg:w-20"
                       src={item.image}
@@ -122,8 +122,8 @@ export default function Cart() {
                     />
                   </div>
                   <div className="flex-grow">
-                    <h3 className="text-base lg:text-lg font-medium text-gray-800">{item.title}</h3>
-                    <p className="text-blue-600 font-semibold mb-1">₹{item.price.toFixed(2)}</p>
+                    <h3 className="text-base lg:text-lg font-medium text-gray-800 mb-1">{item.title}</h3>
+                    <p className="text-blue-600 font-semibold mb-2">₹{item.price.toFixed(2)}</p>
                     <div className="flex space-x-4">
                       <button
                         onClick={() => handleSaveForLater(item)}
