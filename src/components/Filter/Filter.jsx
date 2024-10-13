@@ -11,6 +11,7 @@ export default function Filter({ isFilterExpanded, closeFilter }) {
     filterByRating,
     filterByColor,
     filterByShape,
+    applyAllFilters,
   } = useContext(DataContext);
 
   const [priceRange, setPriceRange] = useState([0, 2500]);
@@ -50,11 +51,13 @@ export default function Filter({ isFilterExpanded, closeFilter }) {
 
   const handleApplyFilters = (e) => {
     e.preventDefault();
-    filterCategory(category);
-    filterByColor(color);
-    filterByShape(shape);
-    filterPriceRange(priceRange);
-    filterByRating(minRating);
+    applyAllFilters({
+      category,
+      color,
+      shape,
+      priceRange,
+      minRating,
+    });
     closeFilter();
   };
 
@@ -66,6 +69,7 @@ export default function Filter({ isFilterExpanded, closeFilter }) {
       setCategory("All");
       setColor("All");
       setShape("All");
+      closeFilter();
     });
   };
 
