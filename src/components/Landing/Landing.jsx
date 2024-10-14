@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Category from "../Category/Category";
 import SpecImg from "../../assets/images/hp-specs-1.png";
 
-export default function Hero() {
+export default function Landing() {
   const { loggedInUser } = useContext(AuthContext);
 
   return (

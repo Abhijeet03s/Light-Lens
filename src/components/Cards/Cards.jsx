@@ -67,7 +67,9 @@ export default function Cards() {
 
         {/* Sort By Price */}
         <div className="w-full lg:w-1/5 mt-4 lg:mt-0 relative">
+          <label htmlFor="sortByPrice" className="sr-only">Sort by Price</label>
           <select
+            id="sortByPrice"
             value={sortOrder}
             onChange={handleSortChange}
             className="w-full p-2 pr-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#4A99D3] focus:border-[#4A99D3] text-sm lg:text-base appearance-none bg-white transition-all duration-300 hover:bg-gray-50"

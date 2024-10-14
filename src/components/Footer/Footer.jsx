@@ -7,7 +7,8 @@ export default function Footer() {
     <>
       <footer className="bg-[#4A99D3] font-Inter">
         <div className="container px-14 py-8 mx-auto flex items-center sm:flex-row flex-col">
-          <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+          <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+            href="/">
             <img
               className="h-6 w-auto"
               src={LogoNav}
@@ -23,7 +24,8 @@ export default function Footer() {
               href="https://github.com/Abhijeet03s"
               target="_blank"
               rel="noreferrer"
-              className=" text-white"
+              className="text-white"
+              aria-label="Visit my GitHub profile"
             >
               <AiOutlineGithub size={22} />
             </a>
@@ -32,6 +34,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
               className="ml-3 text-white"
+              aria-label="Connect with me on LinkedIn"
             >
               <AiOutlineLinkedin size={22} />
             </a>
@@ -40,6 +43,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
               className="ml-3 text-white"
+              aria-label="Follow me on X"
             >
               <AiOutlineTwitter size={22} />
             </a>

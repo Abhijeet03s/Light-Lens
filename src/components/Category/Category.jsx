@@ -70,11 +70,11 @@ export default function Category() {
         className="w-[90%] sm:max-w-[80%] mx-auto flex flex-col text-center mb-8 sm:mb-12"
         variants={itemVariants}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 font-Poppins font-bold text-gray-800">
-          Explore Categories
+        <h1 className="text-3xl sm:text-4xl mb-4 sm:mb-6 font-Poppins font-bold text-gray-800">
+          Discover Our Eyewear Categories
         </h1>
         <p className="text-base sm:text-xl mb-3 text-gray-600">
-          Explore our stylish eyewear options.
+          Find your perfect eyewear from our stylish collection.
         </p>
       </motion.div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mx-auto w-[90%] max-w-6xl">
