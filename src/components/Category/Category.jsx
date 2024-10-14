@@ -90,15 +90,15 @@ export default function Category() {
             <div className="relative h-36 sm:h-48 w-full overflow-hidden">
               <img
                 src={categoryItem.image}
-                alt={categoryItem.category}
+                alt={`Example of ${categoryItem.category.toLowerCase()} eyewear`}
                 className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 opacity-0 group-hover:opacity-100"></div>
             </div>
             <div className="p-4 sm:p-6 bg-white font-Poppins">
-              <h6 className="text-lg sm:text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
                 {categoryItem.category.toUpperCase()}
-              </h6>
+              </h2>
             </div>
           </motion.button>
         ))}

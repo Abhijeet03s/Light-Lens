@@ -117,7 +117,7 @@ export default function Landing() {
               className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-5 w-full"
             >
               <Link to="/products" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-8 py-3 bg-white text-[#4c99d1] border-2 border-white hover:bg-transparent hover:text-white transition-all duration-300 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 group">
+                <button className="w-full sm:w-auto px-8 py-3 bg-white text-primary border-2 border-white hover:bg-transparent hover:text-white transition-all duration-300 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 group">
                   <span>Explore Collection</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -125,7 +125,7 @@ export default function Landing() {
                 </button>
               </Link>
               <Link to={loggedInUser ? "/products" : "/login"} className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-8 py-3 bg-transparent backdrop-blur-sm border-2 border-white text-white hover:bg-white hover:text-[#4c99d1] transition-all duration-300 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 group">
+                <button className="w-full sm:w-auto px-8 py-3 bg-transparent backdrop-blur-sm border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 group">
                   <span>{loggedInUser ? "Shop Now" : "Login & Shop"}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-y-[-2px] transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
