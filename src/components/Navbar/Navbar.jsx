@@ -23,7 +23,7 @@ export default function Navbar({ toggle }) {
         <img
           className="h-10 md:h-14 w-auto"
           src={logoNavbar}
-          alt="LightLens"
+          alt="lightlens-logo"
           loading="lazy"
         />
         <span className="text-xl sm:text-2xl font-semibold text-primary font-Libre">

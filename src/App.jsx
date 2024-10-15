@@ -3,7 +3,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 import Navbar from "./components/Navbar/Navbar";
 import Landing from "./components/Landing/Landing";
-
 import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
 import Footer from "./components/Footer/Footer";
 import Logo from "./assets/images/website-logo-color.svg";
@@ -57,17 +56,19 @@ const AppContent = () => {
         {!isOpen && (
           <div>
             <Navbar toggle={toggle} />
-            <Suspense fallback={<LoadingSpinner />}>
-              <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/aboutus" element={<Aboutus />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/products/:slug" element={<ProductDetails />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-              </Routes>
-            </Suspense>
+            <main>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Routes>
+                  <Route path="/" element={<Landing />} />
+                  <Route path="/aboutus" element={<Aboutus />} />
+                  <Route path="/products" element={<Products />} />
+                  <Route path="/products/:slug" element={<ProductDetails />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                </Routes>
+              </Suspense>
+            </main>
             {!isMobile && <Footer />}
           </div>
         )}
