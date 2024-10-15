@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import Category from "../Category/Category";
-import SpecImg from "../../assets/images/spec-hero-image.png";
+import specImg from "../../assets/images/spec-hero-image.png";
 
 export default function Landing() {
   const { loggedInUser } = useContext(AuthContext);
@@ -78,7 +78,7 @@ export default function Landing() {
               >
                 <img
                   className="object-cover w-full h-full drop-shadow-2xl"
-                  src={SpecImg}
+                  src={specImg}
                   alt="Premium Eyewear Collection"
                 />
               </motion.div>

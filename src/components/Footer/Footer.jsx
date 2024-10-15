@@ -1,5 +1,5 @@
 import React from "react";
-import LogoNav from "../../assets/images/lightlens-footer.svg";
+import logoFooter from "../../assets/images/lightlens-footer.svg";
 import { AiOutlineGithub, AiOutlineTwitter, AiOutlineLinkedin } from "react-icons/ai";
 
 export default function Footer() {
@@ -11,7 +11,7 @@ export default function Footer() {
             href="/">
             <img
               className="h-6 w-auto"
-              src={LogoNav}
+              src={logoFooter}
               alt="LightLens"
               loading="lazy"
             />
