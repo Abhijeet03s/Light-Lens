@@ -10,7 +10,7 @@ export default function Landing() {
 
   return (
     <>
-      <div className="relative max-w-full lg:min-h-[90vh] bg-gradient-to-br from-[#1a365d] to-[#4c99d1] text-white font-Inter overflow-hidden flex justify-center items-center">
+      <div className="relative max-w-full lg:min-h-[90vh] bg-gradient-to-br from-[#1a365d] to-[#3b82f6] text-white font-Inter overflow-hidden flex justify-center items-center">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -92,7 +92,7 @@ export default function Landing() {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-Poppins font-bold text-center leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-Libre font-bold text-center leading-normal md:leading-snug xl:leading-tight"
             >
               Discover The World Of{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">

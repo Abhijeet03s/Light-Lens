@@ -12,7 +12,7 @@ export default function Signup() {
   const [userData, setUserData] = useState({
     name: "",
     email: "",
-    pass: "",
+    password: "",
   });
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function Signup() {
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
-    if (!userData.name || !userData.email || !userData.pass) {
+    if (!userData.name || !userData.email || !userData.password) {
       setErrorMessage("Please fill in all fields");
       return;
     }
@@ -31,18 +31,18 @@ export default function Signup() {
       setErrorMessage("Please enter a valid email address");
       return;
     }
-    if (userData.pass.length < 6) {
+    if (userData.password.length < 6) {
       setErrorMessage("Password must be at least 6 characters long");
       return;
     }
     setErrorMessage("");
     setIsLoading(true);
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, userData.email, userData.pass);
+      const userCredential = await createUserWithEmailAndPassword(auth, userData.email, userData.password);
       await updateProfile(userCredential.user, {
         displayName: userData.name,
       });
-      navigate("/login");
+      navigate("/products");
     } catch (error) {
       setErrorMessage(error.message);
     } finally {
@@ -100,6 +100,7 @@ export default function Signup() {
               value={userData.name}
               onChange={handleInputChange}
               required
+              autoComplete="name"
             />
           </div>
           <div>
@@ -112,6 +113,7 @@ export default function Signup() {
               value={userData.email}
               onChange={handleInputChange}
               required
+              autoComplete="email"
             />
           </div>
           <div>
@@ -120,11 +122,12 @@ export default function Signup() {
               id="password"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-sm sm:text-base"
               type="password"
-              name="pass"
-              value={userData.pass}
+              name="password"
+              value={userData.password}
               onChange={handleInputChange}
               required
               minLength={6}
+              autoComplete="current-password"
             />
           </div>
           {errorMessage && <p className="text-xs sm:text-sm text-red-600" role="alert">{errorMessage}</p>}

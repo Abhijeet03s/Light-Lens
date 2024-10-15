@@ -61,7 +61,7 @@ export default function Cards() {
             placeholder="Search products"
             value={searchTerm}
             onChange={handleSearch}
-            className="w-full pl-10 pr-3 py-2 text-sm lg:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
+            className="w-full pl-10 pr-3 py-2 text-sm lg:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-secondary focus:border-primary"
           />
         </div>
 
@@ -72,7 +72,7 @@ export default function Cards() {
             id="sortByPrice"
             value={sortOrder}
             onChange={handleSortChange}
-            className="w-full p-2 pr-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#4A99D3] focus:border-[#4A99D3] text-sm lg:text-base appearance-none bg-white transition-all duration-300 hover:bg-gray-50"
+            className="w-full p-2 pr-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary text-sm lg:text-base appearance-none bg-white transition-all duration-300 hover:bg-gray-50"
           >
             <option value="default">Sort by Price</option>
             <option value="lowToHigh">Low to High</option>
@@ -96,7 +96,7 @@ export default function Cards() {
               key={product.id}
               className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-102 flex flex-col h-full"
             >
-              <Link to={`/products/${product.id}`} className="block relative pb-[75%] sm:pb-[100%]">
+              <Link to={`/products/${product.slug}`} className="block relative pb-[75%] sm:pb-[100%]">
                 <img
                   src={product.image}
                   alt={product.title}

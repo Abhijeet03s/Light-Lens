@@ -10,13 +10,13 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [userData, setUserData] = useState({
     email: "",
-    pass: "",
+    password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
-    if (!userData.email || !userData.pass) {
+    if (!userData.email || !userData.password) {
       setErrorMessage("Please fill in all fields");
       return;
     }
@@ -27,7 +27,7 @@ export default function Login() {
     setErrorMessage("");
     setIsLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, userData.email, userData.pass);
+      await signInWithEmailAndPassword(auth, userData.email, userData.password);
       navigate("/products");
     } catch (error) {
       setErrorMessage(error.message);
@@ -48,7 +48,7 @@ export default function Login() {
   const handleGuestLogin = async () => {
     const guestCredentials = {
       email: "guestuser@gmail.com",
-      pass: "guestuser@123",
+      password: "guestuser@123",
     };
 
     setUserData(guestCredentials);
@@ -56,7 +56,7 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      await signInWithEmailAndPassword(auth, guestCredentials.email, guestCredentials.pass);
+      await signInWithEmailAndPassword(auth, guestCredentials.email, guestCredentials.password);
       navigate("/products");
     } catch (error) {
       console.error("Guest login error:", error);
@@ -107,9 +107,10 @@ export default function Login() {
               type="email"
               value={userData.email}
               onChange={handleInputChange}
-              required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-sm sm:text-base"
               placeholder="Email Address"
+              autoComplete="email"
+              required
             />
           </div>
           <div>
@@ -120,10 +121,11 @@ export default function Login() {
               id="password"
               name="password"
               type="password"
-              value={userData.pass}
+              value={userData.password}
               onChange={handleInputChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-sm sm:text-base"
               placeholder="Password"
+              autoComplete="current-password"
               required
             />
           </div>

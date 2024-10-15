@@ -6,9 +6,11 @@ module.exports = {
       fontFamily: {
         Poppins: ["Poppins", "sans-serif"],
         Inter: ["Inter", "sans-serif"],
+        Libre: ["Libre Baskerville", "serif"],
       },
       colors: {
-        primary: "#4A99D3",
+        primary: "#3B82F6",
+        secondary: "#439BDB",
       },
       animation: {
         'spin-slow': 'spin 20s linear infinite',

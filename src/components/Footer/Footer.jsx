@@ -5,7 +5,7 @@ import { AiOutlineGithub, AiOutlineTwitter, AiOutlineLinkedin } from "react-icon
 export default function Footer() {
   return (
     <>
-      <footer className="bg-[#4A99D3] font-Inter">
+      <footer className="bg-secondary font-Inter">
         <div className="container px-14 py-8 mx-auto flex items-center sm:flex-row flex-col">
           <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
             href="/">

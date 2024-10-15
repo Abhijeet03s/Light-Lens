@@ -6,11 +6,11 @@ import { AuthContext } from "../../context/AuthContext";
 
 export default function ProductDetails() {
   const navigate = useNavigate();
-  const { ID } = useParams();
+  const { slug } = useParams();
   const { loggedInUser } = useContext(AuthContext);
   const { products, handleAddToCart } = useContext(DataContext);
 
-  const selectedProduct = products.find((product) => product.id === Number(ID));
+  const selectedProduct = products.find((product) => product.slug === slug);
 
   if (!selectedProduct) {
     return (
@@ -20,7 +20,6 @@ export default function ProductDetails() {
     );
   }
 
-  const [isAdded, setIsAdded] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
 

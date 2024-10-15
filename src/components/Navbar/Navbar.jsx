@@ -19,13 +19,16 @@ export default function Navbar({ toggle }) {
 
   return (
     <nav className="container mx-auto max-w-full h-20 bg-white shadow-md flex justify-between items-center px-6 lg:px-14 font-Inter font-medium sticky top-0 transition-all duration-300 ease-in-out z-50">
-      <Link to="/" className="flex items-center">
+      <Link to="/" className="flex items-center space-x-2">
         <img
-          className="h-14 md:h-20 w-auto"
+          className="h-10 md:h-14 w-auto"
           src={Logo}
           alt="LightLens"
           loading="lazy"
         />
+        <span className="text-xl sm:text-2xl font-semibold text-primary font-Libre">
+          LightLens
+        </span>
       </Link>
       <div className="hidden lg:flex items-center space-x-8">
         {navLinks.map((link) => (
@@ -34,8 +37,8 @@ export default function Navbar({ toggle }) {
             to={link.to}
             className={({ isActive }) =>
               isActive
-                ? 'text-[#4A99D3] font-semibold'
-                : 'text-gray-600 hover:text-[#4A99D3] transition-colors'
+                ? 'text-primary font-semibold'
+                : 'text-gray-600 hover:text-primary transition-colors'
             }
           >
             {link.text}
@@ -57,13 +60,13 @@ export default function Navbar({ toggle }) {
         {loggedInUser ? (
           <button
             onClick={handleLogOut}
-            className="bg-[#4A99D3] hidden lg:block text-white rounded-md py-2 px-4 hover:bg-[#3a7aa6] transition-colors"
+            className="bg-[#4A99D3] hidden lg:block text-white rounded-md py-2 px-4 hover:bg-secondary transition-colors"
           >
             Logout
           </button>
         ) : (
           <Link to="/login">
-            <button className="bg-[#4A99D3] hidden lg:block text-white rounded-md py-2 px-4 hover:bg-[#3a7aa6] transition-colors">
+            <button className="bg-[#4A99D3] hidden lg:block text-white rounded-md py-2 px-4 hover:bg-secondary transition-colors">
               Login
             </button>
           </Link>

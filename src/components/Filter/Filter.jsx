@@ -78,7 +78,7 @@ export default function Filter({ isFilterExpanded, closeFilter }) {
       <div className="font-Inter space-y-4 lg:space-y-6">
         <div className="flex justify-between items-center border-b pb-4">
           <h2 className="text-lg lg:text-xl font-bold text-gray-800 flex items-center">
-            <MdFilterList className="mr-2 text-[#4A99D3]" /> Filters
+            <MdFilterList className="mr-2 text-primary" /> Filters
           </h2>
           <button
             onClick={handleClearAll}
