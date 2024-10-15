@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import Category from "../Category/Category";
-import SpecImg from "../../assets/images/hp-specs-1.png";
+import SpecImg from "../../assets/images/spec-hero-image.png";
 
 export default function Landing() {
   const { loggedInUser } = useContext(AuthContext);

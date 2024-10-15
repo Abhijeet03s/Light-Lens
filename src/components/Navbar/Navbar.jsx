@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { DataContext } from "../../context/Context";
-import Logo from "../../assets/images/logo-color.svg";
+import Logo from "../../assets/images/website-logo-color.svg";
 import Cart from "../../assets/images/cart-nav.svg";
 
 export default function Navbar({ toggle }) {
@@ -49,7 +49,7 @@ export default function Navbar({ toggle }) {
       <div className="flex items-center space-x-8">
         {loggedInUser !== null && (
           <Link to="/cart" className="relative p-2">
-            <img src={Cart} alt="Cart" className="w-6 h-6" />
+            <img src={Cart} alt="cart-icon" className="w-6 h-6" />
             {cartItems.length > 0 && (
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 {cartItems.length}

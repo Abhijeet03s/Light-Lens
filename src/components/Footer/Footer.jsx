@@ -1,5 +1,5 @@
 import React from "react";
-import LogoNav from "../../assets/images/LIGHTLENS-footer.svg";
+import LogoNav from "../../assets/images/lightlens-footer.svg";
 import { AiOutlineGithub, AiOutlineTwitter, AiOutlineLinkedin } from "react-icons/ai";
 
 export default function Footer() {

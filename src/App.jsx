@@ -4,7 +4,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import Navbar from "./components/Navbar/Navbar";
 import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
 import Footer from "./components/Footer/Footer";
-import Logo from "./assets/images/logo-color.svg";
+import Logo from "./assets/images/website-logo-color.svg";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Landing = lazy(() => import("./components/Landing/Landing"));

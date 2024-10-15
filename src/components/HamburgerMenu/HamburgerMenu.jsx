@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import Logo from "../../assets/images/LIGHTLENS-nav.svg";
+import Logo from "../../assets/images/website-logo-color.svg";
 
 export default function HamburgerMenu({ isOpen, toggle }) {
   const { loggedInUser, handleLogOut } = useContext(AuthContext);
@@ -21,7 +21,7 @@ export default function HamburgerMenu({ isOpen, toggle }) {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center mb-8">
-          <img className="h-4 w-auto" src={Logo} alt="LightLens logo" />
+          <img className="h-10 w-auto" src={Logo} alt="LightLens logo" />
           <button
             onClick={toggle}
             className="p-2 rounded-full hover:bg-gray-100 transition-colors"

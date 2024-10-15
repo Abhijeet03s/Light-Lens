@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/Context";
 import Confetti from "react-confetti";
-import EmptyCart from "../../assets/images/empty-cart.svg";
 import { MdDeleteSweep } from "react-icons/md";
 
 export default function Cart() {
