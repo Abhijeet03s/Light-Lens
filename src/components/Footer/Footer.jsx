@@ -1,7 +1,7 @@
 import React from "react";
-import logoFooter from "../../assets/images/lightlens-footer.svg";
-import { AiOutlineGithub, AiOutlineTwitter, AiOutlineLinkedin } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import logoFooter from "../../assets/images/website-logo-footer.svg";
+import { AiOutlineGithub, AiOutlineTwitter, AiOutlineLinkedin } from "react-icons/ai";
 
 export default function Footer() {
   return (
@@ -12,7 +12,7 @@ export default function Footer() {
             <img
               className="h-6 w-auto"
               src={logoFooter}
-              alt="LightLens"
+              alt="lightlens-footer"
               loading="lazy"
             />
           </Link>

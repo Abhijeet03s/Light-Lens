@@ -2,12 +2,13 @@ import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 import Navbar from "./components/Navbar/Navbar";
+import Landing from "./components/Landing/Landing";
+
 import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu";
 import Footer from "./components/Footer/Footer";
 import Logo from "./assets/images/website-logo-color.svg";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Landing = lazy(() => import("./components/Landing/Landing"));
 const Aboutus = lazy(() => import("./components/AboutUs/Aboutus"));
 const Products = lazy(() => import("./components/Products/Products"));
 const ProductDetails = lazy(() => import("./components/ProductDetails/ProductDetails"));
