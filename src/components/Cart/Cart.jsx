@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/Context";
 import Confetti from "react-confetti";
 import { MdDeleteSweep } from "react-icons/md";
+import EmptyCart from "../../assets/images/empty_cart.svg";
 
 export default function Cart() {
   const {
