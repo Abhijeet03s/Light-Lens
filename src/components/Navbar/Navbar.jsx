@@ -60,13 +60,13 @@ export default function Navbar({ toggle }) {
         {loggedInUser ? (
           <button
             onClick={handleLogOut}
-            className="bg-[#4A99D3] hidden lg:block text-white rounded-md py-2 px-4 hover:bg-secondary transition-colors"
+            className="bg-primary/90 hover:bg-primary hidden lg:block text-white rounded-md py-2 px-4 transition-colors duration-300"
           >
             Logout
           </button>
         ) : (
           <Link to="/login">
-            <button className="bg-[#4A99D3] hidden lg:block text-white rounded-md py-2 px-4 hover:bg-secondary transition-colors">
+            <button className="bg-primary/90 hover:bg-primary hidden lg:block text-white rounded-md py-2 px-4 transition-colors duration-300">
               Login
             </button>
           </Link>
